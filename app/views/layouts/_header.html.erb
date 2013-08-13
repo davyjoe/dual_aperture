@@ -1,0 +1,28 @@
+<nav class="header-nav">
+  <div class="row">
+    <div class="home-link text-center span3">
+      <%= link_to home_path do %>
+        <%= image_tag "rails_logo.png", class: 'media-large' %>
+      <% end %>
+    </div>
+    <div class="product-nav-item text-center span3">
+      <%= link_to features_path do %>
+        <i class="icon-truck"></i>
+        <br>
+        <strong>Features</strong>
+      <% end %>
+    </div>
+    <div class="about-nav-item text-center span3">
+      <%= link_to about_path do %>
+        <%= image_tag "about-icon.png", class: 'media-small' %>
+        <br>
+        <strong>About</strong>
+      <% end %>
+    </div>
+    <div class="authentication-link text-center span3">
+      <%= link_to home_path do %>
+        <strong>Sign in</strong>
+      <% end %>
+    </div>
+  </div>
+</navv>
