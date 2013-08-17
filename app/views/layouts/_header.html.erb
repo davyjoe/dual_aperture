@@ -1,28 +1,17 @@
-<nav class="header-nav">
-  <div class="row">
-    <div class="home-link text-center span3">
-      <%= link_to home_path do %>
-        <%= image_tag "rails_logo.png", class: 'media-large' %>
-      <% end %>
-    </div>
-    <div class="product-nav-item text-center span3">
-      <%= link_to features_path do %>
-        <i class="icon-truck"></i>
-        <br>
-        <strong>Features</strong>
-      <% end %>
-    </div>
-    <div class="about-nav-item text-center span3">
-      <%= link_to about_path do %>
-        <%= image_tag "about-icon.png", class: 'media-small' %>
-        <br>
-        <strong>About</strong>
-      <% end %>
-    </div>
-    <div class="authentication-link text-center span3">
-      <%= link_to home_path do %>
-        <strong>Sign in</strong>
-      <% end %>
+<div class="container">
+  <div class="page-header">
+    <h1>
+      Example page header <small>Subtext for header</small>
+    </h1>
+  </div>
+  <div class="navbar">
+    <div class="navbar-inner">
+      <ul class="nav">
+        <li class="active divider-vertical"><%= link_to "Home", home_path %></li>
+        <li class="divider-vertical"><%= link_to "About", about_path %></li>
+        <li class="divider-vertical"><%= link_to "Features", features_path %></li>
+        <li class="divider-vertical"><%= link_to "Blog", blog_posts_path %></li>
+      </ul>
     </div>
   </div>
-</navv>
+</div>

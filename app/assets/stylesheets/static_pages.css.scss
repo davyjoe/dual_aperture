@@ -1,3 +1,42 @@
 // Place all the styles related to the StaticPages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+/* About */
+
+section#about_main {
+  header {
+    background-image: url('devils_tower.jpg');
+    background-repeat: no-repeat;
+    background-color: transparent;
+    height: 500px;
+
+    h1 {
+      text-align: center;
+      color: white;
+    }
+  }
+}
+
+/* Features */
+
+#features_main {
+  background-image: url('japan.jpg');
+  background-repeat: no-repeat;
+  background-color: transparent;
+  color: white;
+  height: 200px;
+}
+
+#section_from_thumbnail_1 header {
+  margin: 40px auto;
+  padding-bottom: 10px;
+
+  h2 {
+    text-align: center;
+  }
+
+  p {
+    text-align: center;
+  }
+}
