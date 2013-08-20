@@ -20,7 +20,7 @@ SampleApp::Application.configure do
   # config.action_dispatch.rack_cache = true
 
   # Disable Rails's static asset server (Apache or nginx will already do this).
-  config.serve_static_assets = false
+  config.serve_static_assets = true
 
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
@@ -71,7 +71,6 @@ SampleApp::Application.configure do
 
   # Send deprecation notices to registered listeners.
   config.active_support.deprecation = :notify
-  config.serve_static_assets = true
   config.assets.precompile += %w[*.png *.jpg *.jpeg *.gif] 
   config.assets.precompile += %w( public/static_pages.css )
 
