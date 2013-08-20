@@ -12,6 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.beforeafter-1.4
+//= require jquery.ui.draggable
 //= require turbolinks
 //= require bootstrap
 //= require skrollr

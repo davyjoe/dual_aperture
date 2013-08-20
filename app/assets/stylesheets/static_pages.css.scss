@@ -2,20 +2,116 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-/* About */
+/* Home */
+#home_main {
+  #home_carousel {
+    #banner {
+      background-image: url('DA_background_v2.png');
+      background-repeat: no-repeat;
+      background-color: transparent;
+      background-size: 100%;
+      color: white;      
+    }
 
-section#about_main {
-  header {
-    background-image: url('devils_tower.jpg');
-    background-repeat: no-repeat;
-    background-color: transparent;
-    height: 500px;
+    #stereograms {
+      background-image: url('3D_large.jpg');
+      background-repeat: no-repeat;
+      background-color: transparent;
+      background-size: 100%;
+      color: white;      
+    }
 
-    h1 {
-      text-align: center;
+    #gesture_tracking {
+      background-image: url('hands_gesturing_large.jpg');
+      background-repeat: no-repeat;
+      background-color: transparent;
+      background-size: 100%;
+      color: white;      
+    }
+
+    #refocus_tulips {
+      background-image: url('refocus_tulips.jpg');
+      background-repeat: no-repeat;
+      background-color: transparent;
+      background-size: 100%;
+      color: white;      
+    }
+
+    h2 {
       color: white;
+      font-weight: none;
+      background: transparent;
+      text-align: center;
+      margin-top: -10px;
+      margin-bottom: 0px;
+      padding-top: 325px;
+      padding-bottom: 325px;
+    }  
+  }
+
+  #home_thumbnails {
+    padding-right: 75px;
+    padding-left: 75px;  
+  }
+
+  #refocusing_before_after {
+    margin-left: auto;
+    margin-right: auto;
+
+    img {
+      max-width: none;
     }
   }
+
+  #stereoscopes_before_after {
+    margin-left: auto;
+    margin-right: auto;
+
+    img {
+      max-width: none;
+    }
+  }
+
+  #refocusing_section {
+    padding-left: 75px;
+    padding-right: 75px;
+    margin-left: 70px;
+  }
+
+  #gesture_control_section {
+    margin-left: 50px;
+    margin-right: 50px;
+    padding-right: 75px;
+    padding-left: 75px;
+    padding-top: 50px;
+    padding-bottom: 50px;  
+
+    .row-fluid {
+      padding-bottom: 20px;
+    }
+
+    hr {
+      margin-left: auto;
+      margin-right: auto;
+      width: 80%;
+      padding-bottom: 20px;
+    }
+  }
+
+  #stereoscopes_tracking_section {
+    padding-left: 75px;
+    padding-right: 75px;
+  }
+}
+
+/* About */
+
+#about_main {
+  background-image: url('japan.jpg');
+  background-repeat: no-repeat;
+  background-color: transparent;
+  background-size: 100%;
+  color: white;
 }
 
 /* Features */

@@ -3,7 +3,7 @@
 /* icons */
 .media-small {
   width: 50px;
-  height: 50px;
+  height: 20px;
 }
 
 .media-large {
@@ -12,3 +12,36 @@
 }
 
 /* header */
+
+/* navbar */
+
+/* body */
+body {
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+  font-weight: 300;
+
+  article {
+    padding-bottom: 40px;
+  }
+
+  .container-fluid {
+    padding-right: 0px;
+    padding-left: 0px;
+  }
+
+  .media {
+    margin: 40px;
+  }
+
+  .infobox {
+    padding-top: 10px;
+    padding-left: 50px;
+    padding-right: 50px;
+
+    .infobox-body {
+      margin-left: auto;
+      margin-right: auto;
+      padding-bottom: 40px;
+    }
+  }
+}

@@ -3,3 +3,7 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 # shim layer with setTimeout fallback
+
+window.onload = ->
+  $('#refocusing_before_after .container').beforeAfter()
+  $('#stereoscopes_before_after .container').beforeAfter()

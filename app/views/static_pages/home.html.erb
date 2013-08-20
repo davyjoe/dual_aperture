@@ -1,22 +1,183 @@
-<div id="myCarousel" class="carousel slide">
-  <ol class="carousel-indicators">
-    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-    <li data-target="#myCarousel" data-slide-to="1"></li>
-    <li data-target="#myCarousel" data-slide-to="2"></li>
-  </ol>
-  <!-- Carousel items -->
-  <div class="carousel-inner">
-    <div class="active item">
-      <%= image_tag "thunderstorm.jpg" %>
+<section id="home_main" class="container-fluid">
+  <article id="home_carousel">
+    <div id="myCarousel" class="carousel slide">
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+        <li data-target="#myCarousel" data-slide-to="3"></li>
+      </ol>
+      <!-- Carousel items -->
+      <div class="carousel-inner">
+        <div id="banner" class="active item">
+          <h2>Dual Aperture</h2>
+        </div>
+        <div id="stereograms" class="item">
+          <h2>3-D Images</h2>
+        </div>
+        <div id="gesture_tracking" class="item">
+          <h2>Gesture Tracking</h2>
+        </div>
+        <div id="refocus_tulips" class="item">
+          <h2>Touch Refocusing</h2>
+        </div>
+      </div>
+      <!-- Carousel nav -->
+      <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+      <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
     </div>
-    <div class="item">
-      <%= image_tag "devils_tower.jpg" %>
+  </article>
+  <article id="home_thumbnails">
+    <div class="row-fluid">
+      <ul class="thumbnails">
+        <li class="span4">
+          <div class="thumbnail">
+            <%= image_tag "money.png" %>
+            <h3>Thumbnail label</h3>
+            <p>
+              Nulla facilisi. Aliquam tristique a nulla vel sodales. Maecenas ac suscipit massa, vitae convallis nisl. Nulla placerat risus facilisis, volutpat neque eu, dignissim orci. Praesent sagittis nec nibh quis adipiscing. Duis vestibulum augue sed mauris bibendum accumsan. Maecenas at vehicula neque, quis mollis risus. Donec rhoncus cursus dui, eu tempus justo mollis vel. Nulla et placerat risus. Ut ut nibh non quam egestas pellentesque. Maecenas consequat tincidunt ligula, et tristique metus blandit dignissim.
+            </p>
+          </div>
+        </li>
+        <li class="span4">
+          <div class="thumbnail">
+            <%= image_tag "pig.png" %>
+            <h3>Thumbnail label</h3>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas et dignissim lorem. Vestibulum eleifend lobortis gravida. Vivamus hendrerit tristique leo, nec tincidunt nisi sollicitudin sed. Praesent semper nisi vel libero pretium tincidunt. Donec sit amet ligula enim. Etiam fringilla pellentesque orci vitae lacinia. Donec lobortis volutpat velit. Ut nec nunc non justo suscipit hendrerit. Nulla eros sem, sagittis sed est et, adipiscing suscipit lacus. 
+            </p>
+          </div>
+        </li>
+        <li class="span4">
+          <div class="thumbnail">
+            <%= image_tag "bubbles.png" %>
+            <h3>Thumbnail label</h3>
+            <p>
+              Vivamus varius ultrices lacus a laoreet. Nulla egestas sollicitudin faucibus. In consectetur tincidunt elit, id accumsan odio fringilla in. Sed condimentum lectus nec leo ornare vehicula. Aenean sollicitudin libero justo, vitae molestie mi sagittis eget. Vestibulum dictum feugiat placerat. Nam elit neque, sollicitudin blandit scelerisque bibendum, mollis at turpis. Praesent semper nisi vel libero pretium tincidunt. Donec sit amet ligula enim. Etiam fringilla pellentesque orci vitae lacinia.
+            </p>
+          </div>
+        </li>
+      </ul>
     </div>
-    <div class="item">
-      <%= image_tag "volcano.jpg" %>
+  </article>
+  <article id="refocusing_section">
+    <div class="row">
+      <div class="media span6">
+        <a href="#">
+          <%= image_tag "media_object_1.png", class: "media-object media-small" %>
+        </a>
+        <div class="media-body">
+          <h4 class="media-heading">Media heading</h4>
+          <div class="media">
+            <p>
+              Nulla facilisi. Aliquam tristique a nulla vel sodales. Maecenas ac suscipit massa, vitae convallis nisl. Nulla placerat risus facilisis, volutpat neque eu, dignissim orci. Praesent sagittis nec nibh quis adipiscing.
+            </p>
+          </div>
+        </div>
+        <a href="#">
+          <%= image_tag "media_object_1.png", class: "media-object media-small" %>
+        </a>
+        <div class="media-body">
+          <h4 class="media-heading">Media heading</h4>
+          <div class="media">
+            <p>
+              Nulla facilisi. Aliquam tristique a nulla vel sodales. Maecenas ac suscipit massa, vitae convallis nisl. Nulla placerat risus facilisis, volutpat neque eu, dignissim orci. Praesent sagittis nec nibh quis adipiscing.
+            </p>
+          </div>
+        </div>
+        <a href="#">
+          <%= image_tag "media_object_1.png", class: "media-object media-small" %>
+        </a>
+        <div class="media-body">
+          <h4 class="media-heading">Media heading</h4>
+          <div class="media">
+            <p>
+              Nulla facilisi. Aliquam tristique a nulla vel sodales. Maecenas ac suscipit massa, vitae convallis nisl. Nulla placerat risus facilisis, volutpat neque eu, dignissim orci. Praesent sagittis nec nibh quis adipiscing.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="span6">
+        <div id ="refocusing_before_after">
+          <div class="container">
+            <div><%= image_tag "refocusing_before.png", alt: "before", width: "600", height: "366" %></div>
+            <div><%= image_tag "refocusing_after.png", alt: "after", width: "600", height: "366" %></div>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-  <!-- Carousel nav -->
-  <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-  <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
-</div>
+  </article>
+  <article id="gesture_control_section" class="well">
+    <div class="row-fluid">
+      <div class="span4 offset2">
+        <%= image_tag "gesture_1a.png" %>
+      </div>
+      <div class="span4">
+        <%= image_tag "gesture_2a.png" %>
+      </div>
+    </div>
+    <div class="row-fluid">
+      <div class="span4 offset2">
+        <%= image_tag "gesture_1b.png" %>
+      </div>
+      <div class="span4">
+        <%= image_tag "gesture_2b.png" %>
+      </div>
+    </div>
+    <hr align="center">
+    <div class="row-fluid">
+      <div class="span6">
+        <h2 class="text-center">Lorem Ipsum dolor sit</h2>
+        <p>
+          Vivamus varius ultrices lacus a laoreet. Nulla egestas sollicitudin faucibus. In consectetur tincidunt elit, id accumsan odio fringilla in. Sed condimentum lectus nec leo ornare vehicula. Aenean sollicitudin libero justo, vitae molestie mi sagittis eget. 
+        </p>
+      </div>
+      <div class="span6">
+        <h2 class="text-center">Lorem Ipsum dolor sit</h2>
+        <p>
+          Vestibulum dictum feugiat placerat. Nam elit neque, sollicitudin blandit scelerisque bibendum, mollis at turpis. Praesent semper nisi vel libero pretium tincidunt. Donec sit amet ligula enim. Etiam fringilla pellentesque orci vitae lacinia.
+        </p>
+      </div>
+    </div>
+  </article>
+  <article id="stereoscopes_tracking_section">
+    <div class="row-fluid">
+      <div class="span6">
+        <h2>Vivamus varius ultrices lacus a laoreet. Nulla egestas sollicitudin faucibus.</h2>
+        <h3>In consectetur tincidunt elit, id accumsan odio fringilla in.</h3>
+        <div id="stereoscopes_before_after">
+          <div class="container">
+            <div><%= image_tag "3d_before.png", alt: "before", width: "500", height: "305" %></div>
+            <div><%= image_tag "3d_after.png", alt: "after", width: "500", height: "305" %></div>
+          </div>
+        </div>
+      </div>
+      <div class="infobox span6">
+        <div class="infobox-body">
+          <h4>Infobox heading</h4>
+          <p>
+            Nulla facilisi. Aliquam tristique a nulla vel sodales. Maecenas ac suscipit massa, vitae convallis nisl. Nulla placerat risus facilisis, volutpat neque eu, dignissim orci. Praesent sagittis nec nibh quis adipiscing.
+          </p>
+        </div>
+        <div class="infobox-body">
+          <h4>Infobox heading</h4>
+          <p>
+            Nulla facilisi. Aliquam tristique a nulla vel sodales. Maecenas ac suscipit massa, vitae convallis nisl. Nulla placerat risus facilisis, volutpat neque eu, dignissim orci. Praesent sagittis nec nibh quis adipiscing.
+          </p>
+        </div>
+        <div class="infobox-body">
+          <h4>Infobox heading</h4>
+          <p>
+            Nulla facilisi. Aliquam tristique a nulla vel sodales. Maecenas ac suscipit massa, vitae convallis nisl. Nulla placerat risus facilisis, volutpat neque eu, dignissim orci. Praesent sagittis nec nibh quis adipiscing.
+          </p>
+        </div>
+        <div class="infobox-body">
+          <h4>Infobox heading</h4>
+          <p>
+            Nulla facilisi. Aliquam tristique a nulla vel sodales. Maecenas ac suscipit massa, vitae convallis nisl. Nulla placerat risus facilisis, volutpat neque eu, dignissim orci. Praesent sagittis nec nibh quis adipiscing.
+          </p>
+        </div>
+      </div>
+    </div>
+  </article>
+</section>
