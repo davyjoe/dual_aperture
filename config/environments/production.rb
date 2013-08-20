@@ -73,6 +73,7 @@ SampleApp::Application.configure do
   config.active_support.deprecation = :notify
   config.serve_static_assets = true
   config.assets.precompile += %w[*.png *.jpg *.jpeg *.gif] 
+  config.assets.precompile += %w( public/static_pages.css )
 
   # Disable automatic flushing of the log to improve performance.
   # config.autoflush_log = false

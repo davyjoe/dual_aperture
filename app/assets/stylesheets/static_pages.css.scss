@@ -6,7 +6,7 @@
 #home_main {
   #home_carousel {
     #banner {
-      background-image: url('DA_background_v2.png');
+      background-image: asset-url('DA_background_v2.png');
       background-repeat: no-repeat;
       background-color: transparent;
       background-size: 100%;
@@ -14,7 +14,7 @@
     }
 
     #stereograms {
-      background-image: url('3D_large.jpg');
+      background-image: asset-url('3D_large.jpg');
       background-repeat: no-repeat;
       background-color: transparent;
       background-size: 100%;
@@ -22,7 +22,7 @@
     }
 
     #gesture_tracking {
-      background-image: url('hands_gesturing_large.jpg');
+      background-image: asset-url('hands_gesturing_large.jpg');
       background-repeat: no-repeat;
       background-color: transparent;
       background-size: 100%;
@@ -30,7 +30,7 @@
     }
 
     #refocus_tulips {
-      background-image: url('refocus_tulips.jpg');
+      background-image: asset-url('refocus_tulips.jpg');
       background-repeat: no-repeat;
       background-color: transparent;
       background-size: 100%;
