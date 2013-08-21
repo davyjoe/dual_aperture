@@ -32,15 +32,14 @@ gem 'font-awesome-rails'
 gem 'sprockets-rails', require: 'sprockets/railtie'
 gem 'will_paginate'
 gem 'skrollr-rails'
+gem 'pg'
 
 group :production do
-  gem 'pg'
   gem 'rails_12factor'
 end
 
 group :development do
   gem 'quiet_assets'
-  gem 'sqlite3'
 end
 
 group :development, :test do
