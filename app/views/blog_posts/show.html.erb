@@ -1,2 +1,13 @@
-<h1>BlogPosts#show</h1>
-<p>Find me in app/views/blog_posts/show.html.erb</p>
+<section id="blog_posts_show">
+  <header> 
+    <h1><%= @post.title %></h1>
+  </header>
+  <div class="row-fluid">
+    <div class="offset3 span6">
+      <p><%= @post.description %></p>
+      <hr>
+      <h4><%= "#{@post.blog_comments.count} comments" %></h4>
+      <p>implement Disqus API here</p>
+    </div>
+  </div>
+</section>

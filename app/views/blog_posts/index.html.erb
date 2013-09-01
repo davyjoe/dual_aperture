@@ -23,6 +23,7 @@
                 <p>
                   <%= post.description %>
                 </p>
+                <%= link_to "#{post.blog_comments.count} comments", blog_post_path(post) %>
               </article>
             </div>
           </div>
