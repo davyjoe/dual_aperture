@@ -1,3 +1,24 @@
 // Place all the styles related to the BlogPosts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#blog_posts_main {
+  header {
+    padding-top: 60px;
+    padding-left: 75px;
+    padding-right: 75px;
+  }
+
+  article#blog_posts {
+    padding-left: 75px;
+    padding-right: 75px;
+  }
+
+  article.reblog {
+    margin-top: 10px;
+
+    .post_created_at {
+      padding-top: 10px;
+    }
+  }
+}

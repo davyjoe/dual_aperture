@@ -6,7 +6,7 @@
 #home_main {
   #home_carousel {
     #banner {
-      background-image: image-url('DA_background_v2.png');
+      background-image: image-url('DA_background1.jpg');
       background-repeat: no-repeat;
       background-color: transparent;
       background-size: 100%;
@@ -99,6 +99,11 @@
   }
 
   #stereoscopes_tracking_section {
+    padding-left: 75px;
+    padding-right: 75px;
+  }
+
+  #google_maps_section {
     padding-left: 75px;
     padding-right: 75px;
   }
