@@ -23,7 +23,7 @@
                 <p>
                   <%= post.description %>
                 </p>
-                <%= link_to "#{post.blog_comments.count} comments", blog_post_path(post) %>
+                <%= link_to '', "/blog_posts/#{post.id}#disqus_thread" %>
               </article>
             </div>
           </div>

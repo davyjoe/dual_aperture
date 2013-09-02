@@ -8,6 +8,9 @@
     <%= csrf_meta_tags %>
   </head>
   <%= render "layouts/navbar" %>
-  <body><%= yield %></body>
+  <body>
+    <%= yield %>
+    <%= render "shared/disqus_comments" %>
+  </body>
   <%= render "layouts/footer" %>
 </html>

@@ -6,8 +6,7 @@
     <div class="offset3 span6">
       <p><%= @post.description %></p>
       <hr>
-      <h4><%= "#{@post.blog_comments.count} comments" %></h4>
-      <p>implement Disqus API here</p>
+      <%= render 'shared/disqus', locals: { title: @post.title } %>
     </div>
   </div>
 </section>
