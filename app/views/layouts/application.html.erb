@@ -8,6 +8,8 @@
     <%= csrf_meta_tags %>
   </head>
   <%= render "layouts/navbar" %>
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
   <body>
     <%= yield %>
     <%= render "shared/disqus_comments" %>
