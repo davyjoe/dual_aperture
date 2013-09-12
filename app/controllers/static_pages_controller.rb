@@ -1,5 +1,6 @@
 class StaticPagesController < ApplicationController
   def home
+    @reader = EmailDigestReader.new
   end
 
   def about

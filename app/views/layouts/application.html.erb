@@ -8,9 +8,8 @@
     <%= csrf_meta_tags %>
   </head>
   <%= render "layouts/navbar" %>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
   <body>
+    <%= render 'layouts/messages' %>
     <%= yield %>
     <%= render "shared/disqus_comments" %>
   </body>

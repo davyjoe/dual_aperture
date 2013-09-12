@@ -50,8 +50,6 @@
   }
 
   #home_thumbnails {
-    padding-right: 75px;
-    padding-left: 75px;  
   }
 
   #refocusing_before_after {
@@ -79,13 +77,6 @@
   }
 
   #gesture_control_section {
-    margin-left: 50px;
-    margin-right: 50px;
-    padding-right: 75px;
-    padding-left: 75px;
-    padding-top: 50px;
-    padding-bottom: 50px;  
-
     .row-fluid {
       padding-bottom: 20px;
     }
@@ -103,9 +94,10 @@
     padding-right: 75px;
   }
 
-  #google_maps_section {
-    padding-left: 75px;
-    padding-right: 75px;
+  #email_signup {
+    #email_digest_reader_email {
+      margin-bottom: 0px;
+    }
   }
 }
 
@@ -117,6 +109,11 @@
   background-color: transparent;
   background-size: 100%;
   color: white;
+
+  #google_maps_section {
+    padding-left: 75px;
+    padding-right: 75px;
+  }
 }
 
 /* Features */

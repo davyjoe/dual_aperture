@@ -1,0 +1,12 @@
+<% if entity && entity.errors.any? %>
+  <div id="error_explanation">
+    <div class="alert alert-error">
+      The form contains <%= pluralize(entity.errors.count, "error") %>.
+    </div>
+    <ul>
+    <% entity.errors.full_messages.each do |msg| %>
+      <li>* <%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>

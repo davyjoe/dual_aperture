@@ -1,4 +1,9 @@
 SampleApp::Application.routes.draw do
+  root 'static_pages#home'
+
+  get "static_pages/home", as: :home
+  get "static_pages/about", as: :about
+  get "static_pages/features", as: :features
 
   # This line mounts Forem's routes at /forums by default.
   # This means, any requests to the /forums URL of your application will go to Forem::ForumsController#index.
@@ -8,13 +13,9 @@ SampleApp::Application.routes.draw do
   mount Forem::Engine, :at => '/forums'
 
   devise_for :users
-  root 'static_pages#home'
-
-  get "static_pages/home", as: :home
-  get "static_pages/about", as: :about
-  get "static_pages/features", as: :features
-  
+  resources :users
   resources :blog_posts
+  resources :email_digest_readers, only: :create
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

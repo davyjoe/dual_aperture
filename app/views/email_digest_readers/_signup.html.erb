@@ -1,0 +1,8 @@
+<h2 class="text-center">Sign up to receive emails</h2>
+<div class="text-center">
+  <%= form_for @reader do |f| %>
+    <%= render 'shared/error_messages', entity: f.object %>
+    <%= f.text_field :email, placeholder: "Email Address" %>
+    <%= f.submit "Submit", class: 'btn btn-primary' %>
+  <% end %>
+</div>

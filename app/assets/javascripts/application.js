@@ -16,6 +16,4 @@
 //= require jquery.ui.draggable
 //= require turbolinks
 //= require bootstrap
-//= require skrollr
-//= require skrollr.ie
 //= require_tree .
