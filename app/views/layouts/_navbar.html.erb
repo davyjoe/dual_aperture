@@ -1,23 +1,30 @@
-<div class="navbar navbar-fixed-top">
+<div class="navbar navbar-fixed-top navbar-inverse">
   <div class="navbar-inner">
     <div class="container">
-      <ul class="nav">
-        <li class="active divider-vertical"><%= link_to(image_tag("dualApertureLogo.png", class: 'media-small'), main_app.home_path) %></li>
-        <li class="divider-vertical"><%= link_to "About", main_app.about_path %></li>
-        <li class="divider-vertical"><%= link_to "Features", '#' %></li>
-        <li class="divider-vertical"><%= link_to "Blog", main_app.blog_posts_path %></li>
-        <li class="divider-vertical"><%= link_to "Forum", forem.root_path %></li>
-      <% if user_signed_in? %>
-        <li><%= link_to 'Logout', main_app.destroy_user_session_path, method: 'delete' %></li>
-      <% else %>
-        <li><%= link_to 'Login', main_app.new_user_session_path %></li>
-      <% end %>
-      <% if user_signed_in? %>
-        <li><%= link_to 'Edit account', main_app.edit_user_registration_path %></li>
-      <% else %>
-        <li><%= link_to 'Sign up', main_app.new_user_registration_path %></li>
-      <% end %>
-      </ul>
+      <div class="row-fluid">
+        <div class="span6">
+          <%= link_to(image_tag("dualApertureLogo.png", class: 'logo media-small'), main_app.home_path) %>
+          <div class="logo_text">
+            DUAL APERTURE
+          </div>
+        </div>
+        <div class="span6">
+          <ul class="nav pull-right">
+            <li><%= link_to "About", main_app.about_path %></li>
+            <li><%= link_to "Press", main_app.press_path %></li>
+          <% if user_signed_in? %>
+            <li><%= link_to 'Logout', main_app.destroy_user_session_path, method: 'delete' %></li>
+          <% else %>
+            <li><%= link_to 'Login', main_app.new_user_session_path %></li>
+          <% end %>
+          <% if user_signed_in? %>
+            <li><%= link_to 'Edit account', main_app.edit_user_registration_path %></li>
+          <% else %>
+            <li><%= link_to 'Sign up', main_app.new_user_registration_path %></li>
+          <% end %>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
 </div>

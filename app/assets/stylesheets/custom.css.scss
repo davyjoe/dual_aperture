@@ -2,8 +2,8 @@
 
 /* icons */
 .media-small {
-  width: 50px;
-  height: 20px;
+  width: auto;
+  height: 50px;
 }
 
 .media-large {
@@ -14,14 +14,24 @@
 /* header */
 
 /* navbar */
+  .logo {
+    float: left;
+  }
+
+  .logo_text {
+    color: white;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    padding-left: 100px;
+  }
 
 /* body */
 body {
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
   font-weight: 300;
 
-  article {
-    padding-bottom: 40px;
+  section {
+    padding-top: 50px;
   }
 
   .container-fluid {
@@ -47,5 +57,7 @@ body {
 }
 
 footer {
-  padding-top: 20px;  
+  padding-top: 20px;
+  background-color: black;
+  color: white;
 }

@@ -4,6 +4,25 @@
 
 /* Home */
 #home_main {
+  margin-bottom: -20px;
+
+  #email_signup {
+    h2 {
+      color: white;
+      left: 50%;
+      margin-left: -190px;
+      bottom: 60%;
+      position: absolute;
+    }
+
+    .signup_form {
+      left: 50%;
+      margin-left: -147px;
+      bottom: 50%;
+      position: absolute;
+    }
+  }
+
   #home_carousel {
     #banner {
       background-image: image-url('DA_background1.jpg');
@@ -48,93 +67,91 @@
       padding-bottom: 475px;
     }  
   }
-
-  #home_thumbnails {
-  }
-
-  #refocusing_before_after {
-    margin-left: auto;
-    margin-right: auto;
-
-    img {
-      max-width: none;
-    }
-  }
-
-  #stereoscopes_before_after {
-    margin-left: auto;
-    margin-right: auto;
-
-    img {
-      max-width: none;
-    }
-  }
-
-  #refocusing_section {
-    padding-left: 75px;
-    padding-right: 75px;
-    margin-left: 70px;
-  }
-
-  #gesture_control_section {
-    .row-fluid {
-      padding-bottom: 20px;
-    }
-
-    hr {
-      margin-left: auto;
-      margin-right: auto;
-      width: 80%;
-      padding-bottom: 20px;
-    }
-  }
-
-  #stereoscopes_tracking_section {
-    padding-left: 75px;
-    padding-right: 75px;
-  }
-
-  #email_signup {
-    #email_digest_reader_email {
-      margin-bottom: 0px;
-    }
-  }
 }
 
 /* About */
 
 #about_main {
-  background-image: url('japan.jpg');
-  background-repeat: no-repeat;
-  background-color: transparent;
-  background-size: 100%;
-  color: white;
+  background-color: darkGray;
+  margin-bottom: -10px;
 
-  #google_maps_section {
+  .container {
+    background-color: lightGray;
+  }
+
+  header {
     padding-left: 75px;
     padding-right: 75px;
+    padding-top: 75px;
+
+    h3 {
+      text-align: right;
+    }
+  }
+
+  #biographies {
+    padding-left: 50px;
+    padding-right: 75px;
+    padding-bottom: 50px;
+
+    h4 {
+      text-align: center;
+    }
+
+    .portrait {
+      padding-left: 50%;
+      margin-left: -100px;
+    }
+
+    p {
+      padding-left: 25px;
+    }
+  }
+
+  #google_maps_section {
+    margin-bottom: 5px;
   }
 }
 
-/* Features */
+/* Press */
+#press_main {
+  background-color: darkGray;
+  margin-bottom: -10px;
 
-#features_main {
-  background-image: url('japan.jpg');
-  background-repeat: no-repeat;
-  background-color: transparent;
-  color: white;
-  height: 200px;
-}
-
-#section_from_thumbnail_1 header {
-  margin: 40px auto;
-  padding-bottom: 10px;
-
-  h2 {
-    text-align: center;
+  .container {
+    background-color: lightGray;
   }
 
-  p {
-    text-align: center;
+  header {
+    padding-left: 75px;
+    padding-right: 75px;
+    padding-top: 75px;
+
+    h4 {
+      text-align: right;
+    }
+  }
+
+  #press_releases {
+    padding-left: 125px;
+    padding-right: 125px;
+    padding-bottom: 50px;
+
+    h4 {
+      padding-left: 25px;
+    }
+
+    p {
+      padding-left: 25px;
+      padding-right: 25px;
+    }
+
+    .continue {
+      padding-left: 25px;
+    }
+  }
+
+  #google_maps_section {
+    margin-bottom: 5px;
   }
 }

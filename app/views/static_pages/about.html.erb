@@ -1,22 +1,33 @@
 <section id="about_main">
-  <article id="google_maps_section">
-    <div class="row-fluid">
-      <div class="span8">
-          <iframe width="100%" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.co.uk/maps?f=q&source=s_q&hl=en&geocode=&q=15+Springfield+Way,+Hythe,+CT21+5SH&aq=t&sll=52.8382,-2.327815&sspn=8.047465,13.666992&ie=UTF8&hq=&hnear=15+Springfield+Way,+Hythe+CT21+5SH,+United+Kingdom&t=m&z=14&ll=51.077429,1.121722&output=embed"></iframe>
+  <div class="container">
+    <header>
+      <h1>OUR TEAM</h1>
+      <div class="subheader">
+        <h3>
+          We are individuals coming together to bring about a revolution in photography.
+        </h3>
       </div>
-      
-        <div class="span4">
-        <h2>Snail mail</h2>
-        <address>
-          <strong>Dual Aperture</strong><br>
-          15 Springfield Way<br>
-          Hythe<br>
-          Kent<br>
-          United Kingdon<br>
-          CT21 5SH<br>
-          <abbr title="Phone">P:</abbr> 01234 567 890
-        </address>
+    </header>
+    <article id="biographies">
+      <div class="row-fluid">
+        <div class="span6">
+          <%= image_tag "CEO_portrait.png", class: "portrait" %>
+          <h4>David D. Lee, Chief Executive Officer.</h4>
+          <p>
+            Chairman and CEO of Multimedia Crossings, Inc., a startup company focusing on a new worldwide standard for digital living room networking technology (www.DiiVA.org). David founded Silicon Image in 1995 and served as the company's Chairman and CEO until November 2004 after taking the company public (NASDAQ:SIMG) in 1999. David received his BS'83 (with honors), MS'85 and Ph.D'89 degrees in Electric Engineering and Computer Sciences from U.C. Berkeley.
+          </p>
+        </div>
+        <div class="span6">
+          <%= image_tag "CTO_portrait.png", class: "portrait" %>
+          <h4>Andrew Wajs, Chief Technology Officer.</h4>
+          <p>
+            CTO of Irdeto. He joined Irdeto in 1992 as a development engineer. Since joining he has been the senior systems architect, a key innovator and a patent author. Andrew managed the Advanced Products Group in Mindport from 1998-99. Prior to that, he held a similar position at Altech Public Networks. Andrew has a Master's degree in electrical engineering from the University of the Witwatersand in South Africa.
+          </p>
+        </div>
       </div>
-    </div>
-  </article>
+    </article>
+    <article id="google_maps_section">
+      <iframe width="100%" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.co.uk/maps?f=q&source=s_q&hl=en&geocode=&q=15+Springfield+Way,+Hythe,+CT21+5SH&aq=t&sll=52.8382,-2.327815&sspn=8.047465,13.666992&ie=UTF8&hq=&hnear=15+Springfield+Way,+Hythe+CT21+5SH,+United+Kingdom&t=m&z=14&ll=51.077429,1.121722&output=embed"></iframe>
+    </article>
+  </div>
 </section>
