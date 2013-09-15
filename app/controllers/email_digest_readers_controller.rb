@@ -5,7 +5,7 @@ class EmailDigestReadersController < ApplicationController
     if reader.save
       redirect_to main_app.root_path
     else
-      render 'shared/errors.js.coffee'
+      render :js => "alert(\"#{reader.errors.full_messages.join('. ')}\")"
     end
   end
 

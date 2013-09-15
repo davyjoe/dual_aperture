@@ -1,7 +1,6 @@
 <h2>Sign up to receive emails</h2>
 <div class="signup_form">
-  <%= form_for @reader do |f| %>
-    <%= render 'shared/error_messages', entity: f.object %>
+  <%= form_for @reader, remote: true do |f| %>
     <%= f.text_field :email, placeholder: "Email Address" %>
     <%= f.submit "Submit", class: 'btn btn-primary' %>
   <% end %>
