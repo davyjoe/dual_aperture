@@ -11,6 +11,20 @@
   height: 150px;
 }
 
+/* typography */
+
+
+a {
+  color: #999999;
+
+  &:hover {
+    color: #aac752;
+    text-decoration: none;  
+  }
+}
+
+/* clear */
+
 .clear {
   clear: both;
 }
@@ -61,11 +75,19 @@ body {
 }
 
 footer {
-  padding-top: 20px;
+  font-size: 11px;
+  padding-top: 50px;
+  padding-bottom: 100px;
   background-color: black;
-  color: white;
+  color: #999999;
 
   h5 {
+    color: white;
+    font-weight: normal;
     margin-top: 0px;
+  }
+
+  address {
+    padding-left: 27px;
   }
 }

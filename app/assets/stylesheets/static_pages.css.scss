@@ -105,13 +105,20 @@
       text-align: center;
     }
 
+    .company_title {
+      color: #999999;
+    }
+
     .portrait {
       padding-left: 50%;
-      margin-left: -100px;
+      margin-left: -75px;
+      width: auto;
+      height: 175px;
     }
 
     p {
-      padding-left: 25px;
+      padding-left: 100px;
+      padding-right: 75px;
     }
   }
 
