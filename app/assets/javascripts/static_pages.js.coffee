@@ -7,3 +7,4 @@
 window.onload = ->
   $('#refocusing_before_after .container').beforeAfter()
   $('#stereoscopes_before_after .container').beforeAfter()
+  
