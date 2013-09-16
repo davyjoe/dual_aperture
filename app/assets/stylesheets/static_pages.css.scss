@@ -4,27 +4,30 @@
 
 /* Home */
 #home_main {
-  margin-bottom: -20px;
+  margin-bottom: -30px;
+  #home_hero_unit {
+    background-image: image-url('DA_background1.jpg');
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-size: 100%;
+    padding-top: 200px;
+    padding-bottom: 200px;
+      
+      #email_signup {
+        h2 {
+          color: white;
+          text-align: center;
+        }
 
-  #email_signup {
-    h2 {
-      color: white;
-      left: 50%;
-      margin-left: -190px;
-      bottom: 60%;
-      position: absolute;
-    }
+        .signup_form {
+          text-align: center;
 
-    .signup_form {
-      left: 50%;
-      margin-left: -147px;
-      bottom: 50%;
-      position: absolute;
-
-      input {
-        margin-bottom: 0px;
+          input {
+            margin-bottom: 0px;
+          }
+        }
       }
-    }
+
   }
 
   #home_carousel {
@@ -113,7 +116,17 @@
   }
 
   #google_maps_section {
-    margin-bottom: 5px;
+    margin-bottom: 320px;
+    padding-left: 75px;
+    padding-right: 75px;
+
+    img {
+      float: left;
+    }
+
+    #address {
+      padding-left: 615px;
+    }
   }
 }
 
@@ -140,9 +153,5 @@
     padding-left: 125px;
     padding-right: 125px;
     padding-bottom: 50px;
-  }
-
-  #google_maps_section {
-    margin-bottom: 5px;
   }
 }

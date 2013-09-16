@@ -1,33 +1,7 @@
-<section id="home_main" class="container-fluid">
-  <article id="home_carousel">
-    <div id="myCarousel" class="carousel slide">
-      <ol class="carousel-indicators">
-        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-        <li data-target="#myCarousel" data-slide-to="1"></li>
-        <li data-target="#myCarousel" data-slide-to="2"></li>
-        <li data-target="#myCarousel" data-slide-to="3"></li>
-      </ol>
-      <!-- Carousel items -->
-      <div class="carousel-inner">
-        <div id="banner" class="active item">
-          <h2></h2>
-        </div>
-        <div id="stereograms" class="item">
-          <h2></h2>
-        </div>
-        <div id="gesture_tracking" class="item">
-          <h2></h2>
-        </div>
-        <div id="refocus_tulips" class="item">
-          <h2></h2>
-        </div>
-      </div>
-      <!-- Carousel nav -->
-      <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-      <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
-    </div>
-  </article>
-  <article id="email_signup">
-    <%= render 'email_digest_readers/signup' %>
+<section id="home_main">
+  <article id="home_hero_unit" class="hero-unit">
+    <article id="email_signup">
+      <%= render 'email_digest_readers/signup' %>
+    </article>
   </article>
 </section>

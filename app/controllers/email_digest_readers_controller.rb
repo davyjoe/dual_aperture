@@ -3,7 +3,7 @@ class EmailDigestReadersController < ApplicationController
     reader = EmailDigestReader.new(email: params[:email_digest_reader][:email])
 
     if reader.save
-      redirect_to main_app.root_path
+      render :js => "alert('Signup successful!')"
     else
       render :js => "alert(\"#{reader.errors.full_messages.join('. ')}\")"
     end
