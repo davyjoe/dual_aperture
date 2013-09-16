@@ -13,7 +13,6 @@
 
 /* typography */
 
-
 a {
   color: #999999;
 
@@ -34,18 +33,16 @@ a {
 /* navbar */
   .logo {
     float: left;
+    padding-top: 5px;
   }
 
-  .logo_text {
-    color: white;
-    padding-bottom: 10px;
-    padding-top: 10px;
-    padding-left: 100px;
+  li {
+    padding-top: 5px;
   }
 
 /* body */
 body {
-  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+  font-family: "Futura", sans-serif; 
   font-weight: 300;
 
   section {

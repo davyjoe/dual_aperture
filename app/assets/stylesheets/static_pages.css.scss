@@ -13,6 +13,12 @@
     padding-top: 300px;
     padding-bottom: 300px;
       
+      h1 {
+
+        text-align: center;
+        color: white;
+      }
+
       #email_signup {
         h2 {
           color: white;
@@ -97,8 +103,9 @@
   }
 
   #biographies {
+    font-family: "Helvetica Neue";
     padding-left: 50px;
-    padding-right: 75px;
+    padding-right: 50px;
     padding-bottom: 50px;
 
     h4 {
@@ -147,6 +154,7 @@
   }
 
   #press_releases {
+    font-family: "Helvetica Neue";
     padding-left: 125px;
     padding-right: 125px;
     padding-bottom: 50px;
