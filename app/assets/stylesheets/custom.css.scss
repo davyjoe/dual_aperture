@@ -22,14 +22,6 @@ a {
   }
 }
 
-/* clear */
-
-.clear {
-  clear: both;
-}
-
-/* header */
-
 /* navbar */
   .logo {
     float: left;
@@ -38,6 +30,11 @@ a {
 
   li {
     padding-top: 5px;
+  }
+
+  #login_modal {
+    width: 250px;
+    margin-left: -120px;    
   }
 
 /* body */
