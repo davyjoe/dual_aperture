@@ -4,5 +4,17 @@
 
 # shim layer with setTimeout fallback
 
-window.onload = ->
-  
+showInvisibleContent = (e) ->
+  $('.invisible_content').show()
+  $('.continue').hide()
+  e.preventDefault()
+
+hideInvisibleContent = (e) ->
+  $('.invisible_content').hide()
+  $('.continue').show()
+  e.preventDefault()
+
+$ ->
+  $('.invisible_content').hide()
+  $(document).on 'click', '.continue', showInvisibleContent
+  $(document).on 'click', '.collapse', hideInvisibleContent
