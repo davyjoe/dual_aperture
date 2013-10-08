@@ -6,15 +6,14 @@
 
 showInvisibleContent = (e) ->
   $('.invisible_content').show()
-  $('.continue').hide()
+  $('.continue_reading').hide()
   e.preventDefault()
 
 hideInvisibleContent = (e) ->
   $('.invisible_content').hide()
-  $('.continue').show()
+  $('.continue_reading').show()
   e.preventDefault()
 
 $ ->
-  $('.invisible_content').hide()
-  $(document).on 'click', '.continue', showInvisibleContent
+  $(document).on 'click', '.continue_reading', showInvisibleContent
   $(document).on 'click', '.collapse', hideInvisibleContent
