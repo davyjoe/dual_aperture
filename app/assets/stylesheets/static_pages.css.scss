@@ -109,28 +109,37 @@
     padding-bottom: 50px;
 
     h4 {
-      text-align: center;
+      text-align: left;
+      margin-top: 20px;
+      margin-left: 30px;
+      margin-bottom: 0px;
     }
 
     .company_title {
+      margin-top: 0px;
       color: #999999;
     }
 
     .portrait {
       padding-left: 50%;
-      margin-left: -75px;
+      margin-left: -65px;
       width: auto;
-      height: 175px;
-    }
-
-    p {
-      padding-left: 100px;
-      padding-right: 75px;
+      height: 130px;
     }
   }
 
   #google_maps_section {
     margin-bottom: 11px;
+  }
+
+  p {
+    font-size: small;
+    margin-left: 30px;
+    margin-right: 30px;
+  }
+
+  .row-fluid {
+    margin-bottom: 50px;
   }
 }
 
@@ -158,6 +167,39 @@
     padding-left: 125px;
     padding-right: 125px;
     padding-bottom: 50px;
+  }
+}
+
+/* FAQ */
+#faq_main {
+  background-color: darkGray;
+  padding-bottom: 30px;
+
+  .container {
+    width: 600px;
+  }
+
+  h1 {
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+
+  .question {
+    background-color: Gray;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: white;
+  }
+
+  .answer {
+    margin-bottom: 20px;
+  }
+
+  ol {
+    margin-bottom: 20px;
   }
 }
 
