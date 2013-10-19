@@ -106,7 +106,7 @@
     font-family: "Helvetica Neue";
     padding-left: 50px;
     padding-right: 50px;
-    padding-bottom: 50px;
+    padding-bottom: 30px;
 
     h4 {
       text-align: left;
@@ -125,6 +125,17 @@
       margin-left: -65px;
       width: auto;
       height: 130px;
+    }
+  }
+
+  #advisory_board {
+    font-family: "Helvetica Neue";
+    padding-left: 50px;
+    margin-left: 30px;
+    margin-bottom: 50px;
+
+    h1 {
+      margin-bottom: 30px;
     }
   }
 
