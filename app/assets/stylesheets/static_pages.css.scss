@@ -137,6 +137,15 @@
     h1 {
       margin-bottom: 30px;
     }
+
+    a {
+      color: black;
+      font-weight: bold;
+      &:hover {
+        color: #aac752;
+        text-decoration: none;  
+      }
+    }
   }
 
   #google_maps_section {
