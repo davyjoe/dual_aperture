@@ -2,6 +2,41 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+/* Test Main */
+#test_main {
+  margin-bottom: -30px;
+  #home_hero_unit {
+    background-image: image-url('golden_gate_1.jpg');
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-size: 100%;
+    padding-top: 300px;
+    padding-bottom: 300px;
+      
+      h1 {
+
+        text-align: center;
+        color: white;
+      }
+
+      #email_signup {
+        h2 {
+          color: white;
+          text-align: center;
+        }
+
+        .signup_form {
+          text-align: center;
+
+          input {
+            margin-bottom: 0px;
+          }
+        }
+      }
+
+  }
+}
+
 /* Home */
 #home_main {
   margin-bottom: -30px;

@@ -8,4 +8,8 @@ class StaticPagesController < ApplicationController
 
   def features
   end
+
+  def dup_home
+    @reader = EmailDigestReader.new
+  end
 end
