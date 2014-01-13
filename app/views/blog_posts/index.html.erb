@@ -8,7 +8,7 @@
         <% @posts.each do |post| %>
           <div class="row-fluid">        
             <div class="span4">
-              <article id=<%= "reblog_#{post.id}"%> class="reblog">
+<!--               <article id=<%= "reblog_#{post.id}"%> class="reblog">
                 <button type="button" class="btn btn-default">
                   <i class="icon-reply"></i>
                 </button><br>
@@ -16,12 +16,12 @@
                   <%= "#{post.created_at}" %>
                 </div>
               </article>
-            </div>
+ -->            </div>
             <div class="span8">
               <article id=<%= "post_#{post.id}"%> class="posts">
                 <h3><%= post.title %></h3>
                 <p>
-                  <span class="description"><%= post.description %></span><br><br>
+                  <span class="description"><%= simple_format(post.description) %></span><br>
                   <span class="embedded_link"><%= post.link.html_safe if post.link %></span>
                 </p>
                 <%= link_to '', "/blog_posts/#{post.id}#disqus_thread" %>
