@@ -11,7 +11,7 @@
             <li><%= link_to "PRESS", main_app.press_path %></li>
             <li><%= link_to "FAQ", main_app.faq_path %></li>
             <li><%= link_to "BLOG", main_app.blog_posts_path %></li>
-<!--             <% if user_signed_in? %>
+<!--              <% if user_signed_in? %>
               <li><%= link_to 'LOGOUT', main_app.destroy_user_session_path, method: 'delete' %></li>
             <% else %>
               <li><%= link_to 'LOGIN', main_app.new_user_session_path, id: "login", remote: true %></li>
@@ -19,7 +19,7 @@
             <% if user_signed_in? %>
               <li><%= link_to 'EDIT ACCOUNT', main_app.edit_user_registration_path %></li>
             <% end %>
- -->      </ul>
+ -->          </ul>
         </div>
       </div>
     </div>
@@ -43,7 +43,6 @@
       <% if devise_mapping.rememberable? -%>
         <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
       <% end -%>
-    <%= render "devise/shared/links" %>
   </div>
   <div class="modal-footer">
     <button class="btn btn-primary close_modal" aria-hidden="true">Close</button>
