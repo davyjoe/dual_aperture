@@ -5,8 +5,9 @@
 showNewBlogModal = ->
   $('#new_blog_modal').modal('show')
 
-hideNewBlogModal = ->
+hideNewBlogModal = (e) ->
   $('#new_blog_modal').modal('hide')
+  e.preventDefault()
 
 $ ->
   $(document).on 'click', '#new_post', showNewBlogModal
