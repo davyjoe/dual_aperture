@@ -3,12 +3,20 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 #blog_posts_main {
+  background-color: darkGray;
+
   header {
     padding-top: 60px;
     padding-left: 75px;
     padding-right: 75px;
   }
 
+  hr {
+    height: 1px;
+    background-color: black;
+    border: 0px;
+  }
+  
   article#blog_posts {
     padding-left: 75px;
     padding-right: 75px;
@@ -31,4 +39,8 @@
     padding-top: 60px;  
     text-align: center;
   }
+}
+
+#sidebar {
+  padding-bottom: 50px;
 }
