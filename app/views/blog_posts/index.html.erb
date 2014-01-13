@@ -21,7 +21,8 @@
               <article id=<%= "post_#{post.id}"%> class="posts">
                 <h3><%= post.title %></h3>
                 <p>
-                  <%= post.description %>
+                  <span class="description"><%= post.description %></span><br>
+                  <span class="embedded_link"><%= post.link.html_safe if post.link %></span>
                 </p>
                 <%= link_to '', "/blog_posts/#{post.id}#disqus_thread" %>
               </article>
@@ -59,9 +60,11 @@
       <div class="modal-body">
         <h4 id="description_input">Description</h4>
         <%= f.text_area :description %>
+        <h4 id="embedded_link_input">Embed link:</h4>
+        <%= f.text_field :link %>
       </div>
       <div class="modal-footer">
-        <button class="btn close_modal" aria-hidden="true">Close</button>
+        <button class="btn cancel" aria-hidden="true">Close</button>
         <%= f.submit class: "btn btn-primary close_modal" %>
       </div>
     <% end %>
