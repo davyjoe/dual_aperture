@@ -21,8 +21,8 @@
                   <span class="description"><%= simple_format(post.description) %></span><br>
                   <span class="embedded_link"><%= post.link.html_safe if post.link %></span>
                 </p>
-                <%= link_to '', "/blog_posts/#{post.id}#disqus_thread" %>
                 <iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fsignup.dual-aperture.com%2Fblog_posts&amp;width=100px&amp;layout=standard&amp;action=like&amp;show_faces=true&amp;share=true&amp;height=80" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100pxpx; height:80px;" allowTransparency="true"></iframe>
+                <%= link_to '', "/blog_posts/#{post.id}#disqus_thread" %>
               </article>
             </div>
           </div>
