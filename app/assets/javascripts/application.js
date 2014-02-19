@@ -16,4 +16,5 @@
 //= require jquery.ui.draggable
 //= require turbolinks
 //= require bootstrap
+//= require fancybox
 //= require_tree .

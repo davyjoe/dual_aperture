@@ -38,6 +38,7 @@ gem 'forem', :github => "radar/forem", :branch => "rails4"
 gem 'forem-theme-base', :github => 'radar/forem-theme-base'
 gem 'friendly_id', github: "FriendlyId/friendly_id"
 gem 'cancan', git: "https://github.com/nukturnal/cancan.git"
+gem 'fancybox-rails'
 
 group :production do
   gem 'rails_12factor'

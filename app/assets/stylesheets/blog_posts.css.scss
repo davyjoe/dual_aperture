@@ -13,7 +13,6 @@
   }
 
   article#blog_posts {
-    padding-left: 75px;
     padding-right: 75px;
 
     .description {
@@ -28,15 +27,22 @@
       padding-top: 10px;
     }
   }
-}
 
-#blog_posts_show {
-  padding-left: 75px;
-  padding-right: 75px;
+  .image-row {
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 20px;
+    padding-bottom: 20px;
 
-  header {
-    padding-top: 60px;  
-    text-align: center;
+    .large_comparison_image {
+      width: 600px;
+      height: 366px;
+    }
+
+    .small_comparison_image {
+      width: 150px;
+      height: 100px;
+    }
   }
 }
 

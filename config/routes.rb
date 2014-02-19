@@ -7,6 +7,8 @@ SampleApp::Application.routes.draw do
   get "static_pages/faq", as: :faq
   get "static_pages/dup_home", as: :dup_home
 
+  get "static_pages/test_page"
+
   # This line mounts Forem's routes at /forums by default.
   # This means, any requests to the /forums URL of your application will go to Forem::ForumsController#index.
   # If you would like to change where this extension is mounted, simply change the :at option to something different.

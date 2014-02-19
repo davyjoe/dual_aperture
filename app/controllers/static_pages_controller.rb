@@ -12,4 +12,8 @@ class StaticPagesController < ApplicationController
   def dup_home
     @reader = EmailDigestReader.new
   end
+
+  def test_page
+    @posts = BlogPost.all
+  end
 end
