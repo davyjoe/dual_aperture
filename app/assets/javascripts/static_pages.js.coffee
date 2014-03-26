@@ -5,13 +5,15 @@
 # shim layer with setTimeout fallback
 
 showInvisibleContent = (e) ->
-  $('.invisible_content').show()
-  $('.continue_reading').hide()
+  id = this.id
+  $("##{id}.invisible_content").show()
+  $("##{id}.continue_reading").hide()
   e.preventDefault()
 
 hideInvisibleContent = (e) ->
-  $('.invisible_content').hide()
-  $('.continue_reading').show()
+  id = this.id
+  $("##{id}.invisible_content").hide()
+  $("##{id}.continue_reading").show()
   e.preventDefault()
 
 $ ->
