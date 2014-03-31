@@ -2,96 +2,98 @@
   <article id="blog_posts">
     <div class="row-fluid">
       <div class="span9">
-        <% @posts.each do |post| %>
-          <div class="row-fluid">
-            <div class="span4"></div>
-            <div class="span8">
-              <article id="second_post">
-                <h3>Comparison with other cameras</h3>
-                <p>
-                  <div class="linkless_description">
-                    A quick comparison of different camera types:<br>
-                    <div class="image-row">
-                      <div class="row-fluid">
-                        <div class="span4">
-                          <a href="/assets/cigar_DA.jpg" class="fancybox large_comparison_image" title="Dual Aperture"><%= image_tag("cigar_DA.jpg", class: 'small_comparison_image') %></a>
-                        </div>
-                        <div class="span4">
-                          <a href="/assets/cigar_point_n_shoot.jpg" class="fancybox large_comparison_image" title="Point and Shoot"><div><%= image_tag("cigar_point_n_shoot.jpg", class: 'small_comparison_image') %></div></a>
-                        </div>
-                        <div class="span4">
-                          <a href="/assets/cigar_samsung.jpg" class="fancybox large_comparison_image" title="Samsung"><div><%= image_tag("cigar_samsung.jpg", class: 'small_comparison_image') %></div></a>
-                        </div>
+        <div class="row-fluid">
+          <div class="span4"></div>
+          <div class="span8">
+            <article id="post_2">
+              <h3>What about Image Quality?</h3>
+              <p>
+                <div class="description">
+                  <p>We will be diving deeper on each of the Dual Aperture camera's unique features, but first, let's take a look at picture quality.</p>
+                  <p>The Dual Aperture camera's unique features are made possible because its sensor doesn't use the traditional Bayer sensor model. Instead of a RGBG filter, the Dual Aperture sensor uses a modified filter that replaces the second green sub-pixel with an infra-red sub-pixel.</p>
+                  <p>So what does this mean for picture quality? The absence of a second green sub-pixel and the possibility of infrared leakage onto the other sub-pixels creates the potential for serious image quality problems; However, our engineers at Dual Aperture have successfully designed a solution that enables image quality on-par with most modern cameras AND allows for all the unique features that make Dual Aperture cameras so special.</p>
+                  <p>Take a look!</p>
+                  <div class="image-row">
+                    <div class="row-fluid">
+                      <div class="span4">
+                        <a href="/assets/cigar_DA.jpg" class="fancybox large_comparison_image" title="Dual Aperture"><%= image_tag("cigar_DA.jpg", class: 'small_comparison_image') %></a>
+                      </div>
+                      <div class="span4">
+                        <a href="/assets/cigar_point_n_shoot.jpg" class="fancybox large_comparison_image" title="Point and Shoot"><div><%= image_tag("cigar_point_n_shoot.jpg", class: 'small_comparison_image') %></div></a>
+                      </div>
+                      <div class="span4">
+                        <a href="/assets/cigar_samsung.jpg" class="fancybox large_comparison_image" title="Samsung"><div><%= image_tag("cigar_samsung.jpg", class: 'small_comparison_image') %></div></a>
                       </div>
                     </div>
                   </div>
-                </p>
-                <iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fsignup.dual-aperture.com%2Fblog_posts&amp;width=100px&amp;layout=standard&amp;action=like&amp;show_faces=true&amp;share=true&amp;height=80" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100pxpx; height:80px;" allowTransparency="true"></iframe>
-              </article>
-            </div>
-          </div>
-          <div class="row-fluid">        
-            <div class="span4">
-<!--               <article id=<%= "reblog_#{post.id}"%> class="reblog">
-                <button type="button" class="btn btn-default">
-                  <i class="icon-reply"></i>
-                </button><br>
-                <div class="post_created_at">
-                  <%= "#{post.created_at}" %>
                 </div>
-              </article>
- -->            </div>
-            <div class="span8">
-              <article id=<%= "post_#{post.id}"%> class="posts">
-                <h3><%= post.title %></h3>
-                <p>
-                  <span class="description"><%= simple_format(post.description) %></span><br>
-                  <span class="embedded_link"><%= post.link.html_safe if post.link %></span>
-                </p>
-                <iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fsignup.dual-aperture.com%2Fblog_posts&amp;width=100px&amp;layout=standard&amp;action=like&amp;show_faces=true&amp;share=true&amp;height=80" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100pxpx; height:80px;" allowTransparency="true"></iframe>
-                <!-- <%= link_to '', "/blog_posts/#{post.id}#disqus_thread" %> -->
-              </article>
-            </div>
+              </p>
+              <iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fsignup.dual-aperture.com%2Fblog_posts&amp;width=100px&amp;layout=standard&amp;action=like&amp;show_faces=true&amp;share=true&amp;height=80" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100pxpx; height:80px;" allowTransparency="true"></iframe>
+            </article>
           </div>
-          <hr>
-        <% end %>
-      </div>
-      <div id="sidebar" class="span3">
-<!--         <h4>Start contributing content!</h4>
-        <p>
-          Write blog posts describing your experiences with Dual Aperture's technology. You may also post replies to others' posts as well.
-        </p>
-        <a href="#" id="new_post" class='btn btn-primary btn-med'>
-          Create New Post
-        </a>
+        </div>
+        <div class="row-fluid">        
+          <div class="span4">
+<!--               <article id=<%= "reblog_1"%> class="reblog">
+              <button type="button" class="btn btn-default">
+                <i class="icon-reply"></i>
+              </button><br>
+            </article>
+-->            </div>
+          <div class="span8">
+            <article id="post_1" class="posts">
+              <h3>Introducing Dual Aperture</h3>
+              <div class="description">
+                <p>For the last decade, consumer camera technologies were engaged in an arms race for more megapixels.</p> 
+                <p>We're here to bring a revolution to the arms race.</p>
+                <p>Over the next few months, we will be unveiling several new features through a series of blog posts. Today, we are proud to introduce our revolutionary Dual Aperture technology, starting with our take on gesture tracking in the video below. Enjoy!</p>
+              </div>
+              <div class="embedded_link">
+                <iframe src="//player.vimeo.com/video/83994553?portrait=0&byline=0" width="600" height="400" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+              </div>
+              <iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fsignup.dual-aperture.com%2Fblog_posts&amp;width=100px&amp;layout=standard&amp;action=like&amp;show_faces=true&amp;share=true&amp;height=80" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100pxpx; height:80px;" allowTransparency="true"></iframe>
+              <!-- <%= link_to '', "/blog_posts/1#disqus_thread" %> -->
+            </article>
+          </div>
+        </div>
         <hr>
- -->        <h4>Sign up for our newsletter!</h4>
-        <p>
-          Enter your email address below to receive updates on the latest developments for our product.
-        </p>
-        Email Address<br>
-        <input></input>
-        <%= button_tag "Submit" %>
-      </div>
     </div>
-  </article>
-  <div id="new_blog_modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <%= form_for :blog_post do |f| %>
-      <div class="modal-header">
-        <button type="button" class="close close_modal" aria-hidden="true">×</button>
-        <h4 id="title_input">Title</h4>
-        <%= f.text_field :title %>
-      </div>
-      <div class="modal-body">
-        <h4 id="description_input">Description</h4>
-        <%= f.text_area :description %>
-        <h4 id="embedded_link_input">Embed link:</h4>
-        <%= f.text_field :link %>
-      </div>
-      <div class="modal-footer">
-        <button class="btn cancel" aria-hidden="true">Close</button>
-        <%= f.submit class: "btn btn-primary close_modal" %>
-      </div>
-    <% end %>
+    <div id="sidebar" class="span3">
+<!--         <h4>Start contributing content!</h4>
+      <p>
+        Write blog posts describing your experiences with Dual Aperture's technology. You may also post replies to others' posts as well.
+      </p>
+      <a href="#" id="new_post" class='btn btn-primary btn-med'>
+        Create New Post
+      </a>
+      <hr>
+-->        <h4>Sign up for our newsletter!</h4>
+      <p>
+        Enter your email address below to receive updates on the latest developments for our product.
+      </p>
+      Email Address<br>
+      <input></input>
+      <%= button_tag "Submit" %>
+    </div>
   </div>
+</article>
+<div id="new_blog_modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <%= form_for :blog_post do |f| %>
+    <div class="modal-header">
+      <button type="button" class="close close_modal" aria-hidden="true">×</button>
+      <h4 id="title_input">Title</h4>
+      <%= f.text_field :title %>
+    </div>
+    <div class="modal-body">
+      <h4 id="description_input">Description</h4>
+      <%= f.text_area :description %>
+      <h4 id="embedded_link_input">Embed link:</h4>
+      <%= f.text_field :link %>
+    </div>
+    <div class="modal-footer">
+      <button class="btn cancel" aria-hidden="true">Close</button>
+      <%= f.submit class: "btn btn-primary close_modal" %>
+    </div>
+  </div>
+  <% end %>
 </section>
