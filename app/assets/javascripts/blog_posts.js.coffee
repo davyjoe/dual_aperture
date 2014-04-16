@@ -16,4 +16,4 @@ $ ->
   $(document).on 'click', '#new_post', showNewBlogModal
   $(document).on 'click', '#new_blog_modal .close_modal', hideNewBlogModal
   $(document).on 'click', '#new_blog_modal .cancel', cancelSubmission
-  $('a.fancybox').fancybox()
+  $('a.fancybox').fancybox({ 'maxWidth': 600, 'maxHeight': 366, 'autoScale': 'false', 'autoDimensions': 'false' })
