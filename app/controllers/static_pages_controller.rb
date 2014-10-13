@@ -4,6 +4,7 @@ class StaticPagesController < ApplicationController
   end
 
   def about
+    @team_members = TeamMember.all
   end
 
   def features

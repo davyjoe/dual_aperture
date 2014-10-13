@@ -1,88 +1,29 @@
 <section id="about_main">
   <div class="container">
     <header>
-      <h1>OUR TEAM</h1>
-      <div class="subheader">
-        <h3>
-          We are individuals coming together to bring about a revolution in photography.
-        </h3>
-      </div>
+      <h1>About Dual Aperture International</h1>
     </header>
+    <div id="about">
+      <p>
+        Dual Aperture International Co. Ltd. is a joint venture of Dual Aperture, Inc. and the Center for Integrated Smart Sensors (CISS). The new entity is set to be the leader in image sensor technology and enable the groundbreaking smart sensor technology on multiple platforms and devices. Dual Aperture's proprietary 4-color sensor technologies and algorithms utilize 3D image capturing and other imaging enhancements to create a multi-functional, low cost technology that can be integrated into many consumer, automotive, and industrial products. Dual Aperture's unique depth and gesture tracking will also empower mobile camera-based applications to explore new dimensions of user experience. The CISS is a research institute supported by the Korea Advanced Institute of Science and Technology (KAIST), the leading university in Korea dedicated to technological advancement, funded by Korea government for a period of 9 years (2011~2020) with about $10 million/year. With such support, more than 500 research engineers including professors, research professors, and graduate students can contribute to R&D projects in various areas such as biological, medical, vehicle, environment, camera, and mobile sensors.
+      </p>
+      <p>
+        The goals of Dual Aperture International are to : (1) develop innovative devices, circuits, and system-level enabling technologies to overcome the stagnant growth of IT, (2) develop common platforms on which various devices and sensors can be built and (3) create ‘multi-dimensional smart IT convergence systems’ with significantly improved Figure of Merits in information processing speed, energy, and volume based on the optimization of platform performances through the convergence of hardware and software technologies
+      </p>
+    </div>
     <article id="biographies">
-      <div class="row-fluid">
-        <div class="span4">
-          <%= image_tag "davidLeeProfile.png", class: "portrait" %>
-          <h4>David D. Lee</h4>
-          <h4 class="company_title">The Mastermind</h4>
-          <p>
-            David has a long history of taking products from early stage development to finding product-market fit with proven business models. Dual Aperture, in particular, is close to David's heart because the groundbreaking nature of the technology has the potential to change how people will take and think of photographs forever. Prior to founding Dual Aperture, David played an integral role in creating DVI and HDMI standards as founder and CEO of Silicon Image. He received his BS, MS and Ph.D. in EECS from UC Berkeley and currently resides in Palo Alto, CA.
-          </p>
+      <h1>Our Team</h1>
+      <% @team_members.in_groups_of(3).each do |group| %>
+        <div class="row-fluid">
+          <% group.each do |member| %>
+            <% unless member.nil? %>
+              <div class="span4">
+                <%= link_to (image_tag(member.picture, class: 'portrait')), '#', class: 'member_modal_link', :data => {:id => member.id} %>
+              </div>
+            <% end %>
+          <% end %>
         </div>
-        <div class="span4">
-          <%= image_tag "andrewWajsProfile.png", class: "portrait" %>
-          <h4>Andrew Wajs</h4> 
-          <h4 class="company_title">The Architect</h4>
-          <p>
-            Andrew has great experience in creating new product ideas by drawing upon diverse disciplines and 
-            technologies. He has exhibited photographs in galleries in South Africa and the Netherlands and has since 
-            shifted into designing and building cameras. Prior to Dual Aperture, Andrew worked in various aspects 
-            of the media technology industry, including a previous position as the CTO of Irdeto. He holds BSc and MSc degrees in Electrical 
-            Engineering from the University of the Witwatersrand.       
-          </p>
-        </div>
-        <div class="span4">
-          <%= image_tag "bruceLeeProfile.png", class: "portrait" %>
-          <h4>Bruce Lee</h4> 
-          <h4 class="company_title">ShiFu</h4>
-          <p>
-            The resident sensei of corporate operations and business development, Bruce is a veteran of over two decades in the IT industry.  Prior to joining DA, Bruce worked in several industry-leading companies such as Synnex Group, Phoenix, and PQI in the Greater China Region. He received his BS in Electrical Engineering from Chung-Yuan Christian University in Taiwan and in his free time enjoys hitting the little white ball across the great green plains.           
-          </p>
-        </div>
-      </div>
-      <div class="row-fluid">
-        <div class="span4">
-          <%= image_tag "hankLeeProfile.png", class: "portrait" %>
-          <h4>Hank Lee</h4>
-          <h4 class="company_title">The Hub</h4>
-          <p>
-            Hank has a passion for finding innovative ways to bring new technologies into the everyday lives of people around him. At Dual Aperture, Hank is the central cog that connects cutting-edge engineering to marketing & sales. Prior to Dual Aperture, Hank was the Director of Product Marketing at Nano Technology Laboratory. In his spare time, Hank loves taking new friends out golfing.
-          </p>
-        </div>
-        <div class="span4">
-          <%= image_tag "manuelMartinelloProfile.png", class: "portrait" %>
-          <h4>Manuel Martinello</h4> 
-          <h4 class="company_title">The Blur</h4>
-          <p>
-            Manuel is an expert in Computational Photography and has spent several years in researching and designing technologies for encoding (and successively decoding) the 3D model of a scene in a single photograph. Manuel's role at Dual Aperture could be considered to be more 'in depth' -- literally. He is working on developing new algorithms for calculating the distance of objects using a single camera shot and applications that can utilize 3D information, such as 'Touch-Refocusing' and '3D image generation'. Prior to Dual Aperture, Manuel was a lecturer at the University of York (UK) and received his Ph.D. from Heriot-Watt University (UK) and his MSc in Computer Engineering from the University of Padua (Italy).          
-          </p>
-        </div>
-        <div class="span4">
-          <%= image_tag "seanQuanProfile.png", class: "portrait" %>
-          <h4>Sean Quan</h4> 
-          <h4 class="company_title">Macbeth</h4>
-          <p>
-            It's safe to say that Sean has probably seen the Macbeth color chart more times than almost anybody else has in the western hemisphere. Sean is a leading expert in the field of Imaging Science with over 20 publications and nearly 20 patent grants. Sean brings with him over 15 years of specialized experience in optical science, color science, advanced image processing, and image quality. His research has been instrumental to the development of a multitude of sophisticated image signal processors in the market today. At Dual-Aperture, he is responsible for improving imaging quality and designing the RGB-infrared signal based image pipeline.
-          </p>
-        </div>
-      </div>
-      <div class="row-fluid">
-        <div class="span4">
-          <%= image_tag "seungOhRyuProfile.png", class: "portrait" %>
-          <h4>Seungoh Ryu</h4>
-          <h4 class="company_title">Conductor</h4>
-          <p>
-            Seungoh is the lead developer for the gesture tracking algorithms and related applications. He is also the founder and chief programmer of iStormApps and is a Stanford trained theoretical physicist whose research papers have been published in Science, Nature and Physical Review Letters. Seungoh's prized contribution was co-inventing a novel borehole probe technique using non-resonant NMR technology. Lastly, Seungoh is an avid collector of all kinds of music, but favors Bach above all others.
-          </p>
-        </div>
-        <div class="span4">
-          <%= image_tag "tkWooProfile.png", class: "portrait" %>
-          <h4>Taekun Woo</h4> 
-          <h4 class="company_title">Dos Semanas</h4>
-          <p>
-            TK is the lead engineer responsible for the image enhancement and depth map generation algorithms and the packaging of applications/libraries to deliver DA’s algorithm to customers.  Prior to starting Dual Aperture, TK worked for over 15 years with embedded systems in Silicon Valley and Orange County. He received his BS and MS in Computer Science from Korea University.          
-          </p>
-        </div>
-      </div>
+      <% end %>
     </article>
     <article id="advisory_board">
       <h1>Advisory Board</h1>
@@ -94,3 +35,15 @@
     </article>
   </div>
 </section>
+
+<div id="portrait_modal" class="modal hide fade">
+  <div class="modal-header">
+    <h4 class="member_name"></h4>
+    <h4 class="company_title"></h4>
+  </div>
+  <div class="modal-body">
+    <p></p>
+  </div>
+  <div class="modal-footer">
+  </div>
+</div>
