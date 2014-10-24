@@ -162,10 +162,16 @@
     }
 
     .portrait {
-      padding-left: 50%;
-      margin-left: -65px;
+      margin-left: 65px;
       width: auto;
       height: 130px;
+    }
+
+    .ciss_portrait {
+      margin-left: 65px;
+      width: auto;
+      height: 130px;
+      border-radius: 50%;
     }
   }
 

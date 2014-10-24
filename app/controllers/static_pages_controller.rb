@@ -4,7 +4,8 @@ class StaticPagesController < ApplicationController
   end
 
   def about
-    @team_members = TeamMember.all
+    @team_members = TeamMember.where(company: "Dual Aperture")
+    @ciss_members = TeamMember.where(company: "CISS")
   end
 
   def features

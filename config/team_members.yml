@@ -1,40 +1,48 @@
 -
   name: David D. Lee
   nickname: The Mastermind
+  company: Dual Aperture
   description: David has a long history of taking products from early stage development to finding product-market fit with proven business models. Dual Aperture, in particular, is close to David's heart because the groundbreaking nature of the technology has the potential to change how people will take and think of photographs forever. Prior to founding Dual Aperture, David played an integral role in creating DVI and HDMI standards as founder and CEO of Silicon Image. He received his BS, MS and Ph.D. in EECS from UC Berkeley and currently resides in Palo Alto, CA.
   picture: davidLeeProfile.png
 -
   name: Andrew Wajs
   nickname: The Architect
+  company: Dual Aperture
   description: Andrew has great experience in creating new product ideas by drawing upon diverse disciplines and technologies. He has exhibited photographs in galleries in South Africa and the Netherlands and has since shifted into designing and building cameras. Prior to Dual Aperture, Andrew worked in various aspects of the media technology industry, including a previous position as the CTO of Irdeto. He holds BSc and MSc degrees in Electrical Engineering from the University of the Witwatersrand. 
   picture: andrewWajsProfile.png
 -
   name: Bruce Lee
   nickname: ShiFu
+  company: Dual Aperture
   description: The resident sensei of corporate operations and business development, Bruce is a veteran of over two decades in the IT industry.  Prior to joining DA, Bruce worked in several industry-leading companies such as Synnex Group, Phoenix, and PQI in the Greater China Region. He received his BS in Electrical Engineering from Chung-Yuan Christian University in Taiwan and in his free time enjoys hitting the little white ball across the great green plains.           
   picture: bruceLeeProfile.png
 -
   name: Hank Lee
   nickname: The Hub
+  company: Dual Aperture
   description: Hank has a passion for finding innovative ways to bring new technologies into the everyday lives of people around him. At Dual Aperture, Hank is the central cog that connects cutting-edge engineering to marketing & sales. Prior to Dual Aperture, Hank was the Director of Product Marketing at Nano Technology Laboratory. In his spare time, Hank loves taking new friends out golfing.
   picture: hankLeeProfile.png
 -
   name: Manuel Martinello
   nickname: The Blur
+  company: Dual Aperture
   description: Manuel is an expert in Computational Photography and has spent several years in researching and designing technologies for encoding (and successively decoding) the 3D model of a scene in a single photograph. Manuel's role at Dual Aperture could be considered to be more 'in depth' -- literally. He is working on developing new algorithms for calculating the distance of objects using a single camera shot and applications that can utilize 3D information, such as 'Touch-Refocusing' and '3D image generation'. Prior to Dual Aperture, Manuel was a lecturer at the University of York (UK) and received his Ph.D. from Heriot-Watt University (UK) and his MSc in Computer Engineering from the University of Padua (Italy).
   picture: manuelMartinelloProfile.png
 -
   name: Sean Quan
   nickname: Macbeth
+  company: Dual Aperture
   description: It's safe to say that Sean has probably seen the Macbeth color chart more times than almost anybody else has in the western hemisphere. Sean is a leading expert in the field of Imaging Science with over 20 publications and nearly 20 patent grants. Sean brings with him over 15 years of specialized experience in optical science, color science, advanced image processing, and image quality. His research has been instrumental to the development of a multitude of sophisticated image signal processors in the market today. At Dual-Aperture, he is responsible for improving imaging quality and designing the RGB-infrared signal based image pipeline.
   picture: seanQuanProfile.png
 -
   name: Seungoh Ryu
   nickname: Conductor
+  company: Dual Aperture
   description: Seungoh is the lead developer for the gesture tracking algorithms and related applications. He is also the founder and chief programmer of iStormApps and is a Stanford trained theoretical physicist whose research papers have been published in Science, Nature and Physical Review Letters. Seungoh's prized contribution was co-inventing a novel borehole probe technique using non-resonant NMR technology. Lastly, Seungoh is an avid collector of all kinds of music, but favors Bach above all others.
   picture: seungOhRyuProfile.png
 -
   name: Taekun Woo
   nickname: Dos Semanas
+  company: Dual Aperture
   description: TK is the lead engineer responsible for the image enhancement and depth map generation algorithms and the packaging of applications/libraries to deliver DA’s algorithm to customers.  Prior to starting Dual Aperture, TK worked for over 15 years with embedded systems in Silicon Valley and Orange County. He received his BS and MS in Computer Science from Korea University.          
   picture: tkWooProfile.png

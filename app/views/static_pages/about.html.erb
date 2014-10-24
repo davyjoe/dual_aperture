@@ -24,6 +24,18 @@
           <% end %>
         </div>
       <% end %>
+      <h1>CISS Team</h1>
+      <% @ciss_members.in_groups_of(3).each do |group| %>
+        <div class="row-fluid">
+          <% group.each do |member| %>
+            <% unless member.nil? %>
+              <div class="span4">
+                <%= link_to (image_tag(member.picture_url(:thumb), class: 'ciss_portrait')), '#', class: 'member_modal_link', :data => {:id => member.id} %>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      <% end %>
     </article>
     <article id="advisory_board">
       <h1>Advisory Board</h1>
