@@ -76,6 +76,9 @@ GEM
       railties (>= 3.2.6, < 5)
       warden (~> 1.2.3)
     diff-lcs (1.2.4)
+    dotenv (1.0.2)
+    dotenv-rails (1.0.2)
+      dotenv (= 1.0.2)
     erubis (2.7.0)
     excon (0.40.0)
     execjs (1.4.0)
@@ -260,6 +263,7 @@ DEPENDENCIES
   carrierwave
   coffee-rails (~> 4.0.0)
   devise
+  dotenv-rails
   factory_girl_rails
   faker
   fancybox2-rails
