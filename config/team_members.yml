@@ -2,7 +2,7 @@
   name: David D. Lee
   nickname: The Mastermind
   company: Dual Aperture
-  description: David has a long history of taking products from early stage development to finding product-market fit with proven business models. Dual Aperture, in particular, is close to David's heart because the groundbreaking nature of the technology has the potential to change how people will take and think of photographs forever. Prior to founding Dual Aperture, David played an integral role in creating DVI and HDMI standards as founder and CEO of Silicon Image. He received his BS, MS and Ph.D. in EECS from UC Berkeley and currently resides in Palo Alto, CA.
+  description: Dr. David Lee is the Chairman and CEO of Dual Aperture, Inc., a Silicon Valley start-up focused on developing photography technologies capable of having a meaningful impact on people’s lives. He was the founder and CEO of Silicon Image and took the company public in 1999 serving as the company’s Chairman and CEO until November 2004. Responsible for the development of two worldwide digital interface standards – Digital Visual Interface (DVI) and High-Definition Multimedia Interface (HDMI) – Silicon Image is recognized as a major force in the development and implementation of technology industry standards. While at Silicon Image, Lee forged the collaborative relationships with leading PC and consumer electronics manufacturers including Intel, Sony and Panasonic, along with major Hollywood studios, to bring DVI and HDMI standards to fruition. In 2009, HDMI was awarded the Technology and Engineering Emmy Award by National Academy of Television Arts & Sciences (NATAS). According to several market research firms, more than 3 billion HDMI-enabled devices shipped from its inception through 2014. Lee was inducted into CEA Hall of Fame in 2014 for his contribution in HDMI. Prior to launching Silicon Image in 1995, Lee was a principal investigator at Sun Microsystems Research Laboratories and the research staff at the famed Xerox Palo Alto Research Center (PARC). There, he led a number of projects including the development of the world’s first 6.3M pixel AMLCDs, which integrated high-resolution display technology with high-performance computing. A technology entrepreneur standout, Lee received his bachelor’s (’83, with honors), master’s (‘85) and Ph.D. (’89) degrees in electrical engineering and computer science from U.C. Berkeley.
   picture: davidLeeProfile.png
 -
   name: Andrew Wajs
@@ -23,12 +23,6 @@
   description: Hank has a passion for finding innovative ways to bring new technologies into the everyday lives of people around him. At Dual Aperture, Hank is the central cog that connects cutting-edge engineering to marketing & sales. Prior to Dual Aperture, Hank was the Director of Product Marketing at Nano Technology Laboratory. In his spare time, Hank loves taking new friends out golfing.
   picture: hankLeeProfile.png
 -
-  name: Manuel Martinello
-  nickname: The Blur
-  company: Dual Aperture
-  description: Manuel is an expert in Computational Photography and has spent several years in researching and designing technologies for encoding (and successively decoding) the 3D model of a scene in a single photograph. Manuel's role at Dual Aperture could be considered to be more 'in depth' -- literally. He is working on developing new algorithms for calculating the distance of objects using a single camera shot and applications that can utilize 3D information, such as 'Touch-Refocusing' and '3D image generation'. Prior to Dual Aperture, Manuel was a lecturer at the University of York (UK) and received his Ph.D. from Heriot-Watt University (UK) and his MSc in Computer Engineering from the University of Padua (Italy).
-  picture: manuelMartinelloProfile.png
--
   name: Sean Quan
   nickname: Macbeth
   company: Dual Aperture
@@ -46,3 +40,9 @@
   company: Dual Aperture
   description: TK is the lead engineer responsible for the image enhancement and depth map generation algorithms and the packaging of applications/libraries to deliver DA’s algorithm to customers.  Prior to starting Dual Aperture, TK worked for over 15 years with embedded systems in Silicon Valley and Orange County. He received his BS and MS in Computer Science from Korea University.          
   picture: tkWooProfile.png
+-
+  name: Chung Kon Ko
+  nickname: Chief Legal Officer
+  company: Dual Aperture
+  description: Dr. Ko joins Dual Aperture International as Chief Legal Officer. He is actively involved in the industry, academia, as well as government positions. Prior to DAI, Dr. Ko served as EVP of intellectual Discovery (Korea’s first Invention Capital company), where his primary responsibilities included acquisition and licensing of patent portfolios of more than one thousand patents. Previously, he was Vice President at LG Electronics, where he was responsible for patent development, litigation, and monetization and served as Vice President at Samsung Electronics where he was responsible for joint venture, technology sourcing, and developing standards-based patents. He is a US Patent Attorney registered to practice in New York, New Jersey, and US PTO.  He worked at law firms, Pennie & Edmonds (New York) and Kim and Chang (Seoul). Dr. Ko served the IP Committee Chair at Korea’s National Science and Technology Commission, setting the national IP policy and allocating government R&D budgets. He was also a Council Member of Korea’s Presidential Council on Intellectual Property, who coordinated various government branches for patents, designs, copyrights, trademarks, and antitrust matters. Dr. Ko received his bachelor degree in EECS from MIT, and master and Ph.D degrees in EE from Columbia University and a Law Degree (J.D.) from Rutgers Law School. Dr. Ko also teaches and writes extensively in the areas of IP development, litigation, and monetization. He is the author of “Dr. Ko’s Creative Economy Lecture: Manage Your Intellectual Properties” (©2014, Human and Books), and co-author of “US Patent Law Case Study” (©2013, Hanbit IP Center). Dr. Ko taught IP as an adjunct professor at Seoul National University and at the Korea Advanced Institute of Science and Technology (KAIST).
+  picture: CK Ko.jpg
