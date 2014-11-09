@@ -32,5 +32,5 @@ $ ->
 
     $.getJSON("/team_members/#{id}").done (data) =>
       $('.member_name').text(data.name)
-      $('.company_title').text(data.nickname) if data.nickname
+      if data.nickname then $('.company_title').text(data.nickname) else $('.company_title').text('')
       $('.modal-body p').text(data.description)
