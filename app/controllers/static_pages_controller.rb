@@ -4,7 +4,7 @@ class StaticPagesController < ApplicationController
   end
 
   def about
-    @team_members = TeamMember.all
+    @team_members = TeamMember.by_position
   end
 
   def features
