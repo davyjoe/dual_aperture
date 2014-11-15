@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141024031616) do
+ActiveRecord::Schema.define(version: 20141115192730) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -126,11 +126,12 @@ ActiveRecord::Schema.define(version: 20141024031616) do
   add_index "forem_views", ["viewable_id"], name: "index_forem_views_on_viewable_id", using: :btree
 
   create_table "team_members", force: true do |t|
-    t.string "name"
-    t.text   "description"
-    t.string "picture"
-    t.string "nickname"
-    t.string "company"
+    t.string  "name"
+    t.text    "description"
+    t.string  "picture"
+    t.string  "nickname"
+    t.string  "company"
+    t.integer "position"
   end
 
   create_table "users", force: true do |t|
