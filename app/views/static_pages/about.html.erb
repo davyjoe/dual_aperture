@@ -22,6 +22,8 @@
             <% unless member.nil? %>
               <div class="span4">
                 <%= link_to (image_tag(member.picture_url(:thumb), class: 'ciss_portrait')), '#', class: 'member_modal_link', :data => {:id => member.id} %>
+                <h4><%= member.name %></h4>
+                <h4 class='company_title'><%= member.nickname %></h4>
               </div>
             <% end %>
           <% end %>
@@ -34,7 +36,22 @@
       <%= link_to "Philippe Tarbouriech", "http://phitar.com/Philippe_Tarbouriech/welcome.html" %>, Photographer and technologist.
     </article>
     <article id="google_maps_section">
-      <%= image_tag "DAI_korea.png" %>
+      <ul class='nav nav-tabs'>
+        <li class='active'>
+          <a href='#us' data-toggle='tab'>U.S Office</a>
+        </li>
+        <li>
+          <a href='#korean' data-toggle='tab'>Korean Office</a>
+        </li>
+      </ul>
+      <div class='tab-content'>
+        <div class='tab-pane active' id='us'>
+          <%= image_tag 'google_static_image.png' %>
+        </div>
+        <div class='tab-pane' id='korean'>
+          <%= image_tag 'DAI_korea.png' %>
+        </div>
+      </div>
     </article>
   </div>
 </section>
