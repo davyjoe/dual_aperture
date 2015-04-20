@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+gem 'rack'
+
+=begin
 gem 'ruby'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -80,3 +83,4 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+=end

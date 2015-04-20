@@ -1,0 +1,440 @@
+/* universal */
+/* icons */
+.media-small {
+  width: auto;
+  height: 50px;
+}
+
+.media-large {
+  width: 150px;
+  height: 150px;
+}
+
+/* typography */
+a {
+  color: #999999;
+}
+
+a:hover {
+  color: #aac752;
+  text-decoration: none;
+}
+
+/* navbar */
+.logo {
+  float: left;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+li {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+#login_modal {
+  width: 250px;
+  margin-left: -120px;
+}
+
+/* body */
+body {
+  font-family: "Futura", sans-serif;
+  font-weight: 300;
+}
+
+body section {
+  padding-top: 50px;
+}
+
+body .container-fluid {
+  padding-right: 0px;
+  padding-left: 0px;
+}
+
+body .media {
+  margin: 40px;
+}
+
+body .infobox {
+  padding-top: 10px;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+body .infobox .infobox-body {
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 40px;
+}
+
+footer {
+  font-size: 11px;
+  padding-top: 50px;
+  padding-bottom: 100px;
+  background-color: black;
+  color: #999999;
+}
+
+footer h5 {
+  color: white;
+  font-weight: normal;
+  margin-top: 0px;
+}
+
+footer address {
+  padding-left: 27px;
+}
+
+#blog_posts_main {
+  padding-top: 75px;
+  background-color: darkGray;
+}
+
+#blog_posts_main hr {
+  height: 1px;
+  background-color: black;
+  border: 0px;
+}
+
+#blog_posts_main article#blog_posts {
+  padding-right: 75px;
+}
+
+#blog_posts_main article#blog_posts .description {
+  padding-bottom: 20px;
+}
+
+#blog_posts_main article.reblog {
+  margin-top: 10px;
+}
+
+#blog_posts_main article.reblog .post_created_at {
+  padding-top: 10px;
+}
+
+#blog_posts_main .image-row {
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+#blog_posts_main .image-row .large_comparison_image {
+  width: 300px;
+  height: 183px;
+}
+
+#blog_posts_main .image-row .small_comparison_image {
+  width: 150px;
+  height: 100px;
+}
+
+#blog_posts_main .image-row .captions {
+  font-weight: bold;
+}
+
+#blog_posts_main a.dark {
+  color: #388a8a;
+}
+
+#sidebar {
+  padding-bottom: 50px;
+}
+
+#fancybox-content {
+  width: 300px;
+  height: 183px;
+}
+
+/* Test Main */
+#test_main {
+  margin-bottom: -30px;
+}
+
+#test_main #home_hero_unit {
+  background-image: url(/assets/golden_gate_1.jpg);
+  background-repeat: no-repeat;
+  background-color: transparent;
+  background-size: 100%;
+  padding-top: 300px;
+  padding-bottom: 300px;
+}
+
+#test_main #home_hero_unit h1 {
+  text-align: center;
+  color: white;
+}
+
+#test_main #home_hero_unit #email_signup h2 {
+  color: white;
+  text-align: center;
+}
+
+#test_main #home_hero_unit #email_signup .signup_form {
+  text-align: center;
+}
+
+#test_main #home_hero_unit #email_signup .signup_form input {
+  margin-bottom: 0px;
+}
+
+/* Home */
+#home_main {
+  margin-bottom: -30px;
+}
+
+#home_main #home_hero_unit {
+  background-image: url(/assets/DA_background1.jpg);
+  background-repeat: no-repeat;
+  background-color: transparent;
+  background-size: 100%;
+  padding-top: 300px;
+  padding-bottom: 300px;
+}
+
+#home_main #home_hero_unit h1 {
+  text-align: center;
+  color: white;
+}
+
+#home_main #home_hero_unit #email_signup h2 {
+  color: white;
+  text-align: center;
+}
+
+#home_main #home_hero_unit #email_signup .signup_form {
+  text-align: center;
+}
+
+#home_main #home_hero_unit #email_signup .signup_form input {
+  margin-bottom: 0px;
+}
+
+#home_main #home_carousel #banner {
+  background-image: url(/assets/DA_background1.jpg);
+  background-repeat: no-repeat;
+  background-color: transparent;
+  background-size: 100%;
+  color: white;
+}
+
+#home_main #home_carousel #stereograms {
+  background-image: url(/images/3D_large.jpg);
+  background-repeat: no-repeat;
+  background-color: transparent;
+  background-size: 100%;
+  color: white;
+}
+
+#home_main #home_carousel #gesture_tracking {
+  background-image: url(/images/hands_gesturing_large.jpg);
+  background-repeat: no-repeat;
+  background-color: transparent;
+  background-size: 100%;
+  color: white;
+}
+
+#home_main #home_carousel #refocus_tulips {
+  background-image: url(/images/refocus_tulips.jpg);
+  background-repeat: no-repeat;
+  background-color: transparent;
+  background-size: 100%;
+  color: white;
+}
+
+#home_main #home_carousel h2 {
+  color: white;
+  font-weight: none;
+  background: transparent;
+  text-align: center;
+  margin-top: -10px;
+  margin-bottom: 0px;
+  padding-top: 375px;
+  padding-bottom: 475px;
+}
+
+/* About */
+#about_main {
+  background-color: darkGray;
+  margin-bottom: -10px;
+}
+
+#about_main .container {
+  background-color: lightGray;
+}
+
+#about_main header {
+  padding-left: 75px;
+  padding-right: 75px;
+  padding-top: 75px;
+}
+
+#about_main header h3 {
+  text-align: right;
+}
+
+#about_main #biographies {
+  font-family: "Helvetica Neue";
+  margin-top: 40px;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-bottom: 30px;
+}
+
+#about_main #biographies h1 {
+  padding-left: 20px;
+  padding-bottom: 30px;
+}
+
+#about_main #biographies h4 {
+  text-align: center;
+  margin-bottom: 0px;
+}
+
+#about_main #biographies .company_title {
+  margin-top: 0px;
+  color: #999999;
+}
+
+#about_main #biographies .portrait {
+  margin-left: 65px;
+  width: auto;
+  height: 130px;
+}
+
+#about_main #biographies .ciss_portrait {
+  margin-left: 65px;
+  width: auto;
+  height: 130px;
+  border-radius: 50%;
+}
+
+#about_main #about {
+  font-family: "Helvetica Neue";
+  padding-left: 50px;
+  padding-right: 50px;
+  margin-top: 30px;
+  margin-bottom: 50px;
+}
+
+#about_main #about h1 {
+  margin-bottom: 30px;
+}
+
+#about_main #advisory_board {
+  font-family: "Helvetica Neue";
+  padding-left: 50px;
+  margin-left: 30px;
+  margin-bottom: 50px;
+}
+
+#about_main #advisory_board h1 {
+  margin-bottom: 30px;
+}
+
+#about_main #advisory_board p {
+  margin-left: 0px;
+  padding-left: 0px;
+}
+
+#about_main #advisory_board a {
+  color: black;
+  font-weight: bold;
+}
+
+#about_main #advisory_board a:hover {
+  color: #aac752;
+  text-decoration: none;
+}
+
+#about_main #google_maps_section {
+  margin-bottom: 11px;
+}
+
+#about_main #google_maps_section .nav-tabs {
+  padding-left: 50px;
+  margin-left: 30px;
+}
+
+#about_main p {
+  font-size: small;
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+#about_main .row-fluid {
+  margin-bottom: 50px;
+}
+
+/* Press */
+#press_main {
+  background-color: darkGray;
+  margin-bottom: -10px;
+}
+
+#press_main .container {
+  background-color: lightGray;
+}
+
+#press_main header {
+  padding-left: 75px;
+  padding-right: 75px;
+  padding-top: 75px;
+}
+
+#press_main header h4 {
+  text-align: right;
+}
+
+#press_main #press_releases {
+  font-family: "Helvetica Neue";
+  padding-left: 125px;
+  padding-right: 125px;
+  padding-bottom: 50px;
+}
+
+/* FAQ */
+#faq_main {
+  background-color: darkGray;
+  padding-bottom: 30px;
+}
+
+#faq_main .container {
+  width: 600px;
+}
+
+#faq_main h1 {
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+#faq_main .question {
+  background-color: Gray;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  color: white;
+}
+
+#faq_main .answer {
+  margin-bottom: 20px;
+}
+
+#faq_main ol {
+  margin-bottom: 20px;
+}
+
+/* Sign up page */
+.devise_pages {
+  padding-top: 60px;
+  padding-bottom: 60px;
+  padding-left: 577px;
+  background-color: darkGray;
+}
+
+.devise_pages a {
+  color: black;
+}
