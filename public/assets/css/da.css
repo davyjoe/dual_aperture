@@ -1,0 +1,102 @@
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  color: #535456;
+}
+
+a {
+  color: #0075B5;
+}
+
+a:hover {
+  color: #0075B5;
+  text-decoration: none;
+}
+
+.jumbotron {
+  background-color: transparent;
+  margin-top: 60px;
+  background-image: url(/assets/DA_background1.jpg);
+  background-repeat: no-repeat;
+  background-color: transparent;
+  background-size: 100%;
+  color: #fff;
+}
+
+.navbar-brand {
+  height: 56px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.navbar-brand img {
+  height: 46px;  
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: #0075B5;
+  font-weight: bold;
+}
+.navbar-default .navbar-nav > li > a:hover {
+  color: #535456;
+}
+
+@media (min-width:768px){
+  .navbar-nav > li > a {
+    padding-top: 22px;
+  }
+}
+
+.navbar-toggle {
+  margin-top: 13px;
+}
+
+.subscribe {
+  margin: 50px 0;
+  color: #0075B5;
+  background-color: #B5CAE0;
+}
+
+.subscribe .panel-body {
+  padding: 60px;
+}
+
+.panel-default.subscribe {
+  border-color: #0075B5;
+}
+
+footer {
+  font-size: 12px;
+  padding-top: 50px;
+  background-color: #0075B5;
+  color: #535456;
+}
+
+footer h5 {
+  color: #fff;
+  font-weight: normal;
+  margin-top: 0px;
+}
+
+footer address {
+  color: #B5CAE0;
+}
+
+footer .legal {
+  padding-top: 50px;
+  color: #B5B7B9;
+}
+
+footer .legal .text-muted {
+  font-size: smaller;
+  color: #CCC;
+}
+
+footer a {
+  color: #B5CAE0;
+}
+
+footer a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
