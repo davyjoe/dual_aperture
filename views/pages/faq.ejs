@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <% include ../partials/head %>
+
+</head>
+<body>
+
+    <% include ../partials/header %>
+
+    <main>
+
+        <div class="jumbotron">
+            <div class="container">
+                &nbsp;
+            </div>
+        </div>
+
+        <section id="faq_main">
+            <div class="container">
+                <header>
+                    <h1>Questions and Answers</h1>
+                </header>
+                <article id="content">
+                    <h4 id="Q1" class="question">
+                        Q1. How is the Dual Aperture camera different from conventional ones?
+                    </h4>
+                    <p id="A1" class="answer">
+                        The Dual Aperture camera uses a 4-color sensor to capture both visible and infrared 
+                        spectrum data to generate an image with accurate depth information.
+                    </p>
+                    <h4 id="Q2" class="question">
+                        Q2. What is a 4-color sensor?
+                    </h4>
+                    <p id="A2" class="answer">
+                        A 4-color sensor utilizes 4 pixel types: red, green, blue and infrared. The RGB pixels 
+                        capture visual light spectrum data and are used to create a conventional RGB image. 
+                        Infrared pixels capture infrared light spectrum data and are used to enhance the image's 
+                        sharpness. Differences in sharpness between the two data sets are used to estimate the 
+                        depth of objects in the image. 
+                    </p>
+                    <h4 id="Q3" class="question">
+                        Q3. Why Dual Aperture?
+                    </h4>
+                    <p id="A3" class="answer">
+                        The Dual Aperture camera has two apertures – one for visible light and one for Infrared 
+                        light; however, the infrared aperture is narrower than the visible light aperture. This 
+                        difference creates a disparity in focus between the RGB and Infrared images that can then 
+                        be used to measure the depth of an object in an image.
+                    </p>
+                    <h4 id="Q4" class="question">
+                        Q4. What are the key benefits?
+                    </h4>
+                    <p id="A4" class="answer">
+                        A Dual Aperture camera can capture the 3-Dimensional depth information of objects in an 
+                        image. The 3D depth information can be used to:
+                        <ol>
+                            <li>Refocus the image after the picture is taken</li>
+                            <li>Generate a 3D image for 3D TVs</li>
+                            <li>Track 3D gestures</li>
+                        </ol>
+                    </p>
+                    <h4 id="Q5" class="question">
+                        Q5. How does Dual Aperture estimate 3D depth?
+                    </h4>
+                    <p id="A5" class="answer">
+                        The infrared and RGB color components are each focused differently according to the 
+                        depth of the objects in the image. By using these differences, it is possible to estimate 
+                        depth at each pixel without aligning the IR and RGB data.
+                    </p>
+                    <h4 id="Q6" class="question">
+                        Q6. How is refocusing achieved? 
+                    </h4>
+                    <p id="A6" class="answer">
+                        Depth measurement enables the camera’s software to refocus the image without
+                        compromising the resolution, which it would in light-filed cameras. This creates several 
+                        advantages for the DA camera, including the ability to adjust the depth of field and the 
+                        amount of blur. 
+                    </p>
+                    <h4 id="Q7" class="question">
+                        Q7. How can 3D gestures be recognized?
+                    </h4>
+                    <p id="A7" class="answer">
+                        The Dual Aperture camera uses depth information to filter out unwanted movements in 
+                        the background/foreground, e.g. fingers in front of face, that would normally confuse 2D 
+                        gesture-tracking algorithms. It is also possible to recognize gestures that have variable 
+                        depth information, e.g. back and forth movements, in order to further enhance the user 
+                        experience. 
+                    </p>
+                    <h4 id="Q8" class="question">
+                        Q8. What are the advantages of DA approach vs. other gesture tracking 
+                        devices like Kinect or Leap Motion?
+                    </h4>
+                    <p id="A8" class="answer">
+                        Kinect and Leap Motion systems require multiple sensors with elaborate LED lighting 
+                        sources. The Dual Aperture system requires only a single sensor using ambient light 
+                        sources, which make it possible to implement gesture tracking in small form factor
+                        cameras, e.g. mobile device cameras. The DA system also works under direct, bright
+                        sunlight (unlike Kinect) and captures high quality color images (like conventional 
+                        cameras).
+                    </p>
+                    <h4 id="Q9" class="question">
+                        Q9. How does DA's image quality compare to other Bayer pattern 
+                        sensor cameras?
+                    </h4>
+                    <p id="A9" class="answer">
+                        The Dual Aperture enables image capture that is on par with Bayer pattern sensor equipped 
+                        cameras with similar specifications (in number of pixels, noise levels, and 
+                        color quality). 
+                    </p>
+                    <h4 id="Q10" class="question">
+                        Q10. How is image sharpening or noise reduction achieved?
+                    </h4>
+                    <p id="A10" class="answer">
+                        The infrared color component can capture additional sharpness information on top of 
+                        the RGB. This information can then be used to either sharpen the 
+                        image or be used in noise-reduction algorithms that are applied to the image.
+                    </p>
+                    <h4 id="Q11" class="question">
+                        Q11. Is the DA camera different from traditional cameras in terms of 
+                        manufacturing?
+                    </h4>
+                    <p id="A11" class="answer">
+                        The Dual Aperture camera utilizes the same form factor used in most traditional cameras, 
+                        even for mobile devices. The only change to the manufacturing process is to use 2 
+                        apertures for the optical lens. The visual aperture is the same as the one used in a 
+                        traditional camera and the IR aperture is created by opening a small hole in the IR filter. 
+                    </p>
+                    <h4 id="Q12" class="question">
+                        Q12. Are there any cost advantages or disadvantages compared to other 
+                        similar multi-utility cameras? 
+                    </h4>
+                    <p id="A12" class="answer">
+                        The Dual Aperture camera has lower manufacturing costs when compared to other 
+                        similar depth measurement technologies that require additional sensors, special infrared 
+                        light sources, and complex computing for image alignment.
+                    </p>
+                    <h4 id="Q13" class="question">
+                        Q13. What are the power consumption and computing requirements for 
+                        the DA camera? Can it be used in low power mobile devices?
+                    </h4>
+                    <p id="A13" class="answer">
+                        The Dual Aperture camera has the same power consumption requirements as a 
+                        conventional camera when capturing an image; however, generating depth
+                        information does require additional processing in the main processor (AP) of 
+                        mobile devices. For gesture tracking, DA maintains low power and computing by using minimum pixels and video 
+                        frame rate.
+                    </p>
+                    <h4 id="Q14" class="question">
+                        Q14. What types of applications are best suited for the DA camera?
+                    </h4>
+                    <p id="A14" class="answer">
+                        Dual Aperture is well suited for mobile applications that incorporate photography and 
+                        gesture control. There are also use cases that extend to controlling TVs via gestures and 
+                        enhancing safety in automobiles.
+                    </p>
+                    <h4 id="Q15" class="question">
+                        Q15. Does DA make the camera? What does DA provide?
+                    </h4>
+                    <p id="A15" class="answer">
+                        Dual Aperture does not manufacture the actual cameras. DA provides licenses to sensor 
+                        and camera manufacturers to manufacture the camera as well as the software algorithms 
+                        involved in touch refocus, 3D images, 3D depth estimation, and image enhancement,.
+                    </p>
+                    <h4 id="Q16" class="question">
+                        Q16. Is the DA sensor available?
+                    </h4>
+                    <p id="A16" class="answer">
+                        Yes. A 3.2M pixel mobile sensor sample is currently available. Other resolution sensors are 
+                        currently under development and will be made available in 2014.
+                    </p>
+                    <h4 id="Q17" class="question">
+                        Q17. When will the first camera prototype be available? For which 
+                        platforms?
+                    </h4>
+                    <p id="A17" class="answer">
+                        The first camera prototype will be available in Q1 2014 as a standalone USB camera.
+                    </p>
+                    <h4 id="Q18" class="question">
+                        Q18. What can consumers expect from the DA camera?
+                    </h4>
+                    <p id="A18" class="answer">
+                        They can expect to be able to capture regular pictures and manipulate the depth 
+                        information via various photograph applications.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+
+    </main>
+
+    <footer>
+        <% include ../partials/footer %>
+    </footer>
+
+    <div class="modal fade" id="portraitModal" tabindex="-1" role="dialog" aria-labelledby="portraitModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title member_name"></h4>
+                    <h4 class="modal-title company_title"></h4>
+                </div>
+                <div class="modal-body">
+                    <p>hello</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <% include ../partials/scripts %>
+    
+</body>
+</html>
