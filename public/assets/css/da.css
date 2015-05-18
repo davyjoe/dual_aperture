@@ -48,6 +48,9 @@ a:hover {
   background-size: 100%;
   color: #FFF;
 }
+.jumbotron.min {
+  padding-top: 32px;
+}
 
 .jumbotron h1 {
   font-weight: 300;
@@ -107,11 +110,45 @@ a:hover {
   border-color: #0075B5;
 }
 
+#team .text-center {
+  padding-top: 30px;
+  padding-bottom: 10px;
+}
+
+#advisors {
+  padding-bottom: 20px;
+}
+
+#offices {
+  padding-bottom: 50px;
+}
+
+#press_releases {
+  padding-bottom: 20px;  
+}
+
+#faq_main .panel-group {
+  margin-top: 12px;
+}
+
+#faq_main .panel-group .panel {
+  margin-top: 4px;
+}
+
+#faq_main .panel-title a:link,
+#faq_main .panel-title a:visited,
+#faq_main .panel-title a:hover,
+#faq_main .panel-title a:active {
+  color: #FFF;
+  text-decoration: none;
+}
+
 footer {
   font-size: 12px;
   padding-top: 50px;
   background-color: #0075B5;
   color: #535456;
+  border-bottom: 64px solid #ccc;
 }
 
 footer h5 {
@@ -141,4 +178,49 @@ footer a {
 footer a:hover {
   color: #fff;
   text-decoration: underline;
+}
+
+.tools {
+  position: fixed;
+  bottom: 10px;
+  right: -52px;
+}
+
+.tools ul {
+  list-style-type: none;
+  margin-bottom: 0;
+}
+
+.tools li {
+  position: relative;
+  display: block;
+  float: left;
+  padding-right: 10px;
+}
+
+.tools a {
+  display: block;
+  width: 42px;
+  height: 42px;
+  background-color: #ccc;
+  background-color: rgba(0,0,0,.4);
+}
+
+.tools a:link,
+.tools a:visited {
+  color: #fff;
+}
+
+.tools a:hover {
+  background-color: rgba(0,0,0,.8);
+}
+
+.tools a i {
+  position: absolute;
+  top: 6px;
+  left: 7px;
+}
+
+.tools a i.fa-toggle-up {
+  left: 9px;
 }

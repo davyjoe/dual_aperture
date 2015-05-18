@@ -19,49 +19,35 @@
         </div>
 
         <div class="container">
-          <div class="row">
-            <div class="col-md-4">
-              <h2>The Technology</h2>
-              <p>3D image capturing and other imaging enhancements create a multi-functional, low cost smart sensor technology that can be integrated into many consumer, automotive, and industrial products.</p>
-              <p><a class="btn btn-default" href="#" role="button">Learn More &raquo;</a></p>
-            </div>
-            <div class="col-md-4">
-              <h2>Heading</h2>
-              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-              <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-           </div>
-            <div class="col-md-4">
-              <h2>Heading</h2>
-              <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-              <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col-md-12">
-              <div class="panel panel-default subscribe" id="subscribe">
-                <div class="panel-body">
-                  <p class="lead text-center">Subscribe to our newsletter!</p>
-                  <p class="text-center">Enter your email address below to receive updates on the latest developments for our product.</p>
-                  <form id="contactForm" class="form-inline text-center" action="contact" method="POST">
-                    <div class="form-group form-group-lg">
-                      <label class="sr-only" for="emailInput">Email address</label>
-                      <input type="email" class="form-control" id="emailInput" name="email" placeholder="Enter email">
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-lg">
-                      <span class="glyphicon glyphicon-check" aria-hidden="true"></span> Subscribe
-                    </button>
-                  </form>
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                    <h2>The Technology</h2>
+                    <p>3D image capturing and other imaging enhancements create a multi-functional, low cost smart sensor technology that can be integrated into many consumer, automotive, and industrial products.</p>
+                    <p><a class="btn btn-default" href="#" role="button">Learn More &raquo;</a></p>
                 </div>
-              </div>
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                    <h2>Heading</h2>
+                    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+                    <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+             </div>
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                    <h2>Heading</h2>
+                    <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+                    <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+                </div>
             </div>
-          </div>
+
+            <% include ../partials/subscr %>
+
         </div>
+
     </main>
 
     <footer>
         <% include ../partials/footer %>
     </footer>
+
+    <% include ../partials/tools %>
 
     <% include ../partials/scripts %>
     
