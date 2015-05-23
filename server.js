@@ -54,15 +54,15 @@ app.get('/blog_posts', function(req, res) {
 var transporter = nodemailer.createTransport({
     service: 'Gmail',
     auth: {
-        user: 'some-email@gmail.com',
-        pass: 'S3cr37'
+        user: 'noreply@dual-aperture.com',
+        pass: 'ycha2784'
     }
 });
 app.post('/contact', function (req, res) {
     var mailOpts = {
-        from: 'no-reply@dual-aperture.com',
-        to: 'some-email@gmail.com',
-        subject: 'Dual-Aperture Subscription',
+        from: 'noreply@dual-aperture.com',
+        to: 'davyjoe@gmail.com',
+        subject: 'Dual-Aperture Subscription Request Submitted',
         text: 'email: ' + req.body.email
     };
     transporter.sendMail(mailOpts, function(error, response){

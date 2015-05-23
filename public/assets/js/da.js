@@ -70,16 +70,15 @@
     }
 
     function enableAjaxContactForm() {
-        var form = $('#contactForm');
+        var cform = $('#contactForm');
 
-        form.submit(function(e){
-            $.post(form.attr('action'), $('#contactForm').serialize(), function(data){
+        cform.submit(function(e){
+            $.post(cform.attr('action'), $('#contactForm').serialize(), function(data){
                 console.log(data);
                 if (data.success){
                     alert('Thanks for subscribing!');
-                    form.reset();
+                    cform[0].reset();
                 }
-
             }, 'json');
 
             e.preventDefault();

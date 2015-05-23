@@ -110,9 +110,15 @@ a:hover {
   border-color: #0075B5;
 }
 
-#team .text-center {
+#team .bio {
   padding-top: 30px;
   padding-bottom: 10px;
+  text-align: center;
+  height: 310px;
+}
+
+#team .bio img {
+  width: 157px;
 }
 
 #advisors {
@@ -139,7 +145,6 @@ a:hover {
 #faq_main .panel-title a:visited,
 #faq_main .panel-title a:hover,
 #faq_main .panel-title a:active {
-  color: #FFF;
   text-decoration: none;
 }
 
