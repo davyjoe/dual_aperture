@@ -41,7 +41,8 @@ a:hover {
 }
 
 .jumbotron {
-  padding-top: 108px;
+  padding-top: 48px;
+  padding-bottom: 0;
   background-image: url(/assets/DA_background1.jpg);
   background-repeat: no-repeat;
   background-color: #535456;
@@ -49,7 +50,33 @@ a:hover {
   color: #FFF;
 }
 .jumbotron.min {
-  padding-top: 32px;
+  padding: 32px 15px 26px;
+}
+
+@media screen and (min-width: 768px) {
+  .jumbotron {
+    padding-top: 108px;
+    padding-bottom: 30px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .jumbotron h1 {
+    font-size: 42px;
+  }
+}
+
+@media (max-width: 480px) {
+  .jumbotron h1 {
+    font-size: 24px;
+  }
+  .jumbotron p {
+    font-size: 16px;    
+  }
+}
+
+.jumbotron .container {
+  text-align: center;
 }
 
 .jumbotron h1 {
@@ -70,20 +97,40 @@ a:hover {
 }
 
 .navbar-default .navbar-nav > li > a {
-  color: #B5CAE0;
-  font-weight: bold;
-  text-shadow: 0 1px 0 rgba(0,0,0,.25)
-}
-.navbar-default .navbar-nav > li > a:hover {
-  color: #FFF;
-}
-
-.navbar-default.scrolled .navbar-nav > li > a {
   color: #0075B5;
+  font-weight: bold;
   text-shadow: 0 1px 0 rgba(255,255,255,.25)
 }
-.navbar-default.scrolled .navbar-nav > li > a:hover {
+.navbar-default .navbar-nav > li > a:hover {
   color: #535456;
+}
+
+.navbar-default .navbar-collapse {
+  background-color: #FFF;
+}
+
+@media screen and (min-width: 768px) {
+  .navbar-default .navbar-nav > li > a {
+    color: #B5CAE0;
+    font-weight: bold;
+    text-shadow: 0 1px 0 rgba(0,0,0,.25)
+  }
+  .navbar-default .navbar-nav > li > a:hover {
+    color: #FFF;
+  }
+
+  .navbar-default.scrolled .navbar-nav > li > a {
+    color: #0075B5;
+    text-shadow: 0 1px 0 rgba(255,255,255,.25)
+  }
+  .navbar-default.scrolled .navbar-nav > li > a:hover {
+    color: #535456;
+  }
+
+  .navbar-default .navbar-collapse {
+    background-color: transparent;
+  }
+
 }
 
 @media (min-width:768px){
@@ -153,7 +200,6 @@ footer {
   padding-top: 50px;
   background-color: #0075B5;
   color: #535456;
-  border-bottom: 64px solid #ccc;
 }
 
 footer h5 {
@@ -228,4 +274,18 @@ footer a:hover {
 
 .tools a i.fa-toggle-up {
   left: 9px;
+}
+
+.videoWrapper {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+}
+
+.videoWrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }

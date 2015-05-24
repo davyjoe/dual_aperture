@@ -76,7 +76,8 @@
             $.post(cform.attr('action'), $('#contactForm').serialize(), function(data){
                 console.log(data);
                 if (data.success){
-                    alert('Thanks for subscribing!');
+                    //alert('Thanks for subscribing!');
+                    $("#daSubscribed").modal('show');
                     cform[0].reset();
                 }
             }, 'json');
@@ -85,9 +86,22 @@
         });
     }
 
+    function initAndSyncCarousel(){
+        var da = $('#carousel-da').carousel(); // "main" carousel; all controls toggle this one
+        var ps = $('#carousel-ps').carousel({ interval: false });
+        var sa = $('#carousel-sa').carousel({ interval: false });
+
+        da.on('slide.bs.carousel', function (event) {
+            // synch toggle with others
+            ps.carousel(event.direction === 'right' ? 'prev' : 'next');
+            sa.carousel(event.direction === 'right' ? 'prev' : 'next');
+        });
+    }
+
     function init(){
         enableAjaxContactForm();
         enableToolButtons();
+        initAndSyncCarousel();
     }
 
     $(init);
