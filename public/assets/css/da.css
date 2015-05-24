@@ -52,13 +52,50 @@ a:hover {
 .jumbotron.min {
   padding: 32px 15px 26px;
 }
+/*
+@media screen and (min-width: 640px) {
+  .jumbotron {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+}
 
 @media screen and (min-width: 768px) {
   .jumbotron {
-    padding-top: 108px;
-    padding-bottom: 30px;
+    padding-top: 144px;
+    padding-bottom: 144px;
   }
 }
+
+@media screen and (min-width: 1024px) {
+  .jumbotron {
+    padding-top: 208px;
+    padding-bottom: 208px;
+  }
+}
+*/
+
+@media screen and (min-width: 480px) {
+  .jumbotron {
+    padding-top: 9%;
+    padding-bottom: 4%;
+  }
+}
+
+@media screen and (min-width: 640px) {
+  .jumbotron {
+    padding-top: 14%;
+    padding-bottom: 12%;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .jumbotron {
+    padding-top: 20%;
+    padding-bottom: 16%;
+  }
+}
+
 
 @media (max-width: 1024px) {
   .jumbotron h1 {
