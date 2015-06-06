@@ -1,0 +1,13 @@
+<article id="post_<%= article.id %>" data-article-id="<%= article.id %>">
+    <h3 class="aTitle"><a href="/blog/<%= article.id %>"><%- article.title %></a></h3>
+    <div class="aBody"><%- article.body %></div>
+    <% if (user) { %>
+        <div class="adminLinks">
+            <button type="button" class="btn btn-info btn-xs aEdit">Edit</button>
+            <button type="button" class="btn btn-danger btn-xs aDelete">Delete</button>
+        </div>
+    <% } %>
+    <!-- 
+    <iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fsignup.dual-aperture.com%2Fblog_posts&amp;width=400px&amp;layout=standard&amp;action=like&amp;show_faces=true&amp;share=true&amp;height=80" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:400px; height:40px;" allowTransparency="true"></iframe>
+    -->
+</article>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <% include ../partials/head %>
+
+</head>
+<body>
+
+    <% include ../partials/header %>
+
+    <main>
+
+        <div class="jumbotron min"></div>
+
+        <div class="container">
+            <section id="blog_posts">
+
+                <% if (user) { %>
+                    <div class="row">
+                        <div class="col-md-12 text-right">
+                            <button type="button" class="btn btn-success" id="aCreate">Create Article</button>
+                            <button type="button" class="btn btn-default" id="aLogout">Logout</button>
+                        </div>
+                    </div>
+                <% } %>
+
+                <% articles.forEach( function(article, i){ %>
+                    <% if (i > 0) { %>
+                        <hr />
+                    <% } %>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <% include ../partials/article %>
+                        </div>
+                    </div>
+                <% }) %>
+
+            </section>
+
+            <% include ../partials/subscr %>
+
+        </div>
+    </main>
+
+    <footer>
+        <% include ../partials/footer %>
+    </footer>
+
+    <% if (user) { %>
+        <% include ../partials/blog_edit_modal %>
+    <% } else { %>
+        <% include ../partials/blog_login_modal %>
+    <% } %>
+
+    <% include ../partials/tools %>
+
+    <% include ../partials/scripts %>
+
+    <script src="/assets/js/blog.js"></script>
+    
+</body>
+</html>

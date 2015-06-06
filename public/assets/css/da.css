@@ -326,3 +326,15 @@ footer a:hover {
   width: 100%;
   height: 100%;
 }
+
+.adminLinks {
+  padding-top: 10px;
+}
+
+#article-body {
+  height: 200px;
+}
+
+#emailInput:invalid {
+  border: 1px solid red;
+}
