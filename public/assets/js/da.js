@@ -7,6 +7,10 @@
     function init(){
         enableAjaxContactForm();
         enableToolButtons();
+
+        $("#aLogout").click(function(){
+            window.location.href = "/logout";
+        });
     }
 
     function enableNavScrollJump(){
@@ -83,19 +87,24 @@
         cform.submit(function(e){
             e.preventDefault();
 
+            $("#btnSubscribe").prop("disabled", true);
+
             // ensure we have an email
             var emailInputElem = $("#emailInput");
-            if (emailInputElem.val() === '' || !$("#emailInput").is(":valid")){
+            if (emailInputElem.val() === '' || !emailInputElem.is(":valid")){
                 emailInputElem.focus();
                 return false;
             }
 
             // post via AJAX
-            $.post(cform.attr('action'), $('#contactForm').serialize(), function(data){
-                console.log(data);
+            $.post(cform.attr('action'), cform.serialize(), function(data){
                 if (data.success){
+                    $("#btnSubscribe").prop("disabled", false);
                     $("#daSubscribed").modal('show');
                     cform[0].reset();
+                } else {
+                    alert(data.error);
+                    console.log(data.response);
                 }
             }, 'json');
         });

@@ -17,6 +17,10 @@
                 <li><a href="/press">Press</a></li>
                 <li><a href="/faq">FAQ</a></li>
                 <li><a href="/blog_posts">Blog</a></li>
+                <% if (user) { %>
+                    <li><a href="/manage">Manage</a></li>
+                    <li><a href="/logout">Logout</a></li>
+                <% } %>
             </ul>
         </div>
     </div>

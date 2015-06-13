@@ -6,7 +6,6 @@
     function init(){
         initAndSyncCarousel();
         enableArticleManager();
-        enableLogin();
     }
 
     function initAndSyncCarousel(){
@@ -45,10 +44,12 @@
                 if (data.success){
                     window.location.href = window.location.pathname;
                 } else {
+                    $("#btnArticleSave").prop("disabled", false);
                     console.log(data, textStatus, jqXHR);
                 }
             },
             fail: function(jqXHR, textStatus, errorThrown){
+                $("#btnArticleSave").prop("disabled", false);
                 console.log(textStatus, errorThrown);
             }
         };
@@ -83,6 +84,8 @@
         aForm.submit(function(event){
             event.preventDefault();
 
+            $("#btnArticleSave").prop("disabled", true);
+
             var aId = articleFormModal.data("articleId");
 
             if (aId === -1){
@@ -110,57 +113,6 @@
 
         $("#btnArticleSave").click(function(){
             aForm.submit();
-        });
-    }
-
-    function enableLogin() {
-
-        var loginFormModal = $('#loginModal');
-        loginFormModal.modal({
-            backdrop: "static",
-            show: false
-        });
-
-        // login button only shown if url has ?manage
-        if (window.location.search.indexOf("manage") > -1){
-            loginFormModal.modal("show");
-        }
-
-        var handlers = {
-            done: function(data, textStatus, jqXHR){
-                if (data.success){
-                    window.location.reload();
-                } else {
-                    //console.log(data, textStatus, jqXHR);
-                    $("<div>").addClass("alert alert-danger").html(data.error).insertBefore($("#loginForm"));
-                }
-            },
-            fail: function(jqXHR, textStatus, errorThrown){
-                console.log(textStatus, errorThrown);
-            }
-        };
-
-        // form in modal
-        var bForm = $("#loginForm");
-        bForm.submit(function(event){
-            event.preventDefault();
-
-            $.ajax({
-                url: "/login", 
-                method: "POST",
-                data: bForm.serialize(),
-                dataType: "json"
-            })
-            .done(handlers.done)
-            .fail(handlers.fail);
-        });
-
-        $("#btnLoginSubmit").click(function(){
-            bForm.submit();
-        });
-
-        $("#aLogout").click(function(){
-            window.location.href = "/logout";
         });
     }
 

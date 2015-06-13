@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <% include ../partials/head %>
+
+</head>
+<body>
+
+    <% include ../partials/header %>
+
+    <main>
+
+        <div class="jumbotron min"></div>
+
+        <div class="container">
+            <section id="login">
+                <div class="row">
+                    <header>
+                        <div class="col-md-12">
+                            <h1>LOGIN</h1>
+                        </div>
+                    </header>
+                </div>
+
+                <form id="loginForm" class="form-horizontal">
+                    <div class="form-group">
+                        <label for="username" class="col-sm-2 control-label">Username:</label>
+                        <div class="col-sm-3">
+                            <input type="text" name="username" class="form-control" id="username">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="col-sm-2 control-label">Password:</label>
+                        <div class="col-sm-3">
+                            <input type="password" name="password" class="form-control" id="password">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-3">
+                            <button type="submit" class="btn btn-primary" id="btnLoginSubmit">Submit</button>
+                        </div>
+                    </div>
+                </form>
+
+            </section>
+        </div>
+
+    </main>
+
+    <footer>
+        <% include ../partials/footer %>
+    </footer>
+
+    <% include ../partials/tools %>
+
+    <% include ../partials/scripts %>
+
+    <script src="/assets/js/login.js"></script>
+
+</body>
+</html>

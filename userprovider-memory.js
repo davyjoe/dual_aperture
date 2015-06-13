@@ -1,7 +1,8 @@
 function UserProvider(){}
 
 UserProvider.prototype.dummyUsers = [
-    { id: 1, username: 'david', password: 'pass', email: 'davyjoe@gmail.com' }
+    { id: 1, username: 'admin', password: 'dualap2015', email: 'youngcha@gmail.com' },
+    { id: 2, username: 'david', password: 'passme', email: 'davyjoe@gmail.com' }
 ];
 
 UserProvider.prototype.findById = function (id, callback) {
@@ -9,7 +10,7 @@ UserProvider.prototype.findById = function (id, callback) {
     if (this.dummyUsers[idx]) {
         callback(null, this.dummyUsers[idx]);
     } else {
-        callback(new Error('User ' + id + ' does not exist'));
+        callback(new Error('Invalid credentials. Please try again.'));
     }
 };
 
