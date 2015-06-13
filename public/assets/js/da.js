@@ -1,6 +1,18 @@
 
 (function(window, $) {
 
+    $(init);
+    $(window).load(enableNavScrollJump);
+
+    function init(){
+        enableAjaxContactForm();
+        enableToolButtons();
+
+        $("#aLogout").click(function(){
+            window.location.href = "/logout";
+        });
+    }
+
     function enableNavScrollJump(){
 
         var nav = $("#mainNav");
@@ -73,39 +85,29 @@
         var cform = $('#contactForm');
 
         cform.submit(function(e){
-            $.post(cform.attr('action'), $('#contactForm').serialize(), function(data){
-                console.log(data);
+            e.preventDefault();
+
+            $("#btnSubscribe").prop("disabled", true);
+
+            // ensure we have an email
+            var emailInputElem = $("#emailInput");
+            if (emailInputElem.val() === '' || !emailInputElem.is(":valid")){
+                emailInputElem.focus();
+                return false;
+            }
+
+            // post via AJAX
+            $.post(cform.attr('action'), cform.serialize(), function(data){
                 if (data.success){
-                    //alert('Thanks for subscribing!');
+                    $("#btnSubscribe").prop("disabled", false);
                     $("#daSubscribed").modal('show');
                     cform[0].reset();
+                } else {
+                    alert(data.error);
+                    console.log(data.response);
                 }
             }, 'json');
-
-            e.preventDefault();
         });
     }
-
-    function initAndSyncCarousel(){
-        var da = $('#carousel-da').carousel(); // "main" carousel; all controls toggle this one
-        var ps = $('#carousel-ps').carousel({ interval: false });
-        var sa = $('#carousel-sa').carousel({ interval: false });
-
-        da.on('slide.bs.carousel', function (event) {
-            // synch toggle with others
-            ps.carousel(event.direction === 'right' ? 'prev' : 'next');
-            sa.carousel(event.direction === 'right' ? 'prev' : 'next');
-        });
-    }
-
-    function init(){
-        enableAjaxContactForm();
-        enableToolButtons();
-        initAndSyncCarousel();
-    }
-
-    $(init);
-
-    $(window).load(enableNavScrollJump);
 
 })(this, this.jQuery);

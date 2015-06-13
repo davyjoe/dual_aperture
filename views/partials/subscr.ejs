@@ -4,12 +4,12 @@
             <div class="panel-body">
                 <p class="lead text-center">Subscribe to our newsletter!</p>
                 <p class="text-center">Enter your email address below to receive updates on the latest developments for our product.</p>
-                <form id="contactForm" class="form-inline text-center" action="contact" method="POST">
+                <form id="contactForm" class="form-inline text-center" action="subscribe" method="POST">
                     <div class="form-group form-group-lg">
-                        <label class="sr-only" for="emailInput">Email address</label>
-                        <input type="email" class="form-control" id="emailInput" name="email" placeholder="Enter email">
+                        <label class="sr-only" for="email">Email address</label>
+                        <input type="email" class="form-control" id="emailInput" name="email" placeholder="Enter email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" value="" />
                     </div>
-                    <button type="submit" class="btn btn-primary btn-lg">
+                    <button type="submit" class="btn btn-primary btn-lg" id="btnSubscribe">
                         <span class="glyphicon glyphicon-check" aria-hidden="true"></span> Subscribe
                     </button>
                 </form>

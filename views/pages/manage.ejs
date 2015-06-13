@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <% include ../partials/head %>
+
+</head>
+<body>
+
+    <% include ../partials/header %>
+
+    <main>
+
+        <div class="jumbotron min"></div>
+
+        <div class="container">
+            <section id="manage">
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <h2>Subscribers</h2>
+                    </div>
+                </div>
+
+                <% subscribers.forEach( function(subscriber, i){ %>
+                    <div class="row">
+                        <div class="col-md-12 subscriber-email">
+                            <button type="button" class="close sDelete pull-left" aria-label="Delete" data-subscriber-id="<%= subscriber.id %>" style="margin-right: 10px;"><span aria-hidden="true">&times;</span></button> 
+                            <span class="subscriber"><%= subscriber.emailaddr %></span>
+                        </div>
+                    </div>
+                <% }) %>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <br/>
+                        <button type="button" class="btn btn-success btn-xs" id="aAdd">
+                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                            Add Email
+                        </button>
+                    </div>
+                </div>
+
+                <hr />
+
+                <div class="row">
+                    <div class="col-md-12" style="padding-top: 20px; padding-bottom: 50px;">
+                        <textarea rows="6" style="width: 100%;"><%= emaillist.join(', ') %></textarea>
+                    </div>
+                </div>
+
+            </section>
+
+        </div>
+    </main>
+
+    <footer>
+        <% include ../partials/footer %>
+    </footer>
+
+    <% include ../partials/subscriber_add_modal %>
+
+    <% include ../partials/tools %>
+
+    <% include ../partials/scripts %>
+
+    <script src="/assets/js/manage.js"></script>
+    
+</body>
+</html>
