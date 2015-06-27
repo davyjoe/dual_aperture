@@ -194,15 +194,15 @@ a:hover {
   border-color: #0075B5;
 }
 
-#team .bio {
+.team .bio {
   padding-top: 30px;
   padding-bottom: 10px;
   text-align: center;
   height: 310px;
 }
 
-#team .bio img {
-  width: 157px;
+.team .bio img {
+  width: 198px;
 }
 
 #advisors {
@@ -215,6 +215,10 @@ a:hover {
 
 #press_releases {
   padding-bottom: 20px;  
+}
+
+#press_releases .continue_reading[aria-expanded="true"]{
+  display: none;
 }
 
 #faq_main .panel-group {

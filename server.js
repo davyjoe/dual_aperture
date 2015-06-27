@@ -307,6 +307,14 @@ app.post('/subscribe', urlencodedParser, function (req, res) {
                 return;
             }
 
+            // confirmation email can be supressed in manage page
+            if (!req.param('sendConf')){
+                res.json({
+                    success: true
+                });
+                return;
+            }
+
             var mailOpts = {
                 from: 'noreply@dual-aperture.com',
                 to: subscriberEmail,
