@@ -2,7 +2,7 @@
 (function(window, $) {
 
     $(init);
-    $(window).load(enableNavScrollJump);
+    //$(window).load(enableNavScrollJump);
 
     function init(){
         enableAjaxContactForm();
