@@ -10,6 +10,7 @@
     <% include ../partials/header %>
 
     <main>
+        <!--
         <div class="jumbotron">
             <div class="container">
                 <h1>A NEW HORIZON IS COMING...</h1>
@@ -17,33 +18,36 @@
                 <p><a class="btn btn-primary btn-lg" href="#subscribe" role="button">Subscribe &raquo;</a></p>
             </div>
         </div>
+        -->
+
+        <div style="margin-top: 80px;">
+            <video id="dualApertureMovie" width="100%" preload autoplay controls>
+                <source src="https://embed-ssl.wistia.com/deliveries/bab6218608a16cd37338311bf7f40b1befb46a1c/file.mp4" />
+            </video>
+        </div>
 
         <div class="container">
-            <% if (user) { %>
-                <div class="row">
-                    <div class="col-md-12 text-right">
-                        <button type="button" class="btn btn-default" id="aLogout">Logout</button>
-                    </div>
-                </div>
-            <% } %>
-
+            <!--
             <div class="row">
+
                 <div class="col-sm-0 col-md-2"></div>
-                <div class="col-sm-12 col-md-8">
+                    <div class="col-sm-12 col-md-8">
 
-                    <div class="videoWrapper">
+                        <div class="videoWrapper">
 
-                        <iframe src="//fast.wistia.net/embed/iframe/wf3lnzbuq9"
-                            allowtransparency="true" frameborder="0" scrolling="no"
-                            class="wistia_embed" name="wistia_embed" allowfullscreen
-                            mozallowfullscreen webkitallowfullscreen oallowfullscreen
-                            msallowfullscreen width="640" height="360"></iframe>
+                            <iframe src="//fast.wistia.net/embed/iframe/wf3lnzbuq9"
+                                allowtransparency="true" frameborder="0" scrolling="no"
+                                class="wistia_embed" name="wistia_embed" allowfullscreen
+                                mozallowfullscreen webkitallowfullscreen oallowfullscreen
+                                msallowfullscreen width="640" height="360"></iframe>
+
+                        </div>
 
                     </div>
-
+                    <div class="col-sm-0 col-md-2"></div>
                 </div>
-                <div class="col-sm-0 col-md-2"></div>
             </div>
+            -->
 
             <% include ../partials/subscr %>
 

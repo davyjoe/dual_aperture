@@ -124,13 +124,23 @@ app.get('/press', function(req, res) {
     });
 });
 
+// careers page 
+app.get('/careers', function(req, res) {
+    res.render('pages/careers', {
+        title : 'Dual Aperture International - Careers',
+        user: req.user
+    });
+});
+
 // blog posts  TODO: replace with NEW blog posts page
+/*
 app.get('/blog_posts', function(req, res) {
     res.render('pages/blog_posts', {
         title : 'Dual Aperture International - Blog',
         user: null
     });
 });
+*/
 
 
 /////// NEW
