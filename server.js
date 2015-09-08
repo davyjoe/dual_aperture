@@ -8,10 +8,11 @@ var nodemailer = require('nodemailer');
 //var pg = require('pg');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
+//var userProvider = require('./userprovider-memory'); // DB LOCAL
+var userProvider = require('./userprovider-pg'); // POSTGRESQL
+var subscribedProvider = require('./subscribedprovider-pg'); // POSTGRESQL
 //var articleProvider = require('./articleprovider-memory'); // DB LOCAL
 var articleProvider = require('./articleprovider-pg'); // POSTGRESQL
-var userProvider = require('./userprovider-memory'); // DB LOCAL
-var subscribedProvider = require('./subscribedprovider-pg'); // POSTGRESQL
 
 var app = express();
 
@@ -51,7 +52,7 @@ passport.use(new LocalStrategy(
             userProvider.findByUsername(username, function(err, user) {
                 if (err) { return done(err); }
                 if (!user) { return done(null, false, { message: 'Unknown user ' + username }); }
-                if (user.password != password) { return done(null, false, { message: 'Invalid password' }); }
+                if (user.password !== password) { return done(null, false, { message: 'Invalid password' }); }
                 return done(null, user);
             })
         });
@@ -148,7 +149,7 @@ app.get('/blog_posts', function(req, res) {
 // login page 
 app.get('/login', function(req, res) {
     if (req.user) {
-        res.redirect('/manage');
+        res.redirect(req.user.role === "admin" ? '/manage' : '/profile');
     }
 
     res.render('pages/login', {
@@ -180,27 +181,74 @@ app.get('/logout', function(req, res){
   res.redirect('/login');
 });
 
-// manage page (shown after login)
+// user profile page (shown after non-admin login)
+app.get('/profile', function(req, res, next) {
+    if (!req.user) {
+        res.redirect('/login');
+        return;
+    }
+
+    subscribedProvider.findByEmail( req.user.email, function(err, result){
+        if (err) { return next(err); }
+
+        res.render('pages/profile', {
+            title : 'Dual Aperture International - User Profile',
+            user: req.user,
+            subscribed: result
+        });
+    });
+});
+
+// manage page (shown after admin login)
 app.get('/manage', function(req, res, next) {
     if (!req.user) {
         res.redirect('/login');
         return;
     }
 
+    // redirect to profile page if non-admin user tries to access
+    if (req.user.role !== "admin"){
+        res.redirect('/profile');
+    }
+
+    // assemble result of two queries
+    var model = {
+        title: 'Dual Aperture International - Manage',
+        user: req.user,
+        subscribers: null, // from q1
+        da_users: null // from q2
+    };
+
+    // called after each query result
+    function finish(){
+        if (!model.subscribers || !model.da_users) {
+            // not done yet! wait for next call
+            return;
+        }
+
+        // generate subscriber emaillist string (for textarea)
+        model.emaillist = model.subscribers.map(function(item){ return item.emailaddr; });
+
+        res.render('pages/manage', model);
+    }
+
+    // q1
     subscribedProvider.findAll( function(err, result){
         if (err) { return next(err); }
+        model.subscribers = result || [];
+        finish();
+    });
 
-        res.render('pages/manage', {
-            title : 'Dual Aperture International - Manage',
-            subscribers : result,
-            emaillist : result.map(function(item){ return item.emailaddr; }),
-            user: req.user
-        });
+    // q2
+    userProvider.findAll( function(err, result){
+        if (err) { return next(err); }
+        model.da_users = result || [];
+        finish();
     });
 });
 
 
-// NEW blog posts
+// blog posts (admin access only)
 app.get('/blog', function(req, res, next){
     articleProvider.findAll( function(err, articles){
         if (err){ return next(err); }
@@ -220,6 +268,13 @@ app.post('/blog', urlencodedParser, function(req, res){
         res.json({
             success: false,
             error: "You are not logged in!"
+        });
+    }
+
+    if (req.user.role !== "admin"){
+        res.json({
+            success: false,
+            error: "You are not authorized to create blog posts!"
         });
     }
 

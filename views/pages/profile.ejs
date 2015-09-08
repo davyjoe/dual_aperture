@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <% include ../partials/head %>
+
+    <link rel="stylesheet" href="/assets/css/profile.css" type="text/css" media="screen" />
+
+</head>
+<body>
+
+    <% include ../partials/header %>
+
+    <main>
+
+        <div class="jumbotron min"></div>
+
+        <div class="container">
+            <section id="profile">
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <h2>My Profile</h2>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <dl class="clearfix">
+
+                            <dt>Username:</dt>
+                            <dd><%= user.username %>
+                                <% if (user.id === 0) { %>
+                                    (SUPERUSER)
+                                <% } %>
+                            </dd>
+
+                            <dt>Password:</dt>
+                            <dd>********
+                                <a href="#">Update (todo)</a>
+                            </dd>
+
+                            <dt>Email:</dt>
+                            <dd><%= user.email %></dd>
+
+                            <dt>Company:</dt>
+                            <dd><%= user.company %></dd>
+
+                            <dt>Interests:</dt>
+                            <dd><%= user.interests %></dd>
+
+                            <dt>Role:</dt>
+                            <dd><%= user.role %></dd>
+
+                            <dt>Created:</dt>
+                            <dd><%= user.createdate %></dd>
+
+                            <dt>Subscriptions:</dt>
+                            <dd>General 
+                                <% if (subscribed) { %>
+                                    <button type="button" class="btn btn-danger btn-xs" id="unsubGeneral" data-subscriber-id="<%= subscribed.id %>">
+                                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                        Unsubscribe
+                                    </button>
+                                <% } else { %>
+                                    <button type="button" class="btn btn-success btn-xs" id="subGeneral" data-email="<%= user.email %>">
+                                        <span class="glyphicon glyphicon-add" aria-hidden="true"></span>
+                                        Subscribe
+                                    </button>
+                                <% } %>
+                            </dd>
+
+                        </dl>
+                    </div>
+                </div>
+
+                <% if (!user.id === 0) { %>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <br/>
+                            <button type="button" class="btn btn-success btn-xs" id="uDelete" data-userid="<%= user.id %>">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                Delete User
+                            </button>
+                        </div>
+                    </div>
+                <% } %>
+
+            </section>
+
+        </div>
+    </main>
+
+    <footer>
+        <% include ../partials/footer %>
+    </footer>
+
+    <% include ../partials/tools %>
+
+    <% include ../partials/scripts %>
+
+    <script src="/assets/js/profile.js"></script>
+    
+</body>
+</html>

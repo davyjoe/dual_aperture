@@ -22,7 +22,6 @@
                 dataType: "json"
             })
             .done(function(data, textStatus, jqXHR){
-                // refreshing would result in 404, so go back to main blog page
                 if (data.success){
                     window.location.href = "/manage";
                 } else {

@@ -49,6 +49,35 @@
                     </div>
                 </div>
 
+                <hr />
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <h2>Users</h2>
+                    </div>
+                </div>
+
+                <% da_users.forEach( function(da_user, i){ %>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <span class="user"><%= da_user.username %> (<%= da_user.email %>)</span>
+                            <button type="button" class="btn btn-default btn-xs">Details/Edit (todo)</button>
+                        </div>
+                    </div>
+                <% }) %>
+
+                <div class="row">
+                    <div class="col-md-12" style="padding-bottom: 50px;">
+                        <br/>
+                        <button type="button" class="btn btn-success btn-xs" id="aAdd">
+                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                            Add User (todo)
+                        </button>
+                    </div>
+                </div>
+
+                <hr />
+
             </section>
 
         </div>

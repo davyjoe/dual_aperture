@@ -69,6 +69,30 @@ SubscriberProvider.prototype.findAll = function(callback) {
     });
 };
 
+SubscriberProvider.prototype.findByEmail = function(email, callback) {
+    pg.connect(connectionString, function(err, client, done) {
+
+        if (handleError(err, client, done)) {
+            console.error('could not connect to postgres to retrieve da_subscribers row by email', err);
+            callback(err);
+            return;
+        }
+
+        var query = client.query("SELECT * FROM da_subscribers WHERE emailaddr='" + email + "' LIMIT 1");
+        query.on('row', function(row, result) {
+            result.addRow(row);
+        });
+        query.on('end', function(result) {
+            done();
+            callback(err, result.rows);
+        });
+        query.on('error', function(err){
+            done(client);
+            console.error('error reading da_subscribers row', err);
+        });
+    });
+};
+
 SubscriberProvider.prototype.save = function(subscriberEmail, callback) {
     pg.connect(connectionString, function(err, client, done) {
         if (handleError(err, client, done)) {

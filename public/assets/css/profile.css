@@ -1,0 +1,15 @@
+#profile dl {
+  padding: 10px 0 100px;
+}
+
+#profile dl dt {
+  clear: left;
+  float: left;
+  width: 150px;
+  padding: 10px 0;
+}
+
+#profile dl dd {
+  float: left;
+  padding: 10px 0;
+}
