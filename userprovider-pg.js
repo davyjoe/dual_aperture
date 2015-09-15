@@ -24,11 +24,11 @@ pg.connect(connectionString, function(err, client, done){
     // connected; run query
     var qs = "CREATE TABLE IF NOT EXISTS da_users(" +
         "id SERIAL PRIMARY KEY, " +
-        "username VARCHAR(128), " +
-        "password VARCHAR(128), " +
+        "username VARCHAR(64), " +
+        "password VARCHAR(64), " +
         "email VARCHAR(256), " +
         "company VARCHAR(128), " +
-        "interests VARCHAR(640), " +
+        "interests text, " +
         "role VARCHAR(16), " +
         "createdate bigint" +
     ")";
@@ -142,42 +142,64 @@ UsersProvider.prototype.findByUsername = function(username, callback) {
 };
 
 UsersProvider.prototype.save = function(userObj, callback) {
-    // no db entry for superadmin
-    if (userObj.id === 0){
-        callback(null, userObj);
+    // make sure user doesn't exist
+    if (userObj.username === superadmin){
+        callback("Username already exists!");
     }
 
-    pg.connect(connectionString, function(err, client, done) {
-        if (handleError(err, client, done)) {
-            console.error('could not connect to postgres to save new da_users row', err);
+    this.findByUsername(userObj.username, function(err, userRow){
+        if (err){
             callback(err);
             return;
         }
 
-        var query = client.query("INSERT INTO da_users(" +
-                "username, " +
-                "password, " +
-                "email, " +
-                "company, " +
-                "interests, " +
-                "role, " +
-                "createdate" +
-            ") values($1, $2, $3, $4, $5, $6, $7)", [
-                userObj.username, 
-                userObj.password,
-                userObj.email,
-                userObj.company,
-                userObj.interests,
-                userObj.role,
-                new Date().valueOf()
-            ]);
-        query.on('end', function() {
-            done();
-            callback(null, userObj);
-        });
-        query.on('error', function(err){
-            done(client);
-            console.error('error saving da_users row', err);
+        if (userRow || userRow.length || userRow.username){
+            callback("Username already exists! Please try again.");
+            return;
+        }
+
+        // create user
+        pg.connect(connectionString, function(err, client, done) {
+            if (handleError(err, client, done)) {
+                console.error('could not connect to postgres to save new da_users row', err);
+                callback(err);
+                return;
+            }
+
+            // combine interests and interestsOther; ie. "{interests}; other:{interestsOther}"
+            var interestsAll = userObj.interests;
+            if (userObj.interestsOther) {
+                if (interestsAll) {
+                    interestsAll += "; ";
+                }
+                interestsAll += "other: " + userObj.interestsOther;
+            }
+
+            var query = client.query("INSERT INTO da_users(" +
+                    "username, " +
+                    "password, " +
+                    "email, " +
+                    "company, " +
+                    "interests, " +
+                    "role, " +
+                    "createdate" +
+                ") values($1, $2, $3, $4, $5, $6, $7)", [
+                    userObj.username, 
+                    userObj.password,
+                    userObj.email,
+                    userObj.company,
+                    interestsAll,
+                    "user",
+                    new Date().valueOf()
+                ]);
+            query.on('end', function() {
+                done();
+                callback(null);
+            });
+            query.on('error', function(err){
+                done(client);
+                console.error('error saving da_users row', err);
+            });
         });
     });
 };

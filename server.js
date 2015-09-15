@@ -154,7 +154,7 @@ app.get('/login', function(req, res) {
 
     res.render('pages/login', {
         title : 'Dual Aperture International - Login',
-        user: null
+        user : null
     });
 });
 
@@ -179,6 +179,47 @@ app.post('/login', urlencodedParser, function(req, res, next) {
 app.get('/logout', function(req, res){
   req.logout();
   res.redirect('/login');
+});
+
+
+
+// signup page 
+app.get('/signup', function(req, res) {
+    if (req.user) {
+        res.redirect(req.user.role === "admin" ? '/manage' : '/profile');
+    }
+
+    res.render('pages/signup', {
+        title : 'Dual Aperture International - Signup',
+        user : null
+    });
+});
+
+// POST /signup
+app.post('/signup', urlencodedParser, function(req, res, next) {
+    userProvider.save(
+        {
+            email: req.param('email'),
+            username: req.param('username')
+            password: req.param('password'),
+            company: req.param('password'),
+            interests: req.param('interests'),
+            interestsOther: req.param('interestsOther')
+        }, 
+        function(err) {
+            res.json({
+                success: err ? false : true,
+                error: err
+            });
+
+            if (err){
+                return;
+            }
+
+            // TODO: create/send signup email
+            // TODO: subscribe if req.param("subscribe")
+        }
+    );
 });
 
 // user profile page (shown after non-admin login)

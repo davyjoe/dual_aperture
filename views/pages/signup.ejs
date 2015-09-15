@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <% include ../partials/head %>
+
+</head>
+<body>
+
+    <% include ../partials/header %>
+
+    <main>
+
+        <div class="jumbotron min"></div>
+
+        <div class="container">
+            <section id="signup">
+                <div class="row">
+                    <header>
+                        <div class="col-md-12">
+                            <h1>SIGNUP</h1>
+                        </div>
+                    </header>
+                </div>
+
+                <form id="signupForm" class="form-horizontal">
+
+                    <div class="form-group">
+                        <label for="email" class="col-sm-2 control-label">Email:</label>
+                        <div class="col-sm-3">
+                            <input type="email" name="email" class="form-control" id="email" maxlength="256">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="username" class="col-sm-2 control-label">Pick a Username:</label>
+                        <div class="col-sm-3">
+                            <input type="text" name="username" class="form-control" id="username" maxlength="64">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="col-sm-2 control-label">Password:</label>
+                        <div class="col-sm-3">
+                            <input type="password" name="password" class="form-control" id="password" maxlength="64">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password2" class="col-sm-2 control-label">Verify Password:</label>
+                        <div class="col-sm-3">
+                            <input type="password" class="form-control" id="password2">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="company" class="col-sm-2 control-label">Company:</label>
+                        <div class="col-sm-3">
+                            <input type="text" name="company" class="form-control" id="company" maxlength="128">
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <strong>Interested in using Dual Aperture Technology for (check all that apply):</strong>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="interests" value="AR/VR"> AR/VR
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="interests" value="Biometrics"> Biometrics
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="interests" value="Surveillance"> Surveillance
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="interests" value="IoT"> IoT
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="interests" value="Automotive"> Automotive
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="interests" value="Educational"> Educational
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="interests" value="Medical"> Medical
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="interests" value="Games"> Games
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="interests" value="Software Development"> Software Development
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="interests" value="Hardware Manufacturer"> Hardware Manufacturer
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="interests" value="Android"> Android
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="interests" value="iOS"> iOS
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="interests" value="Windows OS"> Windows OS
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="interests" value="Mac OS"> Mac OS
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="interests" value="Linux OS"> Linux OS
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="interests" value="Mobile/Tablet"> Mobile/Tablet
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="interests" value="PC"> PC
+                                </label>
+                            </div>
+                            <p class="form-control-static">Others (please specify)</p>
+                            <input type="text" name="interestsOther" class="form-control" id="interestsOther" maxlength="320">
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" id="agreement"> Check to confirm your agreement with our <a href="#" target="_blank">terms of service</a>.
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="subscribe" value="yes"> Email me Dual Aperture news and updates
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-3">
+                            <br>
+                            <button type="submit" class="btn btn-primary" id="btnSignupSubmit">Submit</button>
+                        </div>
+                    </div>
+                </form>
+
+            </section>
+        </div>
+
+    </main>
+
+    <footer>
+        <% include ../partials/footer %>
+    </footer>
+
+    <% include ../partials/tools %>
+
+    <% include ../partials/scripts %>
+
+    <script src="/assets/js/signup.js"></script>
+
+</body>
+</html>

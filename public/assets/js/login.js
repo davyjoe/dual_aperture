@@ -30,10 +30,20 @@
         bForm.submit(function(event){
             event.preventDefault();
 
-            $("#btnLoginSubmit").prop("disabled", true);
-
             // clear old errors
             $(".alert-danger").remove();
+
+            // validate
+            var fields = {
+                username: bForm.find("#username").val(),
+                password: bForm.find("#password").val()
+            };
+            if (!fields.username.length || !fields.password.length){
+                $("<div>").addClass("alert alert-danger").html("Missing credentials.").insertBefore($("#loginForm"));
+                return;
+            }
+
+            $("#btnLoginSubmit").prop("disabled", true);
 
             $.ajax({
                 url: "/login", 
