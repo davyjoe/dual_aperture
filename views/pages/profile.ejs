@@ -57,7 +57,7 @@
 
                             <dt>Subscriptions:</dt>
                             <dd>General 
-                                <% if (subscribed) { %>
+                                <% if (subscribed.length) { %>
                                     <button type="button" class="btn btn-danger btn-xs" id="unsubGeneral" data-subscriber-id="<%= subscribed.id %>">
                                         <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                                         Unsubscribe

@@ -18,6 +18,7 @@
                     //console.log(data, textStatus, jqXHR);
                     $("#btnSignupSubmit").prop("disabled", false);
                     $("<div>").addClass("alert alert-danger").html(data.error).insertBefore($("#signupForm"));
+                    $('body').scrollTop(0);
                 }
             },
             fail: function(jqXHR, textStatus, errorThrown){

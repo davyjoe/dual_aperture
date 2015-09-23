@@ -41,21 +41,30 @@ passport.serializeUser(function(user, done) {
 });
 passport.deserializeUser(function(id, done) {
     userProvider.findById(id, function (err, user) {
-        done(err, user);
+        done(err, user.length ? user[0] : null);
     });
 });
 
 passport.use(new LocalStrategy(
     function(username, password, done) {
         // asynchronous verification, for effect...
-        process.nextTick(function () {
-            userProvider.findByUsername(username, function(err, user) {
-                if (err) { return done(err); }
-                if (!user) { return done(null, false, { message: 'Unknown user ' + username }); }
-                if (user.password !== password) { return done(null, false, { message: 'Invalid password' }); }
-                return done(null, user);
+        //process.nextTick(function () {
+            userProvider.findByUsername(username, function(err, users) {
+                if (err) {
+                    return done(err);
+                }
+
+                if (users.length == 0) {
+                    return done(null, false, { message: 'Unknown user ' + username });
+                }
+
+                if (users[0].password != password) {
+                    //console.log("bad password " + users[0].password + " " + password);
+                    return done(null, false, { message: 'Invalid password' }); 
+                }
+                return done(null, users[0]);
             })
-        });
+        //});
     }
 ));
 
@@ -85,6 +94,16 @@ connection.query("CREATE TABLE IF NOT EXISTS da_posts(id SERIAL PRIMARY KEY, tit
 */
 
 ///////////////////////////////////////////////////////////////////////////
+
+// emailer (subscribe form, signup)
+var transporter = nodemailer.createTransport({
+    service: 'Gmail',
+    auth: {
+        user: 'noreply@dual-aperture.com',
+        pass: 'ycha2784'
+    }
+});
+
 
 // use body-parser middleware for parsing urlencoded POST bodys
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
@@ -133,7 +152,7 @@ app.get('/careers', function(req, res) {
     });
 });
 
-// blog posts  TODO: replace with NEW blog posts page
+// blog posts; replaced by NEW blog posts page
 /*
 app.get('/blog_posts', function(req, res) {
     res.render('pages/blog_posts', {
@@ -148,8 +167,14 @@ app.get('/blog_posts', function(req, res) {
 
 // login page 
 app.get('/login', function(req, res) {
+    if (req.user && req.user.role == "admin") {
+        res.redirect('/manage');
+        return;
+    }
+
     if (req.user) {
-        res.redirect(req.user.role === "admin" ? '/manage' : '/profile');
+        res.redirect('/profile');
+        return;
     }
 
     res.render('pages/login', {
@@ -167,6 +192,7 @@ app.post('/login', urlencodedParser, function(req, res, next) {
                 error: info.message
             });
         }
+
         req.logIn(user, function(err) {
             return res.json({
                 success: err ? false : true,
@@ -181,12 +207,11 @@ app.get('/logout', function(req, res){
   res.redirect('/login');
 });
 
-
-
 // signup page 
 app.get('/signup', function(req, res) {
     if (req.user) {
-        res.redirect(req.user.role === "admin" ? '/manage' : '/profile');
+        res.redirect('/profile');
+        return;
     }
 
     res.render('pages/signup', {
@@ -197,15 +222,20 @@ app.get('/signup', function(req, res) {
 
 // POST /signup
 app.post('/signup', urlencodedParser, function(req, res, next) {
+    var fields = {
+        email: req.param('email'),
+        username: req.param('username'),
+        password: req.param('password'),
+        company: req.param('company'),
+        interests: req.param('interests'),
+        interestsOther: req.param('interestsOther'),
+        subscribe: req.param('subscribe')     
+    };
+
+    console.log(fields);
+
     userProvider.save(
-        {
-            email: req.param('email'),
-            username: req.param('username')
-            password: req.param('password'),
-            company: req.param('password'),
-            interests: req.param('interests'),
-            interestsOther: req.param('interestsOther')
-        }, 
+        fields, 
         function(err) {
             res.json({
                 success: err ? false : true,
@@ -216,8 +246,33 @@ app.post('/signup', urlencodedParser, function(req, res, next) {
                 return;
             }
 
-            // TODO: create/send signup email
-            // TODO: subscribe if req.param("subscribe")
+            // user created! send welcome email
+            var mailOpts = {
+                from: 'noreply@dual-aperture.com',
+                to: fields.email,
+                subject: 'Welcome to Dual-Aperture, ' + fields.username,
+                text: 'Thanks for signing up as a DualAperture.com site user!\n\nThis email confirms your signup was successful.\n\nYou can login here:\nhttp://www.dualaperture.com/login\n\nDual Aperture\ndual-aperture.com'
+            };
+
+            transporter.sendMail(mailOpts, function(err2, response){
+                if(err2){
+                    console.log("Error sending welcome email! " + err2);
+                }
+
+                // subscribe checked?
+                if (!fields.subscribe){
+                    return;
+                }
+
+                subscribedProvider.save( fields.email, function(err3, result){
+                    if (err3){
+                        console.log("Error subscribing on signup! " + err3);
+                        return;
+                    }
+
+                    console.log("Subscriber added on signup: " + result);
+                });
+            });
         }
     );
 });
@@ -229,13 +284,17 @@ app.get('/profile', function(req, res, next) {
         return;
     }
 
+    console.log(req.user);
+
     subscribedProvider.findByEmail( req.user.email, function(err, result){
-        if (err) { return next(err); }
+        if (err) { 
+            return next(err);
+        }
 
         res.render('pages/profile', {
             title : 'Dual Aperture International - User Profile',
             user: req.user,
-            subscribed: result
+            subscribed: result.length > 0
         });
     });
 });
@@ -248,43 +307,39 @@ app.get('/manage', function(req, res, next) {
     }
 
     // redirect to profile page if non-admin user tries to access
-    if (req.user.role !== "admin"){
+    if (req.user.role != "admin"){
         res.redirect('/profile');
+        return;
     }
 
     // assemble result of two queries
     var model = {
         title: 'Dual Aperture International - Manage',
         user: req.user,
-        subscribers: null, // from q1
-        da_users: null // from q2
+        subscribers: [], // from q1
+        emaillist: [], // generated from subscribers
+        da_users: [] // from q2
     };
-
-    // called after each query result
-    function finish(){
-        if (!model.subscribers || !model.da_users) {
-            // not done yet! wait for next call
-            return;
-        }
-
-        // generate subscriber emaillist string (for textarea)
-        model.emaillist = model.subscribers.map(function(item){ return item.emailaddr; });
-
-        res.render('pages/manage', model);
-    }
 
     // q1
     subscribedProvider.findAll( function(err, result){
-        if (err) { return next(err); }
+        if (err){
+            return next(err);
+        }
         model.subscribers = result || [];
-        finish();
-    });
+        // generate subscriber emaillist string (for textarea)
+        model.emaillist = model.subscribers.map(function(item){ return item.emailaddr; });
 
-    // q2
-    userProvider.findAll( function(err, result){
-        if (err) { return next(err); }
-        model.da_users = result || [];
-        finish();
+        // q2
+        userProvider.findAll( function(err2, result2){
+            if (err2){
+                return next(err2);
+            }
+
+            model.da_users = result || [];
+
+            res.render('pages/manage', model);
+        });
     });
 });
 
@@ -303,7 +358,6 @@ app.get('/blog', function(req, res, next){
 });
 
 // AJAX services for blog management
-// TODO: auth requests?
 app.post('/blog', urlencodedParser, function(req, res){
     if (!req.user){
         res.json({
@@ -388,14 +442,7 @@ app.get('/blog/:id', function(req, res, next) {
 });
 
 
-// subscribe form mailer
-var transporter = nodemailer.createTransport({
-    service: 'Gmail',
-    auth: {
-        user: 'noreply@dual-aperture.com',
-        pass: 'ycha2784'
-    }
-});
+// subscribe form
 app.post('/subscribe', urlencodedParser, function (req, res) {
     if (!req.body) {
         return res.sendStatus(400);

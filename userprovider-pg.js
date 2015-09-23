@@ -84,7 +84,7 @@ var superadmin = {
 UsersProvider.prototype.findById = function(id, callback) {
     // superadmin
     if (id === 0){
-        callback(null, superadmin);
+        callback(null, [superadmin]);
         return;
     }
 
@@ -111,10 +111,10 @@ UsersProvider.prototype.findById = function(id, callback) {
     });
 };
 
-UsersProvider.prototype.findByUsername = function(username, callback) {
+UsersProvider.prototype.findByUsername = function(un, callback) {
     // superadmin
-    if (username === superadmin.username){
-        callback(null, superadmin);
+    if (un === superadmin.username){
+        callback(null, [superadmin]);
         return;
     }
 
@@ -126,7 +126,9 @@ UsersProvider.prototype.findByUsername = function(username, callback) {
             return;
         }
 
-        var query = client.query("SELECT * FROM da_users WHERE username=" + username + " LIMIT 1");
+        console.log("looking up un " + un);
+
+        var query = client.query("SELECT * FROM da_users WHERE username='" + un + "' LIMIT 1");
         query.on('row', function(row, result) {
             result.addRow(row);
         });
@@ -145,15 +147,16 @@ UsersProvider.prototype.save = function(userObj, callback) {
     // make sure user doesn't exist
     if (userObj.username === superadmin){
         callback("Username already exists!");
+        return;
     }
 
-    this.findByUsername(userObj.username, function(err, userRow){
+    this.findByUsername(userObj.username, function(err, result){
         if (err){
             callback(err);
             return;
         }
 
-        if (userRow || userRow.length || userRow.username){
+        if (result.length){
             callback("Username already exists! Please try again.");
             return;
         }
