@@ -18,6 +18,30 @@
 
                 <div class="row">
                     <div class="col-md-12">
+                        <h2>Users</h2>
+                    </div>
+                </div>
+
+                <% da_users.forEach( function(da_user, i){ %>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <% if (da_user.role === 'admin') { %>
+                                <span class="badge">admin</span>
+                            <% } %>
+                            <span class="<%= da_user.role %>"><%= da_user.username %> (<%= da_user.email %>)</span>
+                            <button type="button" class="btn btn-default btn-xs user-detail" data-user-id="<%= da_user.id %>">Details/Edit</button>
+                        </div>
+                    </div>
+                <% }) %>
+
+                <% if (da_users.length === 0) { %>
+                    <p>No users found!</p>
+                <% } %>
+
+                <hr />
+
+                <div class="row">
+                    <div class="col-md-12">
                         <h2>Subscribers</h2>
                     </div>
                 </div>
@@ -30,6 +54,10 @@
                         </div>
                     </div>
                 <% }) %>
+
+                <% if (subscribers.length === 0) { %>
+                    <p>No subscribers found!</p>
+                <% } %>
 
                 <div class="row">
                     <div class="col-md-12">
@@ -51,33 +79,6 @@
 
                 <hr />
 
-                <div class="row">
-                    <div class="col-md-12">
-                        <h2>Users</h2>
-                    </div>
-                </div>
-
-                <% da_users.forEach( function(da_user, i){ %>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <span class="user"><%= da_user.username %> (<%= da_user.email %>)</span>
-                            <button type="button" class="btn btn-default btn-xs">Details/Edit (todo)</button>
-                        </div>
-                    </div>
-                <% }) %>
-
-                <div class="row">
-                    <div class="col-md-12" style="padding-bottom: 50px;">
-                        <br/>
-                        <button type="button" class="btn btn-success btn-xs" id="aAdd">
-                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                            Add User (todo)
-                        </button>
-                    </div>
-                </div>
-
-                <hr />
-
             </section>
 
         </div>
@@ -88,6 +89,8 @@
     </footer>
 
     <% include ../partials/subscriber_add_modal %>
+
+    <% include ../partials/user_detail_modal %>
 
     <% include ../partials/tools %>
 

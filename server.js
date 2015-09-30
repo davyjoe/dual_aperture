@@ -232,8 +232,6 @@ app.post('/signup', urlencodedParser, function(req, res, next) {
         subscribe: req.param('subscribe')     
     };
 
-    console.log(fields);
-
     userProvider.save(
         fields, 
         function(err) {
@@ -250,8 +248,8 @@ app.post('/signup', urlencodedParser, function(req, res, next) {
             var mailOpts = {
                 from: 'noreply@dual-aperture.com',
                 to: fields.email,
-                subject: 'Welcome to Dual-Aperture, ' + fields.username,
-                text: 'Thanks for signing up as a DualAperture.com site user!\n\nThis email confirms your signup was successful.\n\nYou can login here:\nhttp://www.dualaperture.com/login\n\nDual Aperture\ndual-aperture.com'
+                subject: 'Welcome to Dual-Aperture',
+                text: 'Thanks for signing up as a DualAperture.com site user!\n\nThis email confirms your signup was successful.\n\nYou can login here:\nhttp://www.dualaperture.com/login\n\nYour username is "' + fields.username + '".\n\nDual Aperture\ndual-aperture.com'
             };
 
             transporter.sendMail(mailOpts, function(err2, response){
@@ -284,8 +282,6 @@ app.get('/profile', function(req, res, next) {
         return;
     }
 
-    console.log(req.user);
-
     subscribedProvider.findByEmail( req.user.email, function(err, result){
         if (err) { 
             return next(err);
@@ -298,6 +294,58 @@ app.get('/profile', function(req, res, next) {
         });
     });
 });
+
+// change pw service
+app.put('/passwordUpdate', urlencodedParser, function(req, res){
+    if (!req.user){
+        res.json({
+            success: false,
+            error: "You are not logged in!"
+        });
+    }
+
+    userProvider.updatePassword(
+        req.user.id,
+        req.param('newPassword'),
+        function(err) {
+            res.json({
+                success: err ? false : true,
+                error: err
+            });
+        }
+    );
+});
+
+// profile delete service (Ajax)
+app.delete('/profile/:id', function(req, res){
+    if (!req.user){
+        res.json({
+            success: false,
+            error: "You are not logged in!"
+        });
+        return;
+    }
+
+    // admins can delete any profile; users can delete their own
+    if (req.user.role != "admin" && req.user.id != req.params.id){
+        res.json({
+            success: false,
+            error: "You do not have permissions to delete this user!"
+        });
+        return;
+    }
+
+    userProvider.delete(
+        req.params.id, 
+        function(err) {
+            res.json({
+                success: err ? false : true,
+                error: err
+            });
+        }
+    );
+});
+
 
 // manage page (shown after admin login)
 app.get('/manage', function(req, res, next) {
@@ -336,13 +384,90 @@ app.get('/manage', function(req, res, next) {
                 return next(err2);
             }
 
-            model.da_users = result || [];
+            model.da_users = result2 || [];
 
             res.render('pages/manage', model);
         });
     });
 });
 
+// user data for manage modal
+app.get('/user/:id', function(req, res){
+    if (!req.user){
+        res.json({
+            success: false,
+            error: "You are not logged in!"
+        });
+    }
+
+    // admins can retrieve any user data
+    if (req.user.role != "admin"){
+        res.json({
+            success: false,
+            error: "You do not have permissions to retrieve user details!"
+        });
+        return;
+    }
+
+    userProvider.findById(req.params.id, function(err, user) {
+        if (err){ 
+            res.json({
+                success: false,
+                error: "Could not retrieve user details!"
+            });
+            return;
+        }
+
+        if (user.length != 1){
+            res.json({
+                success: false,
+                error: "Could not find user!"
+            });
+            return;
+        }
+
+        res.json({
+            success: true,
+            user: user[0]
+        });
+    });
+});
+
+app.put('/user/:id', urlencodedParser, function(req, res){
+    if (!req.user){
+        res.json({
+            success: false,
+            error: "You are not logged in!"
+        });
+    }
+
+    // admins can delete any profile; users can delete their own
+    if (req.user.role != "admin"){
+        res.json({
+            success: false,
+            error: "You do not have permissions to retrieve user details!"
+        });
+        return;
+    }
+
+    var userObj = {
+        id: req.params.id,
+        username: req.param('username'),
+        email: req.param('email'),
+        company: req.param('company'),
+        role: req.param('role')
+    };
+
+    userProvider.update(
+        userObj, 
+        function(err) {
+            res.json({
+                success: err ? false : true,
+                error: err
+            });
+        }
+    );
+});
 
 // blog posts (admin access only)
 app.get('/blog', function(req, res, next){
@@ -415,6 +540,7 @@ app.delete('/blog/:id', function(req, res){
             success: false,
             error: "You are not logged in!"
         });
+        return;
     }
 
     articleProvider.delete(

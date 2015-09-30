@@ -126,8 +126,6 @@ UsersProvider.prototype.findByUsername = function(un, callback) {
             return;
         }
 
-        console.log("looking up un " + un);
-
         var query = client.query("SELECT * FROM da_users WHERE username='" + un + "' LIMIT 1");
         query.on('row', function(row, result) {
             result.addRow(row);
@@ -170,7 +168,7 @@ UsersProvider.prototype.save = function(userObj, callback) {
             }
 
             // combine interests and interestsOther; ie. "{interests}; other:{interestsOther}"
-            var interestsAll = userObj.interests;
+            var interestsAll = userObj.interests ? (Array.isArray(userObj.interests) ? userObj.interests.join(", ") : userObj.interests) : "";
             if (userObj.interestsOther) {
                 if (interestsAll) {
                     interestsAll += "; ";
@@ -208,11 +206,6 @@ UsersProvider.prototype.save = function(userObj, callback) {
 };
 
 UsersProvider.prototype.update = function(userObj, callback) {
-    // no db entry for superadmin
-    if (userObj.id === 0){
-        callback(null, userObj);
-    }
-
     pg.connect(connectionString, function(err, client, done) {
         // Handle Errors
         if(handleError(err, client, done)) {
@@ -223,19 +216,15 @@ UsersProvider.prototype.update = function(userObj, callback) {
 
         var query = client.query("UPDATE da_users SET " +
                 "username=($1), " +
-                "password=($2), " +
-                "email=($3), " +
-                "company=($4), " +
-                "interests=($5), " +
-                "role=($6) " +
-                "WHERE id=($7) ", 
+                "email=($2), " +
+                "company=($3), " +
+                "role=($4) " +
+                "WHERE id=($5)", 
             [
                 userObj.username, 
-                userObj.password, 
                 userObj.email, 
                 userObj.company, 
-                userObj.interests, 
-                userObj.role, 
+                userObj.role,
                 userObj.id
             ]
         );
@@ -246,6 +235,35 @@ UsersProvider.prototype.update = function(userObj, callback) {
         query.on('error', function(err){
             done(client);
             console.error('error updating da_users row', err);
+        });
+    });
+
+};
+
+UsersProvider.prototype.updatePassword = function(userId, newPassword, callback) {
+    pg.connect(connectionString, function(err, client, done) {
+        // Handle Errors
+        if(handleError(err, client, done)) {
+          console.error('could not connect to postgres to update da_users user password', err);
+          callback(err);
+          return;
+        }
+
+        var query = client.query("UPDATE da_users SET " +
+                "password=($1) " +
+                "WHERE id=($2)", 
+            [
+                newPassword,
+                userId
+            ]
+        );
+        query.on('end', function() {
+            done();
+            callback();
+        });
+        query.on('error', function(err){
+            done(client);
+            console.error('error updating da_users user password', err);
         });
     });
 

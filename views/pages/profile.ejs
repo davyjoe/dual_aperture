@@ -31,13 +31,17 @@
                             <dt>Username:</dt>
                             <dd><%= user.username %>
                                 <% if (user.id === 0) { %>
-                                    (SUPERUSER)
+                                    <span class="badge">superadmin</span>
+                                <% } else if (user.role === 'admin') { %>
+                                    <span class="badge">admin</span>
                                 <% } %>
                             </dd>
 
                             <dt>Password:</dt>
                             <dd>********
-                                <a href="#">Update (todo)</a>
+                                <% if (user.id > 0) { %>
+                                    <a href="#" id="changePw">change</a>
+                                <% } %>
                             </dd>
 
                             <dt>Email:</dt>
@@ -49,12 +53,10 @@
                             <dt>Interests:</dt>
                             <dd><%= user.interests %></dd>
 
-                            <dt>Role:</dt>
-                            <dd><%= user.role %></dd>
-
                             <dt>Created:</dt>
-                            <dd><%= user.createdate %></dd>
+                            <dd><%= Date(user.createdate).toString() %></dd>
 
+                            <!--
                             <dt>Subscriptions:</dt>
                             <dd>General 
                                 <% if (subscribed.length) { %>
@@ -69,22 +71,16 @@
                                     </button>
                                 <% } %>
                             </dd>
+                            -->
+
+                            <% if (user.id > 0) { %>
+                                <dt></dt>
+                                <dd><br/><small><a href="#delete" id="uDelete" data-userid="<%= user.id %>">Delete my account</a></small></dd>
+                            <% } %>
 
                         </dl>
                     </div>
                 </div>
-
-                <% if (!user.id === 0) { %>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <br/>
-                            <button type="button" class="btn btn-success btn-xs" id="uDelete" data-userid="<%= user.id %>">
-                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                                Delete User
-                            </button>
-                        </div>
-                    </div>
-                <% } %>
 
             </section>
 
@@ -94,6 +90,8 @@
     <footer>
         <% include ../partials/footer %>
     </footer>
+
+    <% include ../partials/change_pw_modal %>
 
     <% include ../partials/tools %>
 
