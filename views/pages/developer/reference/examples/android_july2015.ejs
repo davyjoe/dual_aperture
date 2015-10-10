@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <% include ../../../../partials/head %>
+
+</head>
+<body>
+
+    <% include ../../../../partials/header %>
+
+    <main>
+
+        <div class="jumbotron min"></div>
+
+        <div class="container">
+            <section id="developer">
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <ol class="breadcrumb">
+                            <li><a href="/developer/#toc">Table of Contents</a></li>
+                            <li><a href="/developer/reference/">References</a></li>
+                            <li><a href="/developer/reference/examples/">Examples</a></li>
+                            <li><a href="/developer/reference/examples/android">Android</a></li>
+                            <li class="active">Android (July 2015)</li>
+                        </ol>
+                        <header>
+                            <h1>Android (July 2015)</h1>
+                        </header>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <p>[The following applies to DA-GT-SDK version alpha-1.5 as of July 2015.]<br/>
+                            [For Android specific questions, contact Dong Cheol Jeong at <a href="mailto:dcjeong@dual-aperture.com">dcjeong@dual-aperture.com</a> ]</p>
+
+                        <p>You can download the Android SDK package from <a href="https://drive.google.com/open?id=0B-mZp3ZE5QpffmNzRFdGNEhiMnMzbzhCQWR6TmR1eUFQbnlobU9KRE9iZzZSbmRYaGI2c28" target="_blank">here</a></p>
+
+                        <p><strong>Development Environment</strong></p>
+
+                        <p><strong>Software :</strong><br/>
+                            Mac OS<br/>
+                            Android Studio v1.3 Build number A1-141.2024585<br/>
+                            Android SDK Tools 24.2.0<br/>
+                            Android Platform Version API 22 Android 5.1 Lollipop revision 2<br/>
+                            DAIP 2.3.0.0
+                        </p>
+
+                        <p><strong>Hardware :</strong><br/>
+                            MacBook Pro (Retina, 15-inch)<br/>
+                            Nexus 7 2012<br/>
+                            SiLicon File Hi 342
+                        </p>
+
+                        <p><strong>How to use Android Gesture SDK with Android Studio:</strong><br/>
+                            Create New Android Project 
+                            Chose Project as the Screen Shot.
+                        </p>
+
+                        <p><img src="/assets/android_studio_gesture_sdk1.jpg" title="Android Studio Gesture SDK Screenshot"/></p>
+
+                        <p>Create folder "jniLibs" under app-&gt;src-&gt;main</p>
+
+                        <p>Create folder "armeabi-v7a" under jniLibs then add two so file provided "libDAGT.so &amp; libopencv_java.so" under "armeabi-v7a"</p>
+
+                        <p>Create Package "com.dual_aperture.android.dagt2" then add files "Application.java, CommandList.java, DA_Gesture.java and DA_GestureEvent.java"</p>
+
+                        <p>Optional one that if webcam is shown, Create Package "com.ford.openxc.webcam" then add files "NavtiveWebcam.java, Webcam.java, WebcamManager.java,WebcamPreview.java" with</p>
+
+<pre>
+&lt;FrameLayout android:layout_width="0dp" android:layout_height="fill_parent" android:layout_weight="3"&gt;
+    &lt;view android:background="@color/trans" android:layout_width="match_parent" android:layout_height="354dp" class="com.ford.openxc.webcam.WebcamPreview" android:id="@+id/view" android:layout_gravity="right|center_vertical"/&gt;
+&lt;/FrameLayout&gt;
+</pre>
+
+                        <p>Add permission at AndroidManifest.xml</p>
+
+<pre>
+&lt;uses-permission android:name="android.permission.INTERNET"/&gt;
+&lt;uses-permission android:name="android.permission.CAMERA"/&gt;
+</pre>
+
+                        <p><strong>Reference</strong></p>
+
+                        <p>Package name : <code>com.dual_aperture.android.dagt2</code> (download from <a href="https://drive.google.com/open?id=0B-mZp3ZE5QpffmNzRFdGNEhiMnMzbzhCQWR6TmR1eUFQbnlobU9KRE9iZzZSbmRYaGI2c28" target="_blank">here</a>.)
+                        </p>
+
+                        <p>Class OverView:<br/>
+                            <code>CommandList</code> : define command to connect DAIP by socket.
+                        </p>
+
+                        <p><code>DA_Gesture</code> : load JNI library and get Gesture result.<br/>
+                            Public Methods :<br/>
+                            <code>void onDaGestureEvent(int action)</code> : called by JNI with gesture result.<br/>
+                            Parameters<br/>
+                            <code>action</code> : the action result from JNI<br/>
+                            <code>0x10</code> : LEFT<br/>
+                            <code>0x11</code> : RIGHT<br/>
+                            <code>0x12</code> : UP<br/>
+                            <code>0x13</code> : DOWN<br/>
+                            <code>0x14</code> : PUSH<br/>
+                            <code>0x15</code> : PULL
+                        </p>
+
+                        <p><code>DA_GestureEvent</code> : define gesture action.</p>
+
+                        <div class="end-spacer"></div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+    </main>
+
+    <footer>
+        <% include ../../../../partials/footer %>
+    </footer>
+
+    <% include ../../../../partials/tools %>
+
+    <% include ../../../../partials/scripts %>
+    
+</body>
+</html>

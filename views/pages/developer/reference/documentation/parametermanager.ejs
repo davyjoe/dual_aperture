@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <% include ../../../../partials/head %>
+
+</head>
+<body>
+
+    <% include ../../../../partials/header %>
+
+    <main>
+
+        <div class="jumbotron min"></div>
+
+        <div class="container">
+            <section id="developer">
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <ol class="breadcrumb">
+                            <li><a href="/developer/#toc">Table of Contents</a></li>
+                            <li><a href="/developer/reference/">References</a></li>
+                            <li><a href="/developer/reference/documentation/">Documentation</a></li>
+                            <li class="active">Param Manager</li>
+                        </ol>
+                        <header>
+                            <h1>Param Manager</h1>
+                        </header>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <p>[The following applies to DA-GT-SDK version alpha-1.5 as of July 2015.]</p>
+
+                        <p>Here, you will find information on the exposed class functions of the gesture tracker parameter manager.</p>
+
+                        <p>Ideally, the gesture tracking should work as a blackbox for the end-user. It is recommended to minimize the need for the end-user to intervene in changing the way gesture tracking behaves. Given that the gesture tracking would occur under various non-ideal conditions (lighting, noise, etc), it is unavoidable that the tracker should have the capability to adjust its behavior. Ideally, it would do so in an automatic way by making observations of its environment.</p>
+
+                        <p>For developers, it is necessary to access some of its internal parameters. It is managed by the <code>DA_gestureTrackerParametersManager</code> class using the singleton pattern. Again, it is the developer's responsibility to design and implement a GUI interface to view and edit various parameter values during the development of his own application. At the end, once the optimal parameter values are established, he will then decide to what extent allow the end-users to change their values further. The example can be found in the Examples section.</p>
+
+                        <p>Each internal parameter allowed modification has a unique token. To set its value, the application will invoke the <code>setParamForToken()</code> function on the singleton object of the <code>DA_gestureTrackerParametersManager</code> class. For example, supose that we have a window that display the table containing the values of all modifiable parameters. The window controller object would be set as the delegate of the table. So, when the user click on a row containing the item with the given token, it will invoke the delegate function to notify that the user changed its value. It is then the responsibility of that delegate to do something like this: (assume that <em>token</em> variable contains the name of the parameter, <em>newValue</em> has the modified value)</p>
+
+<pre>
+DA_gestureTrackerParametersManager *paramsManager = DA_gestureTrackerParametersManager::getInstance();
+
+GTParameter currentParam, revisedParam;
+currentParam = paramWithToken(token);
+memcpy(&amp;revisedParam, ¤tParam, sizeof(GTParameter));
+
+revisedParam = newValue;
+paramsManager-&gt;setParamForToken(token, &amp;revisedParam);
+</pre>
+
+                        <p>Note that the data exchange with the DA_gestureTrackerParametersManager is via the data structure GTParameter (as defined in the Data Structure) which contains the token, value as well as allowed the default-, min- and max-values. In this example, it also uses a function paramWithToken() that will query all the parameters that are being displayed currently and find and return the one that matches the chosen token. It then construct the new parameter data by copying the existing one, then modify the changed component with the new value (its value in in this example, but it may be min- or something else.) and send it to the DA_gestureTrackerParametersManager. Once it is done, then the gesture tracker will be using the newly set value for the token.<p>
+
+                        <p>To implement a GUI-based parameter controller object, one would include the vector array of GTParameter datastructure as its member variable.</p>
+
+<pre>
+std::vector&lt;GTParameter&gt; params;
+</pre>
+
+                        <p>During the initialization stage of the controller object, it will communicate with the <code>DA_gestureTrackerParametersManager</code> singleton to obtain all the available parameters:</p>
+
+<pre>
+DA_gestureTrackerParametersManager *paramsManager = DA_gestureTrackerParametersManager::getInstance();
+params = paramsManager->params();
+</pre>
+
+                        <p>Once the params are obtained, the GUI (a table with several columns displaying the name, value, default value, min, max of each parameter, for example) should be updated.</p>
+
+                        <p>It should also define functions to deal with the user action to select and modify the value of a particular parameter using the method described earlier. Note that the data obtained by the params() call are just copies of what is being maintained internally. Therefore, any intended modification should be finalized by the call <code>setParamForToken(token, &amp;revisedParam)</code>. Once this is done, its effect on the gesture tracker is immediate.</p>
+
+                        <div class="end-spacer"></div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+    </main>
+
+    <footer>
+        <% include ../../../../partials/footer %>
+    </footer>
+
+    <% include ../../../../partials/tools %>
+
+    <% include ../../../../partials/scripts %>
+    
+</body>
+</html>

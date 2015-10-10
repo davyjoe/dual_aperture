@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <% include ../../../../partials/head %>
+
+</head>
+<body>
+
+    <% include ../../../../partials/header %>
+
+    <main>
+
+        <div class="jumbotron min"></div>
+
+        <div class="container">
+            <section id="developer">
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <ol class="breadcrumb">
+                            <li><a href="/developer/#toc">Table of Contents</a></li>
+                            <li><a href="/developer/reference/">References</a></li>
+                            <li><a href="/developer/reference/documentation/">Documentation</a></li>
+                            <li class="active">Client</li>
+                        </ol>
+                        <header>
+                            <h1>Client</h1>
+                        </header>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <p>[The following applies to DA-GT-SDK version alpha-1.5 as of July 2015.]</p>
+
+                        <p>Here, you will find information on the exposed class functions of the DA_client.</p>
+
+                        <p> In the preceding section, we discuss how the wrapper object creates and uses the DA_gestureTracker and its subclass object to facilitate the core functionality of the gesture recognition. In addition to that, we also need another object that acts as the mediator between the tracker-layer and the camera hardware.</p>
+
+                        <p>As DAI is in active development mode with several hardware specs, none of these are set in stone as of Q2 2015. At the moment, the only reliable method of extracting image stream to feed into the tracker is either from the built-in camera of the testing unit (Android board, a Mac or an iPad) or from the DAIP control program running on a PC. The latter can process the raw data stream from the DA camera and extract depth map and optical flow. The built-in camera will only provide regular RGB image, and no depth information will be available and is recommended only for the purpose of debugging and testing the in-plane gestures.</p>
+
+                        <p><strong>[1] How to connect to the built-in camera of the testing unit (such as an iPad or a web-cam)</strong></p>
+
+                        <p>Most modern platforms provide their own API for establishing communication with the camera built-in or attached to the device. Usually, a delegate object is specified that is called by the system when a fresh image data arrives. It is the responsibility of this delegate object to package the image into the data structure ("DA_cameraDataStruct" defined in the <a href="/developer/reference/documentation/datastructure">Data Structure section</a>) and deliver it to the DA_client via the wrapper object.</p>
+
+                        <p>Suppose we have an AVController object that is set as the delegate of the video capture session. When a new frame data arrives, the native video session controller will callback the delegate with the raw image data. For example, on OS X, the delegate callback function has the following form:</p>
+
+<pre>
+- (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection
+{
+    if(paused) return; 
+    // tracking is paused. therefore skip this capture.
+
+    if(![gestureTrackerWrapper mayAcceptNewFrame]) return; 
+    // user refused to process this capture for some reason, so pass. 
+
+    NSTimeInterval timeStamp = [NSDate timeIntervalSinceReferenceDate];
+    previousImageTimeStamp = timeStamp;
+
+    CVImageBufferRef imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer);
+    CVPixelBufferLockBaseAddress(imageBuffer,0);
+    size_t width = CVPixelBufferGetWidth(imageBuffer);
+    size_t height = CVPixelBufferGetHeight(imageBuffer);
+    void *bytes = CVPixelBufferGetBaseAddress(imageBuffer); // the actual buffer of the image
+
+    if(width >= 360) // adjust the size of the image (up to 1/8) if it is too big for gesture tracker consumption
+    {
+        // adjust to appropriate size and inform the session manager so that it adjust the size of the incoming images here…
+
+        return; 
+    }
+
+    cameraDataStruct *newCameraDataPtr = (cameraDataStruct *)calloc (1, sizeof(struct cameraDataStruct));
+    newCameraDataPtr->isFresh = true;
+    newCameraDataPtr->width = (int)width;
+    newCameraDataPtr->height = (int)height;
+    /////////RSO above
+    newCameraDataPtr->nChannels = 4;
+    newCameraDataPtr->size = (newCameraDataPtr->width) * (newCameraDataPtr->height) * (newCameraDataPtr->nChannels);
+    newCameraDataPtr->buf = (unsigned char *)malloc(newCameraDataPtr->size);
+    memcpy(newCameraDataPtr->buf, bytes, newCameraDataPtr->size);
+    newCameraDataPtr->info = 0;
+
+    [gestureTrackerWrapper newBuiltInCameraData:newCameraDataPtr];
+
+    if(newCameraDataPtr->buf)
+    {
+        free(newCameraDataPtr->buf);
+        (newCameraDataPtr->buf) = NULL;
+    }
+    free(newCameraDataPtr);
+    newCameraDataPtr = NULL;
+    CVPixelBufferUnlockBaseAddress(imageBuffer, 0);
+}
+</pre>
+
+                        <p>Note that this function includes a call to the wrapper function <code>newBuiltInCameraData</code>. It does nothing but calling the function of the same name in DA_client.</p>
+
+                        <p>The function defined in DA_client.cpp is as follows:</p>
+
+<pre>
+void DA_client::newBuiltInCameraData(cameraDataStruct *newCameraDataPtr)
+{
+    if(_isBusy) return;
+
+    lockcameradata();
+    if(cameraDataPtr == NULL)
+    {
+        cameraDataPtr = (cameraDataStruct *)calloc(1, sizeof(cameraDataStruct));
+    }
+    else
+    {
+        unlockcameradata();
+        return;
+    }
+
+    memcpy(cameraDataPtr, newCameraDataPtr, sizeof(cameraDataStruct));
+    size_t fakeDepthBufferSize = newCameraDataPtr->width * newCameraDataPtr->height;
+    cameraDataPtr->buf = (unsigned char *)calloc(newCameraDataPtr->size + fakeDepthBufferSize, sizeof(char));
+    cameraDataPtr->size = newCameraDataPtr->size + fakeDepthBufferSize;
+    // copy rgba portion of the image to the first part of the cameraDataPtr buf.
+    memcpy(cameraDataPtr->buf, newCameraDataPtr->buf, newCameraDataPtr->size);
+    cameraDataPtr->isFresh = true;
+
+    int nC = newCameraDataPtr->nChannels;
+    unsigned char *rgbbuf = cameraDataPtr->buf;
+
+    unsigned char *temp = (unsigned char *)malloc(sizeof(char) * nC);
+    unsigned char *rightside = rgbbuf + nC * (newCameraDataPtr->width-1);
+    for(int j=0;jheight; j++)
+    {
+        rgbbuf = cameraDataPtr->buf + j * newCameraDataPtr->width * nC; // next line
+        rightside = rgbbuf + nC * (newCameraDataPtr->width-1); // end of next line
+        for(int i=0;i&lt;(newCameraDataPtr->width)/2; i++)
+        {
+            memcpy(temp,rightside,nC);
+            memcpy(rightside, rgbbuf,nC);
+            memcpy(rgbbuf,temp,nC);
+            switchpix(rgbbuf,0,2);
+            switchpix(rightside,0,2);
+            rgbbuf += nC;
+            rightside -= nC;
+        }
+    }
+
+    free(temp);
+    unlockcameradata();
+}
+</pre>
+
+                        <p>It refreshes its member data structure <code>cameraDataPtr</code> using the newly arrived image data and sets the flag <code>isFresh</code> to true. This causes the DA_client::<code>sendAndReceiveData()</code> function to be called so that the gesture tracking processes the new data.</p>
+
+                        <p>As one can see in this example, the details are very specific to the platform API requirements, and further simplification is not possible at this stage. The main point to remember is that the final output of this step is the data structure pointed to by the class variable cameraDataPtr is correctly filled with the correct information (image dimension, beginning of the RGBA buffer, etc) while it is locked safe from potential meddling from other threads.</p>
+
+                        <p><strong>[2] How to connect to DA test camera unit through DAIP</strong></p>
+
+                        <p class="alert alert-danger" role="alert">In the future version, details of this mode may change significantly. As of Q2 2015, this is however the only available mode of communication with the DA supplied hardware.</p>
+
+                        <p>To start communicating with the DAIP program which has already started its server mode with an active connection to the DA camera, the application controller object that has created the wrapper object already will first execute the function <code>tryConnectionWithAddress</code> to establish the wifi connection to the server and when it succeed will request and processing the streaming and gesture tracking process. (startCapture):</p>
+
+<pre>
+if([gestureTrackerWrapper tryConnectionWithAddress:address port:port])
+{
+    usleep(100000); // brief ~ 100 msec pause before moving onto the next stage
+    [gestureTrackerWrapper startCapture];
+}
+else 
+{
+    // connection failed… do something to notify the user.
+}
+</pre>
+
+                        <p>Here is how the "tryConnectionWithAddress…" function is implemented in the wrapper class for obj-C (iOS and OS X). For general purposes, we use a command interpreter looping as part of the DA_client object functionality. (interpret( )) So, it is a matter of sending a series of commands to it: "daip", "init xxx.x.x.xxxx 2000", "connect" to establish the streaming connection. <strong style="text-decoration: underline">Note that by default, daip communication is through the private port number 2000.</strong></p>
+
+<pre>
+- (BOOL)tryConnectionWithAddress:(NSString *)anAddress port:(int)aPortNumber
+{
+    int stageCounter = 0;
+    if(cli == NULL)
+    {
+        self.isCallbackOK = NO;
+        return NO;
+    }
+
+    int s_tried = 0;
+    NSString *commandString = [NSString stringWithFormat:@"daip"];
+    std::string command;
+    command = [commandString UTF8String];
+    cli->interpret(command);
+    NSString *commandString2 = [NSString stringWithFormat:@"init %@ %d", anAddress, aPortNumber];
+    command = [commandString2 UTF8String];
+    cli->interpret(command);
+
+    usleep(100000); // brief sleep before moving onto the next stage
+
+    if(stageCounter == 0)
+    {
+        if(cli->connected())
+        {
+            command = "connect";
+            cli->interpret(command);
+            stageCounter = 1;
+            self.isCallbackOK = YES;
+            return YES;
+        }
+        else
+        {
+            usleep(100000);
+            if(s_tried > 5) 
+            {
+                self.isCallbackOK = NO;
+                return NO;
+            }
+            else
+            {
+                s_tried += 1;
+                goto stage1;
+            }
+        }
+    }
+    return YES;
+}
+</pre>
+
+                        <p>The "startCapture" function is defined</p>
+
+<pre>
+- (void)startCapture
+{
+    cli->resumeFetching();
+
+    if(cli &amp;&amp; ((cli->datalooping())==false))
+    {
+        cli->looping_start(); 
+        usleep(500000);
+    }
+
+    // … other internal accounting functions here…
+}
+</pre>
+
+                        <div class="end-spacer"></div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+    </main>
+
+    <footer>
+        <% include ../../../../partials/footer %>
+    </footer>
+
+    <% include ../../../../partials/tools %>
+
+    <% include ../../../../partials/scripts %>
+    
+</body>
+</html>

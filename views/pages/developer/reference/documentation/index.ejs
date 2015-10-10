@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <% include ../../../../partials/head %>
+
+</head>
+<body>
+
+    <% include ../../../../partials/header %>
+
+    <main>
+
+        <div class="jumbotron min"></div>
+
+        <div class="container">
+            <section id="developer">
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <ol class="breadcrumb">
+                            <li><a href="/developer/#toc">Table of Contents</a></li>
+                            <li><a href="/developer/reference/">References</a></li>
+                            <li class="active">Documentation</li>
+                        </ol>
+                        <header>
+                            <h1>Documentation</h1>
+                        </header>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <p>[The following applies to DA-GT-SDK version alpha-1.5 as of July 2015.]</p>
+                        <p>There are three core objects in the tracker that you may want to interact with and control from your application.</p>
+                        <p>The most important one would be <strong><a href="gesturetracker">DA_gestureTracker</a></strong> which provides most of the critical gesture tracking operations. <strong>[<a href="gesturetracker">Tracker</a>]</strong></p>
+                        <p>There are multitudes of parameters that control their behavior and they can be read or changed through the singleton object <strong><a href="parametermanager">DA_gestureTrackerParameterManager</a></strong>. <strong>[<a href="parametermanager">Param Manager</a>]</strong></p>
+                        <p>Another important object is <strong><a href="daclient">DA_client</a></strong> object that mediates the data communication between the tracker object and the data source (i.e. camera module). <strong>[<a href="daclient">Client</a>]</strong></p>
+                        <p>Since all internal gesture tracker functions are written using the standard C/C++ language, and as the main development language differ for each platform, you will need to create a wrapper object using your preferred language that will translate your native function calls to invoke corresponding C++ class object and its functions. Here, its general structure will be discussed. Its actual implementation should differ for each platform, and some of the examples are given in the <a href="../examples/">Examples</a> section. <strong>[<a href="wrapper">Wrapper</a>]</strong></p>
+                        <p>There are <strong><a href="datastructure">data structures</a></strong> defined specifically for the DA gesture tracking operation and some of them are exposed as they are used both for input and output parameters. The developers should be able to interpret and construct such parameters in bridging between the DA gesture tracker and their application controller.</p>
+                        <p>The current version allows the developer to define/modify the scope of gestures to be tracked in a limited way. The way to control which gestures are to be included or excluded from the tracker is described in the <strong><a href="gestures">Gesture Definitions</a></strong> section.</p>
+
+                        <div class="end-spacer"></div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+    </main>
+
+    <footer>
+        <% include ../../../../partials/footer %>
+    </footer>
+
+    <% include ../../../../partials/tools %>
+
+    <% include ../../../../partials/scripts %>
+    
+</body>
+</html>

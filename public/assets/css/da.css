@@ -346,3 +346,16 @@ footer a:hover {
 #emailInput:invalid {
   border: 1px solid red;
 }
+
+#developer .menu ul {
+  padding-left: 15px;
+  list-style: none;
+}
+
+#developer .menu li {
+  line-height: 2em;
+}
+
+.end-spacer {
+  padding-bottom: 40px;
+}

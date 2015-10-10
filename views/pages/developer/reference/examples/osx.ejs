@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <% include ../../../../partials/head %>
+
+</head>
+<body>
+
+    <% include ../../../../partials/header %>
+
+    <main>
+
+        <div class="jumbotron min"></div>
+
+        <div class="container">
+            <section id="developer">
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <ol class="breadcrumb">
+                            <li><a href="/developer/#toc">Table of Contents</a></li>
+                            <li><a href="/developer/reference/">References</a></li>
+                            <li><a href="/developer/reference/examples/">Examples</a></li>
+                            <li class="active">OS X</li>
+                        </ol>
+                        <header>
+                            <h1>OS X</h1>
+                        </header>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <p>[The following applies to DA-GT-SDK version alpha-1.8 as of September 2015.]</p>
+
+                        <p>Various files related to the use of the gesture tracking SDK for the OS X platform are archived in the <a href="https://drive.google.com/a/dual-aperture.com/folderview?id=0B-mZp3ZE5Qpffm9DcngyS0pZYnJCWHFkX25PcmFuR3BiQ0VxUjlRVFNKYlhid0R0WW1EN3M&usp=sharing" target="_blank">OS X section.</a></p>
+
+                        <p><strong>There are two ways to use the gesture SDK in building an application.</strong></p>
+
+                        <p><strong>1. Use the DAGT Static Library</strong><br/>
+                            One is to link the app with the static binary library downloadable from <a href="https://drive.google.com/open?id=0B-mZp3ZE5QpfbkQxQkNsS0EtaVk" target="_blank">here</a>. It will unpack into a directory named DAGT_SDK. To use it, install the public headers that can be found inside that directory (DAGT_SDK/usr/local/include/).<br/>
+                            The static library file ( libDAGT_SDK.a ) is inside the directory (DAGT_SDK/usr/local/lib/).
+                        </p>
+
+                        <p><strong>2. Use DAGT Framework</strong><br/>
+                            If instead one is interested in using the equivalent framework, it can be downloaded from <a href="https://drive.google.com/open?id=0B-mZp3ZE5QpfOVRMZXRGdHNLRVE" target="_blank">here</a>. The public header files necessary for using some of the gesture related functions are included inside the framework package. To see their content, you can first add the framework to your project and find the header files in it.
+                        </p>
+
+                        <p><strong>Other requisite steps:</strong></p>
+
+                        <p><strong>Include the OpenCV framework</strong><br/>
+                            Whether you use the static library or the framework described above, the opencv framework is also required to be included. If you don't have the latest built, you may download it from <a href="https://drive.google.com/open?id=0B-mZp3ZE5QpfV2VDZTZNY1B3V0E" target="_blank">here</a>.
+                        </p>
+
+                        <p><strong>Include the essential data files as part of the application package</strong><br/>
+                            There are three required data files (one for defining the gesture patterns, two for face-detection). The folder containing these three can be downloaded from <a href="https://drive.google.com/open?id=0B-mZp3ZE5QpfbkQxQkNsS0EtaVk" target="_blank">here</a>. It will unzip into a directory named DADemoData. The contents of this folder should be included inside the application package. To check they are properly in the app, do the following:<br/>
+                            1. Locate the app binary that was built.<br/>
+                            2. Control-click on its icon and choose "Show package contents"<br/>
+                            3. As it reveals its contents, make sure the three files are inside the /Contents/Resources directory. 
+                        </p>
+
+                        <p>To make these files included as part of the built app, choose the desired target in your Xcode project, and in its Build Phases > Copy Bundle Resources, add these three files. (along with the others such as various .xib files and images)</p>
+
+                        <p>A Skeleton Xcode project to help build an app similar to the example app can be provided upon request. Also available upon request are detailed instructions on the use of the wrapper code to connect the C++-based gesture tracker module and the obj-C based GUI part. Contact <a href="mailto:seungoh@dual-aperture.com">seungoh@dual-aperture.com</a> for more information.</p>
+
+                        <p><strong>To see the gesture tracker in action,</strong><br/>
+                            The example app binary which allows both Built-in/Web-Cam and the DA camera module (connected via DAIP program running on Windows) can be downloaded from <a href="https://drive.google.com/open?id=0B-mZp3ZE5QpfcXdfNlhpQjZnLVE" target="_blank">here</a>.</p>
+
+                        <div class="end-spacer"></div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+    </main>
+
+    <footer>
+        <% include ../../../../partials/footer %>
+    </footer>
+
+    <% include ../../../../partials/tools %>
+
+    <% include ../../../../partials/scripts %>
+    
+</body>
+</html>

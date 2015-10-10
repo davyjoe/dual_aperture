@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <% include ../../../../partials/head %>
+
+</head>
+<body>
+
+    <% include ../../../../partials/header %>
+
+    <main>
+
+        <div class="jumbotron min"></div>
+
+        <div class="container">
+            <section id="developer">
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <ol class="breadcrumb">
+                            <li><a href="/developer/#toc">Table of Contents</a></li>
+                            <li><a href="/developer/reference/">References</a></li>
+                            <li><a href="/developer/reference/documentation/">Documentation</a></li>
+                            <li class="active">Data Structure</li>
+                        </ol>
+                        <header>
+                            <h1>Data Structure</h1>
+                        </header>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <p>[The following applies to DA-GT-SDK version alpha-1.5 as of July 2015.]</p>
+                        <p>Here, you will find the exposed data structures of the gesture tracker. These data structures are made public because some of the public gesture tracker functions return data using one of these structures. Also, some of these functions expect to be called with parameters supplied in their forms. </p>
+
+<pre>
+struct <strong>summer2d</strong>
+{
+    double v;
+    double w;
+}
+
+struct <strong>summer3d</strong>
+{
+    double x;
+    double y;
+    double z;
+    double w;
+}
+
+struct <strong>vector4d</strong>
+{
+    double x;
+    double y;
+    double z; 
+    double zaux;
+}
+
+struct <strong>size3d</strong>
+{
+    int w, h, d;
+}
+
+struct <strong>GTParameter</strong>
+{
+    std::string token;
+    double value;
+    double defaultValue;
+    double min;
+    double max;
+    bool isInt;
+    std::string description;
+}
+
+struct <strong>GTMotionDetectDataStruct</strong>
+{
+    double signal;
+    double noise; 
+    double signalav; 
+    double threshold;
+    bool moved;
+    int sleepCount;
+    int moveCount;
+    size3d size; 
+    vector4d r;
+    vector4d v;
+    vector4d vsigma;
+    double t;
+    double dt;
+}
+
+struct <strong>cameraDataStruct</strong>
+{
+    bool isFresh;
+    unsigned char *buf;
+    size_t size; 
+    int width;
+    int height;
+    int nChannels;
+    int info; 
+}
+
+#define <strong>kMaxCommandSize</strong> 64
+
+struct <strong>payload</strong>
+{
+    double timeStamp;
+    double fps;
+    char what[kMaxCommandSize];
+    size_t bufferlength; 
+    unsigned char *buffer;
+    size_t headersize; 
+    size3d size;
+    int nChannels; 
+    int nColorChannels; 
+    bool isRGBPlanar;
+    unsigned char *rgb;
+    unsigned char *ir;
+    unsigned char *depth;
+    unsigned char *optx;
+    unsigned char *opty;
+    unsigned char *gray;
+}
+
+struct <strong>DA_coords</strong>
+{
+    double t;
+    double dt;
+    struct summer3d r;
+    struct summer3d v;
+}
+
+#define <strong>kGestureParcelTokenMaxSize</strong> 20
+
+struct <strong>DA_gestureParcel</strong>
+{
+    char token[kGestureParcelTokenMaxSize];
+    int gestureID;
+    double t;
+    double dt;
+    double fps;
+    double confidence;
+    bool returnEcho;
+}
+
+struct <strong>DA_gesture</strong>
+{
+    int trainStatus;
+    int status; 
+    std::string token;
+    int gestureID;
+    double t;
+    double dt; 
+    double fps; 
+    double confidence; 
+    bool trackingChanged;
+    bool tracking;
+    std::string debug;
+}
+</pre>
+
+                        <div class="end-spacer"></div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+    </main>
+
+    <footer>
+        <% include ../../../../partials/footer %>
+    </footer>
+
+    <% include ../../../../partials/tools %>
+
+    <% include ../../../../partials/scripts %>
+    
+</body>
+</html>

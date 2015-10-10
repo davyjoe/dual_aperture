@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <% include ../../partials/head %>
+
+</head>
+<body>
+
+    <% include ../../partials/header %>
+
+    <main>
+
+        <div class="jumbotron min"></div>
+
+        <div class="container">
+            <section id="developer">
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <ol class="breadcrumb">
+                            <li><a href="/developer/#toc">Table of Contents</a></li>
+                            <li class="active">Installation</li>
+                        </ol>
+                        <header>
+                            <h1>Installation</h1>
+                        </header>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <p><strong>Pre-requisites:</strong></p>
+                        <p>The following applies to DA-GT-SDK version alpha-1.5 as of July 2015.</p>
+
+                        <br/>
+                        <p><strong>1. OpenCV Library</strong></p>
+                        <p>On all platforms, the latest version of openCV static library should be installed as part of the development project. For some platforms, the recommended library build may have been provided by DA. To build the library from scratch, consult the official openCV site <a href="http://opencv.org/downloads.html" target="_blank">here</a>.</p>
+                        <p>The DA-GT-SDK is written entirely in the standard C/C++ languages without any 3rd party software dependency except for the required openCV library. </p>
+
+                        <br/>
+                        <p><strong>2. Dual Aperture Gesture Tracker Library</strong></p>
+                        <p>For each supported platform, you should have the static library binary <strong>libDAGT_SDK.a</strong> on hand. Along with the openCV library, this should be the only library that you will add to your development project.</p>
+
+                        <br/>
+                        <p><strong>3. Public Header Files</strong></p>
+                        <p>For v1.5, the following header files should also be included as part of your project:<p>
+                        <ul>
+                            <li>AndroidLog.h</li>
+                            <li>DA_client.h</li>
+                            <li>DA_datasource.h</li>
+                            <li>DA_DEBUG.h</li>
+                            <li>DA_gestureTracker.h</li>
+                            <li>DA_gestureTrackerParametersManager</li>
+                            <li>DA_SDK_DATASTRUCTURE.h</li>
+                            <li>DA_SDK_GLOBAL.h</li>
+                            <li>objc.h</li>
+                        </ul>
+                        <p>They are included in the SDK package in the folder named <strong>public_headers</strong>. You may also download the latest package from <a href="https://drive.google.com/a/dual-aperture.com/folderview?id=0B-mZp3ZE5QpfflpBNVlJQi1wTk40MjVQdUk1TWl0N0J1ZU5UbEpHclFlZWhQWkhSSEFzU3M&usp=sharing">here</a>.</p>
+
+                        <br/>
+                        <p><strong>4. DA-GT Data Files</strong></p>
+                        <p>The three files named <strong>patterns.txt, haarcascade_eye_tree_eyeglasses.xml, and haarcascade_frontalface_alt.xml</strong> are in a folder named <strong>DADemoData</strong>. This directory is expected to be placed in the same directory as the executable when it runs.</p>
+                        <p>In some mobile development systems, it may not be possible to allow the functions in the library to read from data files. When these files are not available for such reasons when the gesture tracker object is created, the tracker will load from the hard-wired gesture patterns instead; it will also disable the face-detection and hand/finger tracking functionality. In the future version of SDK, we will provide a way to provide the required data to the tracker via in-memory buffer. Due to this limitations and also lagging openCV version available for the Android platform as of this release, both face- and hand/finger tracking functionality is disabled.</p>
+                        <p>You may download the latest from <a href="https://drive.google.com/a/dual-aperture.com/folderview?id=0B-mZp3ZE5QpfflpBNVlJQi1wTk40MjVQdUk1TWl0N0J1ZU5UbEpHclFlZWhQWkhSSEFzU3M&usp=sharing">here</a>.</p>
+
+                        <br/>
+                        <p><strong>5. Wrapper Class</strong></p>
+                        <p>As the library functions are written in C++, there needs to be a wrapper object that will mediate between its C++ functions and the native language of your project/platform. In the case of iOS, it will be an obj-C environment, and for Android, it will be java. For windows, it will be C#. In all these cases, the wrapper object will act as a two-way bridge: On one hand, when it is created, it will also create the gesture tracker (or its sub-class) object and relay orders from the native side of your program. On the other hand, it will also facilitate the callback mechanism for the gesture tracker so that found gestures and other information can be relayed to the control object(s) of the program without blocking the flow of operations on both sides. The recommended pattern for propagating the gesture-data is via the notification methods. Such a notification pattern is widely used in modern GUI applications and should be readily available in iOS, OS X, Android, Windows as well as linux systems.</p>
+                        <p>Example(s) of the wrapper and notification can be found in the <a href="/developer/reference/examples/">Examples</a> section.</p>
+
+                        <div class="end-spacer"></div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+    </main>
+
+    <footer>
+        <% include ../../partials/footer %>
+    </footer>
+
+    <% include ../../partials/tools %>
+
+    <% include ../../partials/scripts %>
+    
+</body>
+</html>

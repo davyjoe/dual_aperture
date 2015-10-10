@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <% include ../../../../partials/head %>
+
+</head>
+<body>
+
+    <% include ../../../../partials/header %>
+
+    <main>
+
+        <div class="jumbotron min"></div>
+
+        <div class="container">
+            <section id="developer">
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <ol class="breadcrumb">
+                            <li><a href="/developer/#toc">Table of Contents</a></li>
+                            <li><a href="/developer/reference/">References</a></li>
+                            <li><a href="/developer/reference/documentation/">Documentation</a></li>
+                            <li class="active">Wrapper</li>
+                        </ol>
+                        <header>
+                            <h1>Wrapper</h1>
+                        </header>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <p>[The following applies to DA-GT-SDK version alpha-1.5 as of July 2015.]</p>
+
+                        <p>Here, you will find schematic information on how the wrapper should be designed and used. There are three critical functions that the wrapper should provide: <strong>First</strong>, it acts as the bridge between the platform-native development API and the C++ based DA gesture tracker library. (see below) <strong>Secondly</strong>, it provides functions to read and modify its internal parameter values. (see <a href="/developer/reference/documentation/parametermanager">Param Manager</a> section) <strong>Finally</strong>, it also mediates between the video-stream source (DA camera module or the built-in or web camera of the testing device) and the tracker. (see <a href="/developer/reference/documentation/daclient">Client</a> section)</p>
+
+                        <p><strong>[1] Subclass DA_gestureTracker</strong></p>
+
+                        <p>First, you need to create a C++ subclass of DA_gestureTracker and define its several virtual functions to do useful stuff, as they are defined to nothing in the DA_gestureTracker class itself.</p>
+
+                        <p>The following shows the minimal content of its header file:</p>
+
+<pre>                        
+#include "DA_gestureTracker.h"
+class DA_gestureTrackerObjC : public DA_gestureTracker
+{
+    public:
+    DA_gestureTrackerObjC (id aWrapper){ DA_gestureTracker::setWrapperObject(aWrapper); };
+
+    virtual void callbackWithGesture(DA_gesture aGesture, id wrapperObj);
+    virtual void callbackWithGestureTrackingStatus(bool status, id wrapperObj);
+    virtual void callbackUpdateImage(std::vector&lt;DA_coords&gt;coordsV, id wrapperObj);
+    virtual void callbackWithMoves(std::vector&lt;GTMotionDetectDataStruct&gt;moves, id wrapperObj);
+    virtual void callbackWithDebugString(std::string debugString, id wrapperObj);
+    bool isCallbackOK(id wrapperObj);
+};
+</pre>
+
+                        <p>Note that this class introduces a new constructor that accepts a pointer to the wrapper object. Upon creation, it sets the internal pointer to the wrapper object of its superclass DA_gestureTracker. This is to enable the tracker to inform the wrapper object when it needs to communicate with the rest of the code beyond its own (DA_gestureTracker::) scope.</p>
+
+                        <p>The virtual functions interface with the C++based gesture library, but their innards should include various functions with the signatures of the native language (such as obj-C in iOS or java in Android). As they cannot be explicitly included as part of the C++ source file (.cpp), they should be actually implemented in the wrapper object implementation file, as shown below.</p>
+
+                        <p><strong>[2] Create and implement the wrapper class</strong></p>
+
+                        <p>In its header file, this wrapper class should be defined to include pointers to two objects, gTracker (an instantiation of the DA_gestureTracker subclass defined above.) and cli (an instantiation of the DA_client class) as shown in the following snippet that is taken from the code written for OS X/iOS (obj-C).</p>
+
+                        <p>Note that the class variable gTracker in the code below is a pointer to an object of the class DA_gestureTrackerOb, a subclass of DA_gestureTracker.</p>
+
+<pre>
+#import "DA_gestureTrackerObjC.h"
+#import "DA_client.h"
+@interface DA_gestureTrackerObjCWrapper : NSObject
+{
+    DA_gestureTrackerObjC *gTracker;
+    DA_client *cli;
+
+    ——
+    other class variables should follow here…
+    ——
+}
+@end
+</pre>
+
+                        <p>In its implementation file, the wrapper should include definitions of the several virtual functions for the DA_gestureTracker subclass as discussed above.Their primary purpose is to facilitate the callback functionality from the gTracker when it finds a gesture. They should also include the bridging functionality mainly to start/pause/stop the gesture tracking, to modify its parameter values as the user initiate such changes from the GUI interface of the application.</p>
+
+                        <p>For example, in obj-C implementation of the wrapper class, here is what it does upon creation:</p>
+
+<pre>
+- (id)init
+{
+    if(self = [super init])
+    {
+    self.gTracker = new DA_gestureTrackerObjC(self);
+    self.isCallbackOK = YES;
+
+    // other initialization follow here….
+
+    }
+return self;
+}
+</pre>
+
+                        <p><strong>[3] Respond to the identified gesture as the wrapper is called back from the gesture tracker</strong></p>
+
+                        <p>In the same implementation file, the callback functions (note the C++ namespace DA_gestureTrackerObjC:: used here) are also defined in the following form:</p>
+
+<pre>
+void DA_gestureTrackerObjC::callbackWithGesture(DA_gesture aGesture, id wrapperObj)
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"gestureNotification" object:nil userInfo:@{ @"name": [NSString stringWithUTF8String:aGesture.token.c_str()], @"ID":[NSNumber numberWithInt:aGesture.gestureID], @"timeSpan": [NSNumber numberWithDouble:aGesture.dt], @"fps": [NSNumber numberWithDouble:aGesture.fps], @"confidence":[NSNumber numberWithDouble:aGesture.confidence], @"debug":[NSString stringWithUTF8String:aGesture.debug.c_str()]}];
+}
+</pre>
+
+                        <p>The gesture tracker (of the <code>DA_gestureTrackerObjC</code> class) calls back the wrapperObj when a gesture is detected, and upon called, the wrapper object calls the platform-native function passing the gesture data (DA_gesture aGesture) so that the main program controller can do something useful with it. In this particular example, it simply packages the gesture parameters into an NSNotification and post it so that various GUI elements and app controller objects that subscribe to the notification with the name <code>@"gestureNotification"</code> . When these objects receive such a notification, they can extract the relevant information associated with the identified gesture ("ID", "name", etc) by querying the dictionary (or hash table) object that is delivered as the main parcel of the notification.</p>
+
+                        <p>It is also in these callback functions that other ways of consuming the gesture tracking data can be implemented. One such method would be to use a broadcasting via an URL encoded message using the web server running in the background as part of the application.</p>
+
+                        <div class="end-spacer"></div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+    </main>
+
+    <footer>
+        <% include ../../../../partials/footer %>
+    </footer>
+
+    <% include ../../../../partials/tools %>
+
+    <% include ../../../../partials/scripts %>
+    
+</body>
+</html>

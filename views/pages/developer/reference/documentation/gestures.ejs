@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <% include ../../../../partials/head %>
+
+</head>
+<body>
+
+    <% include ../../../../partials/header %>
+
+    <main>
+
+        <div class="jumbotron min"></div>
+
+        <div class="container">
+            <section id="developer">
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <ol class="breadcrumb">
+                            <li><a href="/developer/#toc">Table of Contents</a></li>
+                            <li><a href="/developer/reference/">References</a></li>
+                            <li><a href="/developer/reference/documentation/">Documentation</a></li>
+                            <li class="active">Gesture Definitions</li>
+                        </ol>
+                        <header>
+                            <h1>Gesture Definitions</h1>
+                        </header>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <p>[The following applies to DA-GT-SDK version alpha-1.5 as of July 2015.]</p>
+
+                        <p>Here, you will find information on the way to define and customize the set of gestures to include or exclude in the gesture tracking. It is mediated via a simple text file that defines the three core components of its tracking algorithm. Current version allows its full use only for the iOS/OS X platform. In the Android version, the same content is hardwired and loaded at the beginning. In near future, the customizability will be extended to other platforms.</p>
+
+                        <p>The text file allows using comment lines preceded by double slashes in the C/C++ manner. These lines are ignored by the parser.</p>
+
+                        <p><strong>Preamble</strong> contains a single word commands such as <span style="text-decoration: underline">replace</span> or <span style="text-decoration: underline">append</span>. <span style="text-decoration: underline">Append</span> will mean that the content of the file be added in addition to the existing dictionary of gestures. The <span style="text-decoration: underline">append</span> command is not recommended as the developer, without fully knowing the internal of the given DA-GT-SDK, risks introducing gestures that are in conflict with the existing ones.</p>
+
+                        <p><strong>ATOM FLAGS</strong> define the gesture Atom (unit element) that largely denotes the directionality of motion in between frames. Each begins with the token <span style="text-decoration: underline">flag</span> followed by the bit-flag (0, 1, 2, 4, 8….) and the ascii code, followed by the signed integer that further specifies the direction of motion. (-1 for the leftward move, 2 for the upward move for example.)</p>
+
+                        <p><strong>GESTURE CATEGORIES</strong><br/>
+                        Since each gesture may use a subset of Atoms, one can classify the gestures into a few categories depending on the set of atoms being used in each definition.</p>
+
+                        <p>Each of this categories is defined by the line that begins with cat followed by the unique number to identify the category, then followed by the string composed of the capitalized ascii codes of the gesture atoms that are being used in the category. The special categories (0 and 1) are reserved for the special marker gesture categories (used to mark the beginning/end of a gesture.) The final optional parameter (0 or 1) indicates whether the category imposes only using the dominant motion in the decoding of the gesture train. (In the current version, its details should not matter as we are limiting ourselves to the primary 6 gestures mode.)</p>
+
+                        <p><strong>GESTURE PATTERNS</strong><br/>
+                        Finally, the gestures are defined using the properties defined earlier in the file. <em>(Note that the order of PREAMBLE- ATOM FLAGS - GESTURE CATEGORIES - GESTURE PATTERNS should be strictly followed.)</em> Each definition begins with the category number it belongs to, a number that identifies the gesture kind, followed by the human-readable kind name, the reduced pattern as represented by the capitalized ascii code sequence of the gesture atoms.</p>
+
+                        <p>Further optional parameter designates whether the cyclic variation is assumed or not for the category (i.e. a clockwise circle may include 4 equivalent sequences LURD, URDL, RDLU, DLUR and therefore set 1 as shown in the circle and ccircle examples below.) In the case of the marker category (cat 0 or 1), this same parameter indicates the duration in time (seconds) to define the lower bonds for the valid marker duration.</p>
+
+                        <p>The input file then should end with "end".</p>
+
+                        <p>——— the following shows the text of the file patterns.txt that should reside in the DADemoData directory which sits side by side with the executable. In the case of iOS/OS X, the file should be included as part of the app package itself after it is set by the developer. Otherwise, hard-coded default set of gestures are loaded.</p>
+
+<pre>
+//DA_GESTURE_PATTERN
+//PREAMBLE -- replace or append?
+replace
+//ATOM FLAGS ---- atomKind-atomSymbol-moveDirection(0,1(x),2(y),3(z),4(zaux))
+flag 0 ? 0
+flag 1 . 0
+flag 2 L -1
+flag 4 R 1
+flag 8 + 3
+flag 16 - -3
+flag 32 U 2
+flag 64 D -2
+//flag 128 O 0
+//flag 256 C 0
+flag 512 P 4
+flag 1024 N -4
+
+//GESTURE CATEGORIES catID-catMembers-(useDominant flag)
+cat 0 .
+cat 1 CO
+cat 2 LR
+cat 3 UD
+cat 4 -+
+cat 5 PN
+//cat 6 LRUD 1
+
+//GESTURE PATTERNS (cat-kind-token-pat-(duration/cyclic))
+0 1 marker . 0.5
+//1 2 marker CO 0.25
+//1 3 marker OC 0.25
+2 16 leftswipe LR
+2 17 rightswipe RL
+3 18 upswipe UD
+3 19 downswipe DU
+//3 19 downswipe UDU
+4 20 push +-
+4 21 pull -+
+5 22 pushaux PN
+5 23 pullaux NP
+//6 64 circle RDLU 1
+//6 65 ccircle LDRU 1
+end
+
+//EXPLANATIONS
+// marker patterns
+// kind = 2,3 : pattern-based marker (such as CO, i.e. close->open palm)
+// kind = 1 : time-based marker (such as silence (".") lasting 0.5 seconds or longer)
+// gesture patterns
+// . quiet/nomove
+// O open palm
+// C closed palm
+// L leftward move
+// R rightward move
+// D downward move
+// U upward move
+// + Z increase move
+// P Zaux increase move
+// - Z decrease move
+// N Zaux decrease move
+
+// typically
+// regular gesure pattern has 4 or 5 components
+// gestureCat gestureKind gestureToken gesturePattern/Duration (optional cyclic)
+// markers have 4 or 5 components
+// the 5th being duration in seconds (i.e. pause for how long)
+// in the PREAMBLE, use
+// replace or append to indicate the content should
+// replace all existing mapping, or just add on to it.
+// reserved words are : end, replace, append,
+// before gesture patterns, gesture category and Atom Flag section should precede!
+</pre>
+
+                        <div class="end-spacer"></div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+    </main>
+
+    <footer>
+        <% include ../../../../partials/footer %>
+    </footer>
+
+    <% include ../../../../partials/tools %>
+
+    <% include ../../../../partials/scripts %>
+    
+</body>
+</html>

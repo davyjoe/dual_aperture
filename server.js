@@ -142,6 +142,35 @@ app.get('/blog_posts', function(req, res) {
 });
 */
 
+// developer pages 
+app.get('/developer', function(req, res) {
+    res.render('pages/developer/index', {
+        title : 'Dual Aperture International - Developer',
+        user: req.user
+    });
+});
+
+app.get('/developer/:page', function(req, res) {
+    res.render('pages/developer/' + req.params.page, {
+        title : 'Dual Aperture International - Developer',
+        user: req.user
+    });
+});
+
+app.get('/developer/:page/:subpage', function(req, res) {
+    res.render('pages/developer/' + req.params.page + '/' + req.params.subpage, {
+        title : 'Dual Aperture International - Developer',
+        user: req.user
+    });
+});
+
+app.get('/developer/:page/:subpage/:subpage2', function(req, res) {
+    res.render('pages/developer/' + req.params.page + '/' + req.params.subpage + '/' + req.params.subpage2, {
+        title : 'Dual Aperture International - Developer',
+        user: req.user
+    });
+});
+
 
 /////// NEW
 
